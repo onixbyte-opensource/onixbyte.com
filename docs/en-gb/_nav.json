@@ -1,0 +1,12 @@
+[
+  {
+    "text": "blog",
+    "link": "/blog/",
+    "activeMatch": "/blog/"
+  },
+  {
+    "text": "notifications",
+    "link": "/notifications/",
+    "activeMatch": "/notifications/"
+  }
+]

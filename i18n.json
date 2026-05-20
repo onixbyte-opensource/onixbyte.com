@@ -1,0 +1,10 @@
+{
+  "blog": {
+    "en-gb": "Blog",
+    "zh-hans": "博客"
+  },
+  "notifications": {
+    "en-gb": "Notifications",
+    "zh-hans": "通知"
+  }
+}
