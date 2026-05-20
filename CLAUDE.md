@@ -21,3 +21,7 @@ pnpm format     # Prettier — format all files
 - **CSS**: `theme/index.css` overrides CSS custom properties (`--rp-c-brand`, `--rp-c-brand-dark`, `--rp-c-brand-tint`) to set brand colors.
 - **MDX**: Content pages use `.mdx` when embedding React components, `.md` for plain Markdown. MDX type-checking is enabled via `tsconfig.json` `mdx.checkMdx`.
 - **pnpm** is the package manager (see `pnpm-lock.yaml`).
+
+## Rules
+
+- **Do not run `git push`** after committing unless the user explicitly asks for it. CI/CD pipelines are triggered on push, so the user will batch up work and push manually when everything is complete.
