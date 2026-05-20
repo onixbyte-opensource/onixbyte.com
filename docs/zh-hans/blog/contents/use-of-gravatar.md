@@ -1,5 +1,8 @@
 ---
 title: 在第一方系统中使用 Gravatar
+tags:
+  - gravatar
+  - avatar
 ---
 
 [Gravatar](https://gravatar.com)（Globally Recognised Avatar）是一项将头像图片与邮箱地址关联的服务。当用户使用邮箱在你的平台上注册时，你可以直接展示其

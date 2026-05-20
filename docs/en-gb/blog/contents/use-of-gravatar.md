@@ -1,5 +1,8 @@
 ---
 title: Use Gravatar in First-party Systems
+tags:
+  - gravatar
+  - avatar
 ---
 
 [Gravatar](https://gravatar.com) (Globally Recognised Avatar) is a service that associates avatar images with email

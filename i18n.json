@@ -1,6 +1,122 @@
 {
+  "languagesText": {
+    "en-gb": "Languages",
+    "zh-hans": "语言"
+  },
+  "themeText": {
+    "en-gb": "Theme",
+    "zh-hans": "主题"
+  },
+  "versionsText": {
+    "en-gb": "Versions",
+    "zh-hans": "版本"
+  },
+  "menuTitle": {
+    "en-gb": "Menu",
+    "zh-hans": "菜单"
+  },
   "outlineTitle": {
     "en-gb": "ON THIS PAGE",
     "zh-hans": "目录"
+  },
+  "scrollToTopText": {
+    "en-gb": "Back to top",
+    "zh-hans": "回到顶部"
+  },
+  "lastUpdatedText": {
+    "en-gb": "Last Updated",
+    "zh-hans": "最后更新于"
+  },
+  "prevPageText": {
+    "en-gb": "Previous page",
+    "zh-hans": "上一页"
+  },
+  "nextPageText": {
+    "en-gb": "Next page",
+    "zh-hans": "下一页"
+  },
+  "sourceCodeText": {
+    "en-gb": "Source Code",
+    "zh-hans": "源码"
+  },
+  "searchPlaceholderText": {
+    "en-gb": "Search",
+    "zh-hans": "搜索"
+  },
+  "searchPanelCancelText": {
+    "en-gb": "Cancel",
+    "zh-hans": "取消"
+  },
+  "searchNoResultsText": {
+    "en-gb": "No matching results",
+    "zh-hans": "未找到与之匹配的结果"
+  },
+  "searchSuggestedQueryText": {
+    "en-gb": "Try searching for different keywords",
+    "zh-hans": "试试搜索不同关键词"
+  },
+  "overview.filterNameText": {
+    "en-gb": "Filter",
+    "zh-hans": "筛选"
+  },
+  "overview.filterPlaceholderText": {
+    "en-gb": "Search API",
+    "zh-hans": "搜索 API"
+  },
+  "overview.filterNoResultText": {
+    "en-gb": "No matching API found",
+    "zh-hans": "未找到匹配的 API"
+  },
+  "openInText": {
+    "en-gb": "Open in {{name}}",
+    "zh-hans": "在 {{name}} 中打开"
+  },
+  "copyMarkdownText": {
+    "en-gb": "Copy Markdown",
+    "zh-hans": "复制 Markdown"
+  },
+  "copyMarkdownLinkText": {
+    "en-gb": "Copy Markdown link",
+    "zh-hans": "复制 Markdown 链接"
+  },
+  "editLinkText": {
+    "en-gb": "Edit this page",
+    "zh-hans": "编辑此页面"
+  },
+  "codeButtonGroupCopyButtonText": {
+    "en-gb": "Copy code",
+    "zh-hans": "复制代码"
+  },
+  "notFoundText": {
+    "en-gb": "PAGE NOT FOUND",
+    "zh-hans": "页面未找到"
+  },
+  "takeMeHomeText": {
+    "en-gb": "Take me home",
+    "zh-hans": "返回首页"
+  },
+  "promptCopyText": {
+    "en-gb": "Copy Prompt",
+    "zh-hans": "复制 Prompt"
+  },
+  "promptCopiedText": {
+    "en-gb": "Copied",
+    "zh-hans": "已复制"
+  },
+  "promptExpandText": {
+    "en-gb": "Expand",
+    "zh-hans": "展开"
+  },
+  "promptCollapseText": {
+    "en-gb": "Collapse",
+    "zh-hans": "折叠"
+  },
+  "blog": {
+    "en-gb": "Blog",
+    "zh-hans": "博客"
+  },
+  "notifications": {
+    "en-gb": "Notifications",
+    "zh-hans": "通知"
   }
 }

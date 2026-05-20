@@ -1,5 +1,8 @@
 ---
 title: GitLab 运维
+tags:
+  - gitlab
+  - devops
 ---
 
 ## 在国际版 GitLab 中设置默认语言为中文

@@ -1,5 +1,8 @@
 ---
 title: GitLab Operations
+tags:
+  - gitlab
+  - devops
 ---
 
 ## Setting the Default Language to Chinese in GitLab
