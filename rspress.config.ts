@@ -18,6 +18,9 @@ export default defineConfig({
       },
     ],
   },
+  markdown: {
+    showLineNumbers: true
+  },
   lang: "en-gb",
   locales: [
     {

@@ -2,7 +2,7 @@
 title: 通知
 ---
 
-# Microsoft 邮件投递问题（@outlook、@hotmail、@live、@msn 以及托管在 Microsoft 的自定义域名邮箱）
+## Microsoft 邮件投递问题（@outlook、@hotmail、@live、@msn 以及托管在 Microsoft 的自定义域名邮箱）
 
 > 更新于 *2026 年 5 月 19 日*
 
