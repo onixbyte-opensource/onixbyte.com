@@ -33,5 +33,6 @@ deploy:
     - ssh-keyscan -H onixbyte.cn >> ~/.ssh/known_hosts
   script:
     - rsync -avz --delete doc_build/ ${SSH_USER}@onixbyte.cn:${DEPLOY_PATH}
+    - ssh ${SSH_USER}@onixbyte.cn "chown -R caddy:caddy ${DEPLOY_PATH} && chmod -R 755 ${DEPLOY_PATH}"
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
