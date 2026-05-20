@@ -1,10 +1,6 @@
 {
-  "blog": {
-    "en-gb": "Blog",
-    "zh-hans": "博客"
-  },
-  "notifications": {
-    "en-gb": "Notifications",
-    "zh-hans": "通知"
+  "outlineTitle": {
+    "en-gb": "ON THIS PAGE",
+    "zh-hans": "目录"
   }
 }
