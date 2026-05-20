@@ -4,10 +4,10 @@ import { defineConfig } from "@rspress/core"
 export default defineConfig({
   root: path.join(__dirname, "docs"),
   title: "OnixByte",
-  icon: "/rspress-icon.png",
+  icon: "/onixbyte-icon.svg",
   logo: {
-    light: "/rspress-light-logo.png",
-    dark: "/rspress-dark-logo.png",
+    light: "/onixbyte-light-logo.svg",
+    dark: "/onixbyte-dark-logo.svg",
   },
   themeConfig: {
     socialLinks: [
@@ -19,7 +19,7 @@ export default defineConfig({
     ],
   },
   markdown: {
-    showLineNumbers: true
+    showLineNumbers: true,
   },
   lang: "en-gb",
   locales: [
