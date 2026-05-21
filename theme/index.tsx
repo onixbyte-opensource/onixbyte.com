@@ -1,20 +1,27 @@
-import './index.css';
-import { DocLayout as OriginalDocLayout } from '@rspress/core/theme-original';
-import { Tags } from './components/Tags';
+import "./index.css"
+import type { DocLayoutProps } from "@rspress/core/theme-original"
+import { DocLayout as OriginalDocLayout } from "@rspress/core/theme-original"
+import { Tags } from "./components/Tags"
+import { Author } from "./components/Author"
 
-function DocLayout(props) {
+function DocLayout(props: DocLayoutProps) {
   return (
     <OriginalDocLayout
       {...props}
-      beforeDocContent={
+      beforeOutline={
         <>
+          <Author />
+        </>
+      }
+      afterDocContent={
+        <>
+          {props.afterDocContent}
           <Tags />
-          {props.beforeDocContent}
         </>
       }
     />
-  );
+  )
 }
 
-export * from '@rspress/core/theme-original';
-export { DocLayout };
+export * from "@rspress/core/theme-original"
+export { DocLayout }

@@ -10,7 +10,7 @@ export function Tags() {
         <span
           key={tag}
           className="inline-block px-2.5 py-0.5 text-xs leading-relaxed rounded
-                     text-[var(--rp-c-brand)] bg-[var(--rp-c-brand-tint)]
+                     text-(--rp-c-brand) bg-(--rp-c-brand-tint)
                      whitespace-nowrap">
           {tag}
         </span>
