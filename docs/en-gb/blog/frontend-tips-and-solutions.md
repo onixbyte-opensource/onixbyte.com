@@ -61,7 +61,7 @@ createRoot(document.getElementById("root")!).render(
 /* index.css */
 
 @layer theme, base, antd, components, utilities;
-@import "tailwindcss";
+@import "../../../node_modules/.pnpm/tailwindcss@4.3.0/node_modules/tailwindcss/dist/lib.d.mts";
 ```
 
 ```typescript
