@@ -70,7 +70,7 @@ function rotateRight(x: number, n: number): number {
 function gravatarUrl(email: string, size = 80): string {
   const normalized = email.trim().toLowerCase()
   const hash = sha256Hex(normalized)
-  return `https://gravatar.com/avatar/${hash}?s=${size}&d=robohash&r=g`
+  return `https://cravatar.cn/avatar/${hash}?s=${size}&d=robohash&r=g`
 }
 
 interface AuthorInfo {
