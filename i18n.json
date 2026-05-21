@@ -1,4 +1,8 @@
 {
+  "outlineTitle": {
+    "en-gb": "ON THIS PAGE",
+    "zh-hans": "目录"
+  },
   "languagesText": {
     "en-gb": "Languages",
     "zh-hans": "语言"
@@ -14,10 +18,6 @@
   "menuTitle": {
     "en-gb": "Menu",
     "zh-hans": "菜单"
-  },
-  "outlineTitle": {
-    "en-gb": "ON THIS PAGE",
-    "zh-hans": "目录"
   },
   "scrollToTopText": {
     "en-gb": "Back to top",

@@ -2,41 +2,33 @@
 pageType: home
 
 hero:
-  name: OnixByte Official
-  tagline: OnixByte Homepage
+  name: OnixByte
+  tagline: 一个小型开源开发者组织，为开发者打造实用工具。
   actions:
     - theme: brand
-      text: Quick Start
-      link: /guide/start/introduction
+      text: 探索项目
+      link: https://github.com/onixbyte
     - theme: alt
-      text: GitHub
-      link: https://github.com/web-infra-dev/rspress
+      text: 体验 Dev Lab
+      link: https://dev-lab.onixbyte.dev
   image:
     src: /onixbyte-icon.svg
     alt: Logo
 features:
-  - title: Blazing fast build speed
-    details: The core compilation module is based on the Rust front-end toolchain, providing a more ultimate development experience.
-    icon: 🏃🏻‍♀️
-    link: /guide/start/introduction
-  - title: Support for MDX content writing
-    details: MDX is a powerful way to write content, allowing you to use React components in Markdown.
-    icon: 📦
-    link: /guide/use-mdx/components
-  - title: Built-in full-text search
-    details: Automatically generates a full-text search index for you during construction, providing out-of-the-box full-text search capabilities.
-    icon: 🎨
-    link: https://rspress.rs/guide/advanced/custom-search
-  - title: AI-friendly
-    details: Generate llms.txt and Markdown files compliant with the llms.txt specification through SSG-MD, making it easier for large language models to understand and use your documentation.
-    icon: 🤖
-    link: https://rspress.rs/guide/basic/ssg-md
-  - title: Static site generation
-    details: In production, it automatically builds into static HTML files, which can be easily deployed anywhere.
-    icon: 🌈
-    link: https://rspress.rs/guide/basic/ssg
-  - title: Providing multiple custom capabilities
-    details: Through its extension mechanism, you can easily extend theme UI and build process.
-    icon: 🔥
-    link: https://rspress.rs/guide/basic/custom-theme
+  - title: OnixByte Toolbox
+    details: 一个多功能 Java 类库，为现代 Java 开发提供通用工具，无缝集成 Spring 生态。已上架 Maven Central。
+    icon: ☕
+    link: https://github.com/onixbyte/onixbyte-toolbox
+  - title: Dev Lab
+    details: 基于 Vite 和 React 构建的实用在线工具集。包含 JSON Path 查看器、BMI 计算器以及 JSON 转表格工具。
+    icon: 🛠️
+    link: https://dev-lab.onixbyte.dev
+  - title: Helix
+    details: 一个不断演进的前后端模版项目，结合 Spring Boot 与 React，助你快速构建应用。
+    icon: 🌀
+    link: https://github.com/onixbyte
+  - title: Delta Force Guide
+    details: 社区向的《三角洲行动》游戏指南，提供最新游戏资讯、实用技巧和战术策略。
+    icon: 🎯
+    link: https://github.com/onixbyte/delta-force-guide-web
 ---
