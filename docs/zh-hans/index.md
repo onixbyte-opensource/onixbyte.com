@@ -11,9 +11,6 @@ hero:
     - theme: alt
       text: 体验 Dev Lab
       link: https://dev-lab.onixbyte.dev
-  image:
-    src: /onixbyte-icon.svg
-    alt: Logo
 features:
   - title: OnixByte Toolbox
     details: 一个多功能 Java 类库，为现代 Java 开发提供通用工具，无缝集成 Spring 生态。已上架 Maven Central。

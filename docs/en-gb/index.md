@@ -11,9 +11,6 @@ hero:
     - theme: alt
       text: Try Dev Lab
       link: https://dev-lab.onixbyte.dev
-  image:
-    src: /onixbyte-icon.svg
-    alt: Logo
 features:
   - title: OnixByte Toolbox
     details: A versatile Java library providing common utilities for modern development with seamless Spring integration. Published on Maven Central.
