@@ -3,6 +3,9 @@ title: GitLab 运维
 tags:
   - gitlab
   - devops
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 ## 在国际版 GitLab 中设置默认语言为中文

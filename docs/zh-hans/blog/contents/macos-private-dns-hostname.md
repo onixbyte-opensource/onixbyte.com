@@ -4,6 +4,9 @@ tags:
   - macos
   - dns
   - terminal
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 在部分企业或家庭私网环境中，DNS 反向解析会将设备的私网 IP 映射为一个以 `192`、`172` 或 `10` 开头的主机名。此时 macOS 终端提示符会从正常的 `user@MacBook-Pro` 变为 `user@192-168-1-100` 这样的形式，影响日常使用体验。

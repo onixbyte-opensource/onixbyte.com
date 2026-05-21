@@ -3,6 +3,9 @@ title: GitLab Operations
 tags:
   - gitlab
   - devops
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 ## Setting the Default Language to Chinese in GitLab

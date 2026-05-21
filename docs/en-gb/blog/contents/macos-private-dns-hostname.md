@@ -4,6 +4,9 @@ tags:
   - macos
   - dns
   - terminal
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 In some enterprise or home private network environments, reverse DNS lookups may resolve a device's private IP to a hostname starting with `192`, `172`, or `10`. When this happens, the macOS terminal prompt changes from the normal `user@MacBook-Pro` to something like `user@192-168-1-100`, which can be distracting.
