@@ -1,8 +1,8 @@
 [
   {
-    "text": "blog",
-    "link": "/blog/",
-    "activeMatch": "/blog/"
+    "text": "blogs",
+    "link": "/blogs/",
+    "activeMatch": "/blogs/"
   },
   {
     "text": "notifications",
