@@ -10,7 +10,8 @@ function DocLayout(props: DocLayoutProps) {
       {...props}
       beforeOutline={
         <>
-          <Author />
+          <Author className="ml-4 md:ml-0" />
+          {props.beforeOutline}
         </>
       }
       afterDocContent={
