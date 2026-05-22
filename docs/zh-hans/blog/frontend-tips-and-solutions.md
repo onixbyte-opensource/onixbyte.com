@@ -17,7 +17,7 @@ author:
 
 ## React 入口组件顺序
 
-```typescript
+```tsx
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { Provider as ReduxProvider } from "react-redux"
@@ -64,7 +64,7 @@ createRoot(document.getElementById("root")!).render(
 @import "tailwindcss";
 ```
 
-```typescript
+```tsx
 <StyleProvider>
   <ConfigProvider>
     <App>
