@@ -111,12 +111,16 @@
     "en-gb": "Collapse",
     "zh-hans": "折叠"
   },
-  "blog": {
-    "en-gb": "Blog",
+  "blogs": {
+    "en-gb": "Blogs",
     "zh-hans": "博客"
   },
   "notifications": {
     "en-gb": "Notifications",
     "zh-hans": "通知"
+  },
+  "projects": {
+    "en-gb": "Projects",
+    "zh-hans": "项目"
   }
 }

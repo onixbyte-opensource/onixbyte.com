@@ -1,8 +1,13 @@
 [
   {
-    "text": "blog",
-    "link": "/blog/",
-    "activeMatch": "/blog/"
+    "text": "blogs",
+    "link": "/blogs/",
+    "activeMatch": "/blogs/"
+  },
+  {
+    "text": "projects",
+    "link": "/projects/",
+    "activeMatch": "/projects/"
   },
   {
     "text": "notifications",
