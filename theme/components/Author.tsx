@@ -114,10 +114,7 @@ export function Author({ className }: { className?: string }) {
   return (
     <a
       href={author.email?.trim() ? `mailto:${author.email}` : undefined}
-      className={`flex items-center gap-2 my-6 p-1 rounded-full
-                 border border-(--rp-c-divider) bg-(--rp-c-bg-soft)
-                 no-underline transition-colors hover:bg-(--rp-c-bg-mute)
-                 cursor-pointer select-none w-fit${className ? ` ${className}` : ""}`}>
+      className={`flex items-center gap-2 my-6 p-1 rounded-full border border-(--rp-c-divider) bg-(--rp-c-bg-soft) no-underline transition-colors hover:bg-(--rp-c-bg-mute) cursor-pointer select-none w-fit ${className ? `${className}` : ""}`}>
       {src && <img src={src} alt={author.name} width={32} height={32} className="rounded-full" />}
       <span className="text-sm text-(--rp-c-text-2) pr-2">{author.name}</span>
     </a>
