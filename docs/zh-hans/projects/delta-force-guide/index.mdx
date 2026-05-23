@@ -1,0 +1,48 @@
+---
+title: Delta Force Guide
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## 介绍
+
+Delta Force Guide 是一个全栈 Web 应用，为游戏 Delta Force（三角洲部队）提供可搜索的枪械改装代码库。项目包含两个组件：
+
+- **Web 前端** — 基于 React 的单页应用，用于浏览、筛选和复制改装代码。
+- **后端服务** — 基于 Spring Boot 的 REST API，处理数据持久化、身份认证和内容管理。
+
+线上站点位于 **[dfguide.onixbyte.cn](https://dfguide.onixbyte.cn)**。
+
+## 特性
+
+- **枪械浏览** — 浏览精选的游戏内枪械列表及详细属性。
+- **改装代码库** — 按武器、模式和标签搜索筛选改装代码。
+- **一键复制** — 直接从界面复制改装代码。
+- **高效渲染** — 通过窗口虚拟化实现大列表的流畅渲染。
+- **身份认证** — 支持用户登录，采用 JWT 认证和验证码校验。
+- **后台管理** — 枪械与改装数据完整的增删改查功能。
+- **静态友好** — 前端以静态站点部署，通过 API 代理与后端通信。
+
+## 架构
+
+| 组件 | 技术栈 |
+|---|---|
+| **前端** | React 19、TypeScript、Tailwind CSS 4、Ant Design 6、React Router 7、Redux Toolkit、TanStack Virtual |
+| **后端** | Spring Boot 3、Java 21、PostgreSQL、MyBatis、Flyway、Redis |
+| **认证** | JWT（access 和 refresh token）、验证码集成 |
+| **存储** | AWS S3（图片上传） |
+
+前端是由 Vite 构建的静态站点，通过 API 与 Spring Boot 后端通信。认证采用 JWT access 和 refresh token 机制，refresh token 通过 Redis 管理。
+
+## 代码仓库
+
+- [delta-force-guide-server](https://github.com/onixbyte/delta-force-guide-server) — Spring Boot 后端
+- [delta-force-guide-web](https://github.com/onixbyte/delta-force-guide-web) — React 前端
+
+## 快速链接
+
+- **线上站点：** [dfguide.onixbyte.cn](https://dfguide.onixbyte.cn)
+
+## 许可证
+
+Delta Force Guide 是采用 MIT 许可证发布的开源软件。

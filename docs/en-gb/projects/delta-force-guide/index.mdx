@@ -1,0 +1,48 @@
+---
+title: Delta Force Guide
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## Introduction
+
+Delta Force Guide is a full-stack web application providing a searchable library of firearm modification codes for the game Delta Force. It consists of two components:
+
+- **Web Frontend** — A React-based SPA for browsing, filtering, and copying modification codes.
+- **Backend Server** — A Spring Boot REST API handling data persistence, authentication, and content management.
+
+The live site is available at **[dfguide.onixbyte.cn](https://dfguide.onixbyte.cn)**.
+
+## Features
+
+- **Firearm Browser** — Browse a curated list of in-game firearms with detailed stats.
+- **Modification Code Library** — Search and filter modification codes by weapon, mode, and tags.
+- **One-Click Copy** — Copy modification codes directly from the interface.
+- **Efficient Rendering** — Large lists rendered smoothly with window virtualisation.
+- **Authentication** — User login with JWT-based auth and CAPTCHA verification.
+- **Admin Panel** — Full CRUD operations for firearms and modification data.
+- **Static-Friendly** — Frontend deployed as a static site with API proxy.
+
+## Architecture
+
+| Component     | Tech Stack                                                    |
+|---------------|---------------------------------------------------------------|
+| **Frontend**  | React 19, TypeScript, Tailwind CSS 4, Ant Design 6, React Router 7, Redux Toolkit, TanStack Virtual |
+| **Backend**   | Spring Boot 3, Java 21, PostgreSQL, MyBatis, Flyway, Redis |
+| **Auth**      | JWT (access + refresh tokens), CAPTCHA integration           |
+| **Storage**   | AWS S3 for image uploads                                     |
+
+The frontend is a static site served by Vite, communicating with the Spring Boot REST API backend. Authentication uses JWT access and refresh tokens with Redis-backed refresh token management.
+
+## Repositories
+
+- [delta-force-guide-server](https://github.com/onixbyte/delta-force-guide-server) — Spring Boot backend
+- [delta-force-guide-web](https://github.com/onixbyte/delta-force-guide-web) — React frontend
+
+## Quick Links
+
+- **Live Site:** [dfguide.onixbyte.cn](https://dfguide.onixbyte.cn)
+
+## License
+
+Delta Force Guide is open-source software released under the MIT Licence.
