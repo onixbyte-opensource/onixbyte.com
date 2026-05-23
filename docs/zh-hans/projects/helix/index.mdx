@@ -1,0 +1,71 @@
+---
+title: Helix
+---
+
+## 介绍
+
+Helix 是一个全栈企业级应用模板，旨在加速生产级业务应用的开发。它提供了预构建的基础，包含企业应用所需的全部基本功能，使团队能够专注于业务逻辑而非基础设施。
+
+项目由两个组件构成：
+
+- **Helix Server** — 基于 Spring Boot 的后端，提供 REST API、身份认证、权限管理和数据管理。
+- **Helix Web** — 基于 React 的单页应用前端，具备现代化的 UI、基于角色的路由和企业级身份集成。
+
+Helix 旨在作为项目的起点使用。Fork 或克隆它，然后在现成的基础上开始构建您自己的业务功能。
+
+## 特性
+
+### 后端（Helix Server）
+
+- **身份认证与授权** — 基于 JWT 的 access token 和 refresh token 流程，配合 Spring Security。支持 Microsoft Entra ID（Azure AD）集成。
+- **基于角色的访问控制** — 通过角色、权限和菜单级访问控制实现细粒度权限管理。
+- **用户与组织管理** — 用户、部门、职位和角色的完整增删改查。
+- **菜单管理** — 层级菜单树，支持按角色配置可见性。
+- **资产管理** — 文件上传至 AWS S3，支持 CDN 前缀处理。
+- **设置管理** — 类型化的应用配置项持久化至数据库。
+- **验证码集成** — 登录和注册流程中的图形验证码校验。
+- **Redis 缓存** — 高性能缓存，支持可配置 TTL 和自定义序列化器。
+- **数据访问** — Spring Data JPA 与 MyBatis 混合持久化方案。
+- **校验** — Bean Validation 分组校验与自定义校验约束。
+
+### 前端（Helix Web）
+
+- **企业级身份认证** — 通过 MSAL 实现 Microsoft Entra ID 登录。可扩展的社交登录提供商架构（Microsoft、Google、GitLab、Slack、Discord、钉钉、飞书、企业微信、邮箱/密码）。
+- **仪表盘布局** — 响应式管理后台，可折叠侧边栏，基于角色的菜单渲染。
+- **用户管理** — 数据表格支持搜索、分页，添加/编辑对话框，角色分配和手机号校验。
+- **角色与菜单管理** — 角色增删改查与权限分配。基于树形的菜单配置。
+- **部门与职位** — 组织层级管理界面。
+- **路由保护** — 在页面加载前检查认证和授权状态。
+- **状态管理** — Redux Toolkit 配合 Redux Persist 实现认证 token 的持久化。
+- **HTTP 客户端** — 基于 Axios 封装的请求客户端，自动注入 JWT token 并在 401 时自动刷新。
+
+## 架构
+
+| 层 | 技术栈 |
+|---|---|
+| **前端** | React 19、TypeScript、Tailwind CSS 4、Ant Design 6、React Router 7、Redux Toolkit、Axios、MSAL |
+| **后端** | Spring Boot 3.5、Java 17、Spring Security、MyBatis、Spring Data JPA |
+| **数据库** | PostgreSQL（使用 Flyway 迁移） |
+| **缓存** | Redis（会话和 token 存储） |
+| **存储** | AWS S3（资源上传） |
+
+前端通过 RESTful JSON API 与后端通信。认证流程使用短有效期的 JWT access token，refresh token 存储在 Redis 中。Microsoft Entra ID 集成在前端通过 MSAL 处理，并在后端进行校验。
+
+## 代码仓库
+
+- [helix-server](https://git.onixbyte.cn/helix/helix-server) — Spring Boot 后端
+- [helix-web](https://git.onixbyte.cn/helix/helix-web) — React 前端
+
+## 快速开始
+
+Helix 是一个模板项目。启动新项目的步骤：
+
+1. Fork 或克隆 `helix-server` 和 `helix-web` 两个仓库。
+2. 在后端配置您的数据库、Redis 和 S3 设置。
+3. 在前端配置您的认证提供商和 API 基础地址。
+4. 启动后端：`./gradlew bootRun`
+5. 启动前端：`pnpm install && pnpm dev`
+
+## 许可证
+
+Helix 是采用 MIT 许可证发布的开源软件。

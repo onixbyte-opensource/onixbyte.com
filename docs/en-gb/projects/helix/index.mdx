@@ -1,0 +1,71 @@
+---
+title: Helix
+---
+
+## Introduction
+
+Helix is a full-stack enterprise application template designed to accelerate the development of production-grade business applications. It provides a pre-built foundation with all the essential features an enterprise application needs, allowing teams to focus on business logic rather than infrastructure.
+
+The project consists of two components:
+
+- **Helix Server** — A Spring Boot backend providing REST APIs, authentication, authorisation, and data management.
+- **Helix Web** — A React-based SPA frontend with a modern UI, role-based routing, and enterprise identity integration.
+
+Helix is intended to be used as a starting point. Fork or clone it and begin building your own domain-specific features on top of the ready-made foundation.
+
+## Features
+
+### Backend (Helix Server)
+
+- **Authentication & Authorisation** — JWT-based access and refresh token flow with Spring Security. Supports Microsoft Entra ID (Azure AD) integration.
+- **Role-Based Access Control** — Fine-grained permissions via roles, authorities, and menu-level access control.
+- **User & Organisation Management** — Full CRUD for users, departments, positions, and roles.
+- **Menu Management** — Hierarchical menu tree with configurable visibility per role.
+- **Asset Management** — File uploads to AWS S3 with CDN-ready prefix handling.
+- **Settings Management** — Typed application settings persisted to database.
+- **Captcha Integration** — Image CAPTCHA verification for login and registration flows.
+- **Redis Caching** — High-performance caching with configurable TTL and custom serialisers.
+- **Data Access** — Hybrid persistence with Spring Data JPA and MyBatis.
+- **Validation** — Bean Validation groups with custom validation constraints.
+
+### Frontend (Helix Web)
+
+- **Enterprise Identity** — Microsoft Entra ID login via MSAL. Extensible social login provider architecture (Microsoft, Google, GitLab, Slack, Discord, DingTalk, Lark, WeCom, email/password).
+- **Dashboard Layout** — Responsive admin dashboard with collapsible sidebar and role-based menu rendering.
+- **User Management** — Data table with search, pagination, add/edit dialogues, role assignment, and phone number validation.
+- **Role & Menu Management** — Role CRUD with authority assignment. Tree-based menu configuration.
+- **Department & Position** — Organisation hierarchy management interfaces.
+- **Protected Routing** — Route guards checking authentication and authorisation before page load.
+- **State Management** — Redux Toolkit with Redux Persist for auth token persistence.
+- **HTTP Client** — Axios wrapper with automatic JWT token injection and 401 refresh handling.
+
+## Architecture
+
+| Layer        | Technology                                                    |
+|--------------|---------------------------------------------------------------|
+| **Frontend** | React 19, TypeScript, Tailwind CSS 4, Ant Design 6, React Router 7, Redux Toolkit, Axios, MSAL |
+| **Backend**  | Spring Boot 3.5, Java 17, Spring Security, MyBatis, Spring Data JPA |
+| **Database** | PostgreSQL (with Flyway migrations)                           |
+| **Cache**    | Redis (session/token storage)                                 |
+| **Storage**  | AWS S3 (asset uploads)                                       |
+
+The frontend communicates with the backend via a RESTful JSON API. Authentication flow uses JWT access tokens (short-lived) with refresh tokens stored in Redis. Microsoft Entra ID integration is handled client-side via MSAL and validated server-side.
+
+## Repositories
+
+- [helix-server](https://git.onixbyte.cn/helix/helix-server) — Spring Boot backend
+- [helix-web](https://git.onixbyte.cn/helix/helix-web) — React frontend
+
+## Getting Started
+
+Helix is designed as a template project. To start a new project:
+
+1. Fork or clone both `helix-server` and `helix-web` repositories.
+2. Configure your database, Redis, and S3 settings in the backend.
+3. Configure your authentication providers and API base URL in the frontend.
+4. Run the backend: `./gradlew bootRun`
+5. Run the frontend: `pnpm install && pnpm dev`
+
+## License
+
+Helix is open-source software released under the MIT License.
