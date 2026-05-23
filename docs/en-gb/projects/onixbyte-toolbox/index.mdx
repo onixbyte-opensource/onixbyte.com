@@ -2,6 +2,8 @@
 title: OnixByte Toolbox
 ---
 
+import { Tabs, Tab } from "@rspress/core/theme"
+
 ## Introduction
 
 OnixByte Toolbox is a Development Kit for Java applications that provides a set of convenient, reusable tools for writing code efficiently. It is designed and maintained by OnixByte as a monorepo containing multiple purpose-built libraries, each addressing a specific development need — from common utilities and cryptography to mathematical computation and identity generation.
@@ -10,40 +12,38 @@ The toolkit is available on Maven Central under the `com.onixbyte` group ID. Eac
 
 ## Modules
 
-| Module               | Artifact ID           | Description                                           |
-|----------------------|-----------------------|-------------------------------------------------------|
-| Common Toolbox       | `common-toolbox`      | Everyday utilities — AES, hashing, Base64, collections, branching, ranges |
-| Crypto Toolbox       | `crypto-toolbox`      | Public/private key loading for RSA and ECDSA algorithms |
-| Math Toolbox         | `math-toolbox`        | Statistical calculation, percentile analysis, quartile computation |
-| Tuple                | `tuple`               | Generic 2-tuple and 3-tuple with immutable variants |
-| Identity Generator   | `identity-generator`  | Snowflake-style and sequential UUID identity generation |
-| Version Catalogue    | `version-catalogue`   | Centralised Gradle version catalogue for OnixByte projects |
+| Module             | Artifact ID          | Description                                                               |
+|--------------------|----------------------|---------------------------------------------------------------------------|
+| Common Toolbox     | `common-toolbox`     | Everyday utilities — AES, hashing, Base64, collections, branching, ranges |
+| Crypto Toolbox     | `crypto-toolbox`     | Public/private key loading for RSA and ECDSA algorithms                   |
+| Math Toolbox       | `math-toolbox`       | Statistical calculation, percentile analysis, quartile computation        |
+| Tuple              | `tuple`              | Generic 2-tuple and 3-tuple with immutable variants                       |
+| Identity Generator | `identity-generator` | Snowflake-style and sequential UUID identity generation                   |
+| Version Catalogue  | `version-catalogue`  | Centralised Gradle version catalogue for OnixByte projects                |
 
 ## Installation
 
 Add the desired module as a dependency in your build config:
 
-**Gradle (Kotlin DSL):**
+<Tabs>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:$artefactId:$version")
+    }
+    ```
+  </Tab>
 
-```kotlin
-implementation("com.onixbyte:common-toolbox:$version")
-implementation("com.onixbyte:crypto-toolbox:$version")
-implementation("com.onixbyte:math-toolbox:$version")
-implementation("com.onixbyte:tuple:$version")
-implementation("com.onixbyte:identity-generator:$version")
-```
-
-**Maven:**
-
-```xml
-<dependency>
-    <groupId>com.onixbyte</groupId>
-    <artifactId>common-toolbox</artifactId>
-    <version>${version}</version>
-</dependency>
-```
-
-Refer to the [changelog](https://codecrafters.org.cn/devkit/changelog) for available versions.
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependency>
+      <groupId>com.onixbyte</groupId>
+      <artifactId>${artefactId}</artifactId>
+      <version>${version}</version>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
 
 ## Requirements
 
@@ -51,4 +51,4 @@ Refer to the [changelog](https://codecrafters.org.cn/devkit/changelog) for avail
 
 ## License
 
-OnixByte Toolbox is open-source software released under the MIT License.
+OnixByte Toolbox is open-source software released under the MIT Licence.

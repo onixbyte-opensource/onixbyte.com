@@ -2,6 +2,8 @@
 title: Regions for Java
 ---
 
+import { Tabs, Tab } from "@rspress/core/theme"
+
 ## 介绍
 
 **regions4j** 是一个轻量级、类型安全的 Java 库，基于 ISO 3166-1 标准提供全面的世界地区元数据。它旨在简化 Java 企业应用中的国际化（i18n）、电信路由和地区数据管理工作。
@@ -30,21 +32,25 @@ title: Regions for Java
 
 ## 安装
 
-**Maven:**
+<Tabs>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:regions4j:$version")
+    }
+    ```
+  </Tab>
 
-```xml
-<dependency>
-    <groupId>com.onixbyte</groupId>
-    <artifactId>regions4j</artifactId>
-    <version>2025.12</version>
-</dependency>
-```
-
-**Gradle (Kotlin DSL):**
-
-```kotlin
-implementation("com.onixbyte:regions4j:2025.12")
-```
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependency>
+      <groupId>com.onixbyte</groupId>
+      <artifactId>regions4j</artifactId>
+      <version>${version}</version>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
 
 > **版本说明：** 该库使用日历化版本管理（`YYYY.MM`）而非语义化版本号。版本字符串如 `2025.12` 可以直观地告诉您地区数据反映的是 2025 年 12 月的 ISO 3166-1 状态。
 

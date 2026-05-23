@@ -2,6 +2,8 @@
 title: OnixByte Toolbox
 ---
 
+import { Tabs, Tab } from "@rspress/core/theme"
+
 ## 介绍
 
 OnixByte Toolbox 是一个面向 Java 应用的开发工具包，提供了一系列便捷、可复用的工具，帮助开发者高效编写代码。它由 OnixByte 设计和维护，采用 monorepo 架构，包含多个专用库，每个库解决一个特定的开发需求 — 从通用工具类和密码学，到数学计算和标识符生成。
@@ -10,40 +12,38 @@ OnixByte Toolbox 是一个面向 Java 应用的开发工具包，提供了一系
 
 ## 模块
 
-| 模块 | Artifact ID | 描述 |
-|---|---|---|
-| Common Toolbox | `common-toolbox` | 日常工具类 — AES 加密、哈希、Base64、集合、分支、范围 |
-| Crypto Toolbox | `crypto-toolbox` | RSA 和 ECDSA 算法的公私钥加载 |
-| Math Toolbox | `math-toolbox` | 统计计算、百分位数分析、四分位数计算 |
-| Tuple | `tuple` | 泛型二元组和三元组，含不可变版本 |
-| Identity Generator | `identity-generator` | 雪花算法和顺序 UUID 唯一标识符生成 |
-| Version Catalogue | `version-catalogue` | OnixByte 项目的集中式 Gradle 版本目录 |
+| 模块                 | Artifact ID          | 描述                                |
+|--------------------|----------------------|-----------------------------------|
+| Common Toolbox     | `common-toolbox`     | 日常工具类 — AES 加密、哈希、Base64、集合、分支、范围 |
+| Crypto Toolbox     | `crypto-toolbox`     | RSA 和 ECDSA 算法的公私钥加载              |
+| Math Toolbox       | `math-toolbox`       | 统计计算、百分位数分析、四分位数计算                |
+| Tuple              | `tuple`              | 泛型二元组和三元组，含不可变版本                  |
+| Identity Generator | `identity-generator` | 雪花算法和顺序 UUID 唯一标识符生成              |
+| Version Catalogue  | `version-catalogue`  | OnixByte 项目的集中式 Gradle 版本目录       |
 
 ## 安装
 
 在构建配置中添加所需模块的依赖：
 
-**Gradle (Kotlin DSL):**
+<Tabs>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:$artefactId:$version")
+    }
+    ```
+  </Tab>
 
-```kotlin
-implementation("com.onixbyte:common-toolbox:$version")
-implementation("com.onixbyte:crypto-toolbox:$version")
-implementation("com.onixbyte:math-toolbox:$version")
-implementation("com.onixbyte:tuple:$version")
-implementation("com.onixbyte:identity-generator:$version")
-```
-
-**Maven:**
-
-```xml
-<dependency>
-    <groupId>com.onixbyte</groupId>
-    <artifactId>common-toolbox</artifactId>
-    <version>${version}</version>
-</dependency>
-```
-
-可查阅[更新日志](https://codecrafters.org.cn/devkit/changelog)了解可用版本。
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependency>
+      <groupId>com.onixbyte</groupId>
+      <artifactId>${artefactId}</artifactId>
+      <version>${version}</version>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
 
 ## 要求
 
