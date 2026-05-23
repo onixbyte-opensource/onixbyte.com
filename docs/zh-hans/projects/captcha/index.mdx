@@ -1,0 +1,89 @@
+---
+title: Captcha
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## 介绍
+
+Captcha 是一个用于生成 CAPTCHA 验证码图片的 Java 库。本项目是 Google Kaptcha 的精神继承者，按照现代开发实践进行了现代化改造。
+
+通过 Captcha，您可以轻松生成可定制的 CAPTCHA 图片，支持多种扭曲效果、噪点和背景选项，轻松集成到您的 Java 应用中。
+
+## 特性
+
+- **易于集成** — 基于 Builder 的简洁 API，快速完成配置和集成。
+- **可定制的验证码生成** — 配置文本长度、字符集、字体样式和颜色。
+- **多种扭曲效果** — 支持水波纹、鱼眼和阴影效果。
+- **可配置噪点** — 使用自定义颜色添加噪点线条，或完全禁用噪点。
+- **渐变背景** — 可自定义的渐变背景颜色。
+- **简洁现代的代码** — 文档完善、类型安全且易于扩展。
+
+## 安装
+
+<Tabs>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:captcha:1.0.0")
+    }
+    ```
+  </Tab>
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependencies>
+      <dependency>
+        <groupId>com.onixbyte</groupId>
+        <artifactId>captcha</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+    </dependencies>
+    ```
+  </Tab>
+</Tabs>
+
+## 快速开始
+
+```java
+import com.onixbyte.captcha.Producer;
+import com.onixbyte.captcha.background.BackgroundProducer;
+import com.onixbyte.captcha.background.impl.DefaultBackgroundProducer;
+import com.onixbyte.captcha.gimpy.GimpyEngine;
+import com.onixbyte.captcha.gimpy.impl.WaterRipple;
+import com.onixbyte.captcha.impl.DefaultCaptchaProducer;
+import com.onixbyte.captcha.noise.NoiseProducer;
+import com.onixbyte.captcha.noise.impl.DefaultNoiseProducer;
+import com.onixbyte.captcha.text.TextProducer;
+import com.onixbyte.captcha.text.WordRenderer;
+import com.onixbyte.captcha.text.impl.DefaultTextProducer;
+import com.onixbyte.captcha.text.impl.DefaultWordRenderer;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class CaptchaExample {
+
+    public static void main(String[] args) throws IOException {
+        // 使用默认配置创建 CAPTCHA 生产者
+        Producer captcha = DefaultCaptchaProducer.builder().build();
+
+        // 生成文本并创建图片
+        String captchaText = captcha.createText();
+        BufferedImage captchaImage = captcha.createImage(captchaText);
+
+        // 保存图片到文件
+        ImageIO.write(captchaImage, "png", new File("captcha.png"));
+
+        System.out.println("CAPTCHA 文本: " + captchaText);
+    }
+}
+```
+
+以上代码生成一张包含 6 位随机字符的 CAPTCHA 图片，并将其保存为 PNG 文件。
+
+## 许可证
+
+Captcha 是采用 MIT 许可证发布的开源软件。
