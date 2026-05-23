@@ -1,0 +1,109 @@
+---
+title: Calendar Toolbox
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## Introduction
+
+Calendar Toolbox is a Java library designed to simplify the creation of `.ics` files, adhering to the iCalendar specification (RFC 5545). This library provides developers with a straightforward API to generate calendar events that can be imported into popular calendar applications such as Microsoft Outlook, Google Calendar, and Apple Calendar.
+
+With Calendar Toolbox, you can effortlessly create, customise, and export calendar event files programmatically, enabling integration of calendar functionalities into your Java applications with minimal effort.
+
+## Features
+
+- **Full RFC 5545 Compliance** — Supports standard iCalendar components including VEVENT, VTODO, VJOURNAL, VFREEBUSY, VTIMEZONE, and VALARM.
+- **Fluent Builder Pattern** — All components and properties use builder pattern for readable and intuitive construction.
+- **Type-Safe Properties** — Strongly typed properties and parameters ensure correctness at compile time.
+- **Custom Extensions** — Support for custom `X-` properties at both calendar and component level.
+- **Lightweight** — Zero external dependencies for core functionality.
+
+## Installation
+
+<Tabs>
+  <Tab label="Gradle with Groovy DSL">
+    ```groovy title="build.gradle"
+    dependencies {
+      implementation 'com.onixbyte:calendar-toolbox:1.1.0'
+    }
+    ```
+  </Tab>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:calendar-toolbox:1.1.0")
+    }
+    ```
+  </Tab>
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependencies>
+      <dependency>
+        <groupId>com.onixbyte</groupId>
+        <artifactId>calendar-toolbox</artifactId>
+        <version>1.1.0</version>
+      </dependency>
+    </dependencies>
+    ```
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+```java
+import com.onixbyte.calendar.Calendar;
+import com.onixbyte.calendar.component.Event;
+import com.onixbyte.calendar.component.property.*;
+import com.onixbyte.calendar.property.*;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+
+public class CalendarExample {
+
+    public static void main(String[] args) {
+        // Create required date-time properties
+        var now = ZonedDateTime.now(ZoneOffset.UTC);
+        var dtstamp = DateTimeStamp.of(now);
+        var uid = UniqueIdentifier.of("meeting-001@example.com");
+        var dtstart = DateTimeStart.of(
+            LocalDateTime.of(2025, 8, 15, 9, 0),
+            "America/New_York"
+        );
+        var dtend = DateTimeEnd.of(
+            LocalDateTime.of(2025, 8, 15, 10, 0),
+            "America/New_York"
+        );
+        var summary = Summary.of("Team Standup");
+        var description = Description.of("Daily team standup meeting.");
+
+        // Build the event
+        var event = Event.builder()
+            .withDateTimeStamp(dtstamp)
+            .withUniqueIdentifier(uid)
+            .withDateTimeStart(dtstart)
+            .withDateTimeEnd(dtend)
+            .withSummary(summary)
+            .withDescription(description)
+            .build();
+
+        // Build the calendar and output .ics content
+        var calendar = Calendar.builder()
+            .withCalendarScale(CalendarScale.of("GREGORIAN"))
+            .withMethod(Method.of("PUBLISH"))
+            .withProductIdentifier(ProductIdentifier.of("-//OnixByte//Calendar Toolbox//EN"))
+            .withVersion(Version.of("2.0"))
+            .withComponents(event)
+            .build();
+
+        System.out.println(calendar.formatted());
+    }
+}
+```
+
+This produces an `.ics` string that can be saved to a file or sent via email.
+
+## License
+
+Calendar Toolbox is open-source software released under the MIT License.

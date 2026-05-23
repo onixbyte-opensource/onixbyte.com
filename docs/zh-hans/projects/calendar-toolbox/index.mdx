@@ -1,0 +1,109 @@
+---
+title: Calendar Toolbox
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## 介绍
+
+Calendar Toolbox 是一个 Java 库，旨在简化遵循 iCalendar 规范（RFC 5545）的 `.ics` 文件的创建。该库为开发者提供了简洁的 API，可生成能够导入到 Microsoft Outlook、Google Calendar 和 Apple Calendar 等主流日历应用程序中的日历事件。
+
+通过 Calendar Toolbox，您可以以编程方式轻松创建、定制和导出日历事件文件，从而以最少的代价将日历功能集成到您的 Java 应用中。
+
+## 特性
+
+- **完整 RFC 5545 兼容** — 支持 VEVENT、VTODO、VJOURNAL、VFREEBUSY、VTIMEZONE 和 VALARM 等标准 iCalendar 组件。
+- **流式 Builder 模式** — 所有组件和属性均使用 Builder 模式，构建过程可读性强且直观。
+- **类型安全属性** — 强类型的属性和参数确保编译期正确性。
+- **自定义扩展** — 支持日历级和组件级的自定义 `X-` 属性。
+- **轻量级** — 核心功能零外部依赖。
+
+## 安装
+
+<Tabs>
+  <Tab label="Gradle with Groovy DSL">
+    ```groovy title="build.gradle"
+    dependencies {
+      implementation 'com.onixbyte:calendar-toolbox:1.1.0'
+    }
+    ```
+  </Tab>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:calendar-toolbox:1.1.0")
+    }
+    ```
+  </Tab>
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependencies>
+      <dependency>
+        <groupId>com.onixbyte</groupId>
+        <artifactId>calendar-toolbox</artifactId>
+        <version>1.1.0</version>
+      </dependency>
+    </dependencies>
+    ```
+  </Tab>
+</Tabs>
+
+## 快速开始
+
+```java
+import com.onixbyte.calendar.Calendar;
+import com.onixbyte.calendar.component.Event;
+import com.onixbyte.calendar.component.property.*;
+import com.onixbyte.calendar.property.*;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+
+public class CalendarExample {
+
+    public static void main(String[] args) {
+        // 创建所需的日期时间属性
+        var now = ZonedDateTime.now(ZoneOffset.UTC);
+        var dtstamp = DateTimeStamp.of(now);
+        var uid = UniqueIdentifier.of("meeting-001@example.com");
+        var dtstart = DateTimeStart.of(
+            LocalDateTime.of(2025, 8, 15, 9, 0),
+            "America/New_York"
+        );
+        var dtend = DateTimeEnd.of(
+            LocalDateTime.of(2025, 8, 15, 10, 0),
+            "America/New_York"
+        );
+        var summary = Summary.of("Team Standup");
+        var description = Description.of("Daily team standup meeting.");
+
+        // 构建事件
+        var event = Event.builder()
+            .withDateTimeStamp(dtstamp)
+            .withUniqueIdentifier(uid)
+            .withDateTimeStart(dtstart)
+            .withDateTimeEnd(dtend)
+            .withSummary(summary)
+            .withDescription(description)
+            .build();
+
+        // 构建日历并输出 .ics 内容
+        var calendar = Calendar.builder()
+            .withCalendarScale(CalendarScale.of("GREGORIAN"))
+            .withMethod(Method.of("PUBLISH"))
+            .withProductIdentifier(ProductIdentifier.of("-//OnixByte//Calendar Toolbox//EN"))
+            .withVersion(Version.of("2.0"))
+            .withComponents(event)
+            .build();
+
+        System.out.println(calendar.formatted());
+    }
+}
+```
+
+上述代码会生成一个 `.ics` 格式的字符串，可以保存为文件或通过邮件发送。
+
+## 许可证
+
+Calendar Toolbox 是采用 MIT 许可证发布的开源软件。

@@ -118,5 +118,9 @@
   "notifications": {
     "en-gb": "Notifications",
     "zh-hans": "通知"
+  },
+  "projects": {
+    "en-gb": "Projects",
+    "zh-hans": "项目"
   }
 }

@@ -1,5 +1,10 @@
 [
   {
+    "text": "projects",
+    "link": "/projects/",
+    "activeMatch": "/projects/"
+  },
+  {
     "text": "blogs",
     "link": "/blogs/",
     "activeMatch": "/blogs/"
