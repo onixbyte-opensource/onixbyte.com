@@ -1,0 +1,67 @@
+---
+title: Port Checker
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## 介绍
+
+**vite-plugin-port-checker** 是一个轻量级的 Vite 插件，可在开发服务器监听被常见浏览器屏蔽的端口时发出警告。Chrome 和 Firefox 等浏览器维护了一份[受限制端口列表](https://fetch.spec.whatwg.org/#port-blocking) — 这些端口通常与 SMTP、SSH 和 DNS 等知名协议关联 — 并拒绝连接这些端口。如果不小心将开发服务器运行在这些端口上，会导致令人困惑的"连接被拒绝"或"已被屏蔽"错误，且没有任何明确的解释。
+
+该插件会在启动时检测到这种情况，并向控制台打印一条清晰且带有颜色标记的警告，建议您修改 Vite 配置中的 `server.port` 设置。
+
+## 特性
+
+- **自动检测** — 对照完整的 Fetch 规范端口屏蔽列表（68 个受限端口）检查开发服务器端口。
+- **清晰的警告** — 黄色高亮控制台输出，并提供可操作的指导。
+- **零配置** — 开箱即用，无需设置任何选项。
+- **轻量级** — 单文件插件，除 Vite 本身外无任何依赖。
+
+## 安装
+
+<Tabs>
+  <Tab label="npm">
+    ```bash
+    npm install vite-plugin-port-checker -D
+    ```
+  </Tab>
+  <Tab label="pnpm">
+    ```bash
+    pnpm add vite-plugin-port-checker -D
+    ```
+  </Tab>
+</Tabs>
+
+## 使用
+
+在 `vite.config.ts` 中添加插件：
+
+```ts title="vite.config.ts"
+import { defineConfig } from "vite"
+import checkRestrictedPort from "vite-plugin-port-checker"
+
+export default defineConfig({
+  plugins: [checkRestrictedPort()],
+})
+```
+
+当开发服务器启动在受限端口（如 25、22 或 53 端口）时，您将看到：
+
+```
+[Warning] The current listening port 25 is categorised as a restricted port
+by most browsers. This may prevent you from accessing the application.
+Please consider changing the port in your 'vite.config.ts' or 'vite.config.js'
+via 'server.port'.
+```
+
+## 工作原理
+
+该插件通过钩入 Vite 的 `configureServer` 生命周期工作。当 HTTP 服务器触发 `listening` 事件后，插件检查绑定的端口号，并与 [Fetch 规范](https://fetch.spec.whatwg.org/#port-blocking)中定义的 68 个受限端口进行比对。如果匹配，则通过黄色的 `console.warn` 消息提醒开发者。
+
+## 要求
+
+- Vite 3.0.0 或更高版本
+
+## 许可证
+
+vite-plugin-port-checker 是采用 MIT 许可证发布的开源软件。
