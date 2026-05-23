@@ -1,0 +1,98 @@
+---
+title: regions4j
+---
+
+## 介绍
+
+**regions4j** 是一个轻量级、类型安全的 Java 库，基于 ISO 3166-1 标准提供全面的世界地区元数据。它旨在简化 Java 企业应用中的国际化（i18n）、电信路由和地区数据管理工作。
+
+该库将每个 ISO 3166-1 国家和地区建模为枚举常量，使您在引用地区时获得编译期安全性和 IDE 自动补全支持。凭借内置的 O(1) 查找、零外部依赖和 Java 8 兼容性，它适用于任何规模的项目 — 从微服务到整体式企业系统。
+
+## 特性
+
+- **ISO 3166-1 合规** — 完整支持所有已分配国家和地区的 Alpha-2（`abbreviation`）和 Alpha-3（`code`）格式。
+- **电信元数据** — 包含每个地区的 E.164 国际拨号前缀。
+- **区域支持** — 每个地区提供默认的区域标签（如 `zh_HK`、`en_US`、`en_GB` 等），辅助 i18n 工作流。
+- **高性能** — 线程安全、不可变的内部哈希映射提供常量时间的缩写或代码查找。
+- **零依赖** — 纯 Java 库，无任何外部依赖。
+- **日历化版本管理** — 版本号采用 `YYYY.MM` 格式（如 `2025.12`），以透明地反映底层 ISO 数据的新鲜度，而非语义化版本号。
+
+## 核心数据模型
+
+每个地区暴露四个属性：
+
+| 属性 | 类型 | 描述 | 示例 |
+|---|---|---|---|
+| `abbreviation` | String | ISO 3166-1 alpha-2 缩写 | `HK`、`US`、`GB`、`RU` |
+| `code` | String | ISO 3166-1 alpha-3 代码 | `HKG`、`USA`、`GBR`、`RUS` |
+| `callingCode` | String | E.164 国际拨号前缀 | `852`、`1`、`44`、`7` |
+| `locale` | String | 默认语言和地区标签 | `zh_HK`、`en_US`、`en_GB`、`ru_RU` |
+
+## 安装
+
+**Maven:**
+
+```xml
+<dependency>
+    <groupId>com.onixbyte</groupId>
+    <artifactId>regions4j</artifactId>
+    <version>2025.12</version>
+</dependency>
+```
+
+**Gradle (Kotlin DSL):**
+
+```kotlin
+implementation("com.onixbyte:regions4j:2025.12")
+```
+
+> **版本说明：** 该库使用日历化版本管理（`YYYY.MM`）而非语义化版本号。版本字符串如 `2025.12` 可以直观地告诉您地区数据反映的是 2025 年 12 月的 ISO 3166-1 状态。
+
+## 使用
+
+### 直接访问
+
+通过枚举常量直接引用任何地区：
+
+```java
+Region uk = Region.UNITED_KINGDOM;
+
+uk.getAbbreviation(); // "GB"
+uk.getCode();         // "GBR"
+uk.getDialCode();     // "44"
+uk.getLocale();       // "en_GB"
+```
+
+### 高效查找
+
+从字符串输入中查找地区 — 非常适合处理 Web 请求、API 负载或数据库记录：
+
+```java
+// 按 Alpha-2 缩写查找（区分大小写）
+Region region = Region.fromAbbreviation("HK");
+
+// 按 Alpha-3 代码查找（不区分大小写）
+Region region = Region.fromCode("HKG");
+```
+
+### Java Locale 集成
+
+将地区的 locale 字符串转换为 `java.util.Locale` 以配合标准 Java i18n API 使用：
+
+```java
+Region region = Region.CHINA;
+Locale javaLocale = Locale.forLanguageTag(region.getLocale().replace("_", "-"));
+javaLocale.getDisplayCountry(Locale.UK); // "China"
+```
+
+## 性能
+
+首次访问时，库会将所有地区初始化到不可变的 `HashMap` 结构中。后续通过 `fromAbbreviation()` 和 `fromCode()` 进行的查找均为线程安全且以常量时间运行 — 适用于高吞吐量的请求路径。
+
+## 要求
+
+- Java 8 或更高版本
+
+## 许可证
+
+regions4j 是采用 MIT 许可证发布的开源软件。
