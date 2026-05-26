@@ -11,6 +11,8 @@ author:
   email: real@zihluwang.me
 ---
 
+import { Kbd } from "@rspress/core/theme"
+
 Recently, while developing a Spring Boot project in IntelliJ IDEA, I noticed that the smart code completion for `application.yaml` and `application.yml` had suddenly vanished. Worse, the editor was flooded with warnings reading:
 
 > Schema validation: Missing required property 'kind' = 'Application'
@@ -27,7 +29,7 @@ After some digging, I found the culprit. IDEA downloads JSON Schemas from remote
 
 To disable this behaviour immediately:
 
-1. Open **Settings** (Ctrl+Alt+S / Cmd+,)
+1. Open **Settings** (<Kbd>Ctrl</Kbd>+<Kbd>Alt</Kbd>+<Kbd>S</Kbd> for Windows / <Kbd mac="cmd" /> + <Kbd>,</Kbd> for macOS)
 2. Navigate to **Languages & Frameworks → Schemas and DTDs → Remote JSON Schemas**
 3. Uncheck **Allow downloading JSON Schemas from remote sources**
 4. Click **OK**

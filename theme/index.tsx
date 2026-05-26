@@ -26,3 +26,4 @@ function DocLayout(props: DocLayoutProps) {
 
 export * from "@rspress/core/theme-original"
 export { DocLayout }
+export { Kbd } from "./components/Kbd"

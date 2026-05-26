@@ -11,6 +11,8 @@ author:
   email: real@zihluwang.me
 ---
 
+import { Kbd } from "@rspress/core/theme"
+
 最近在使用 IDEA 开发 Spring Boot 项目时，我发现 `application.yaml` 和 `application.yml` 的智能代码提示突然消失了。更糟糕的是，编辑器中充满了如下警告：
 
 > `Schema validation: Missing required property 'kind' = 'Application'`
@@ -27,7 +29,7 @@ author:
 
 要立即禁用此行为：
 
-1. 打开 **Settings**（Ctrl+Alt+S / Cmd+,）
+1. 打开 **Settings**（Windows：<Kbd>Ctrl</Kbd>+<Kbd>Alt</Kbd>+<Kbd>S</Kbd> / macOS：<Kbd mac="cmd" /> + <Kbd>,</Kbd>）
 2. 导航至 **Languages & Frameworks → Schemas and DTDs → Remote JSON Schemas**
 3. 取消勾选 **Allow downloading JSON Schemas from remote sources**
 4. 点击 **OK**
