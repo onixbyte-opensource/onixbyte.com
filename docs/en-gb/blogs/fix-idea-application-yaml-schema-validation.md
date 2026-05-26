@@ -1,0 +1,56 @@
+---
+title: Fix IntelliJ IDEA Missing Spring Boot application.yaml Code Completion
+tags:
+  - intellij-idea
+  - spring-boot
+  - yaml
+  - schema-validation
+  - troubleshooting
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
+---
+
+Recently, while developing a Spring Boot project in IntelliJ IDEA, I noticed that the smart code completion for `application.yaml` and `application.yml` had suddenly vanished. Worse, the editor was flooded with warnings reading:
+
+> Schema validation: Missing required property 'kind' = 'Application'
+
+## The Symptom
+
+When opening any `application.yaml` or `application.yml` under `src/main/resources/`, IDEA would treat it as an Enonic XP application descriptor rather than a Spring Boot configuration file. All Spring-specific property hints were gone, replaced by schema validation errors complaining about a missing `kind` property — a field that has nothing to do with Spring Boot.
+
+Restarting IDEA, invalidating caches, and re-importing the project made no difference. The problem persisted across restarts.
+
+## The Quick Fix
+
+After some digging, I found the culprit. IDEA downloads JSON Schemas from remote sources (specifically, the [SchemaStore](https://www.schemastore.org/) catalogue) and uses them to validate configuration files. A recent schema update had introduced a `fileMatch` pattern that was too aggressive.
+
+To disable this behaviour immediately:
+
+1. Open **Settings** (Ctrl+Alt+S / Cmd+,)
+2. Navigate to **Languages & Frameworks → Schemas and DTDs → Remote JSON Schemas**
+3. Uncheck **Allow downloading JSON Schemas from remote sources**
+4. Click **OK**
+
+Your Spring Boot configuration hints will return instantly.
+
+## Root Cause
+
+The real culprit traces back to **19 May 2026**, when a developer from [Enonic](https://www.enonic.com/) submitted a pull request to the SchemaStore repository ([PR #5704](https://github.com/SchemaStore/schemastore/pull/5704)) that added the Enonic XP application descriptor schema. The schema's `fileMatch` property was set to:
+
+```json
+"fileMatch": [
+  "**/src/main/resources/application.yaml",
+  "**/src/main/resources/application.yml"
+]
+```
+
+This pattern is far too broad — it matches **every** `application.yaml` and `application.yml` placed under `src/main/resources/`, which happens to be exactly where Spring Boot projects store their configuration files. Once this schema was merged into SchemaStore, any IntelliJ IDEA instance with remote JSON schema downloading enabled would fetch it and begin validating Spring Boot configs against the Enonic XP schema.
+
+The developer has since acknowledged the issue and submitted a follow-up fix ([PR #5711](https://github.com/SchemaStore/schemastore/pull/5711)) to tighten the `fileMatch` patterns. As of writing, the fix has not yet been merged into SchemaStore.
+
+## Why This Matters
+
+SchemaStore is a community-maintained catalogue of JSON Schemas used by many editors (VS Code, IntelliJ IDEA, Neovim, etc.) to provide validation and autocompletion for common configuration files. When a schema in this catalogue declares overly broad matching rules, it affects users across all platforms and editors — not just IDEA.
+
+For Spring Boot developers, the takeaway is simple: if your `application.yaml` hints disappear overnight, check what schema your IDE thinks the file belongs to. It might not be Spring Boot at all.
