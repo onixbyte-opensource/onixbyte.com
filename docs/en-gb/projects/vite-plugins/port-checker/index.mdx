@@ -1,0 +1,68 @@
+---
+title: Port Checker
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## Introduction
+
+**vite-plugin-port-checker** is a lightweight Vite plugin that warns you when the dev server is listening on a port blocked by common browsers. Browsers such as Chrome and Firefox maintain a [list of restricted ports](https://fetch.spec.whatwg.org/#port-blocking) — typically those associated with well-known protocols like SMTP, SSH, and DNS — and refuse to connect to them. Accidentally running your dev server on one of these ports leads to a confusing "connection refused" or "blocked" error with no clear explanation.
+
+This plugin detects the situation at startup and prints a clear, colour-coded warning to the console, advising you to change the `server.port` setting in your Vite configuration.
+
+## Features
+
+- **Automatic Detection** — Checks the dev server port against the complete Fetch spec port-blocking list (68 restricted ports).
+- **Clear Warnings** — Yellow-highlighted console output with actionable guidance.
+- **Zero Configuration** — Works out of the box with no options to set.
+- **Lightweight** — Single-file plugin with no dependencies beyond Vite itself.
+
+## Installation
+
+<Tabs>
+  <Tab label="npm">
+    ```bash
+    npm install vite-plugin-port-checker -D
+    ```
+  </Tab>
+  <Tab label="pnpm">
+    ```bash
+    pnpm add vite-plugin-port-checker -D
+    ```
+  </Tab>
+</Tabs>
+
+## Usage
+
+Add the plugin to your `vite.config.ts`:
+
+```ts
+// vite.config.ts
+import { defineConfig } from "vite"
+import checkRestrictedPort from "vite-plugin-port-checker"
+
+export default defineConfig({
+  plugins: [checkRestrictedPort()],
+})
+```
+
+When the dev server starts on a restricted port (e.g. port 25, 22, or 53), you will see:
+
+```
+[Warning] The current listening port 25 is categorised as a restricted port
+by most browsers. This may prevent you from accessing the application.
+Please consider changing the port in your 'vite.config.ts' or 'vite.config.js'
+via 'server.port'.
+```
+
+## How It Works
+
+The plugin hooks into Vite's `configureServer` lifecycle. Once the HTTP server emits the `listening` event, the plugin inspects the bound port and checks it against the hardcoded set of 68 restricted ports defined in the [Fetch specification](https://fetch.spec.whatwg.org/#port-blocking). If there is a match, a yellow `console.warn` message alerts the developer.
+
+## Requirements
+
+- Vite 3.0.0 or later
+
+## License
+
+vite-plugin-port-checker is open-source software released under the MIT License.

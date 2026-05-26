@@ -1,13 +1,13 @@
 [
   {
-    "text": "blogs",
-    "link": "/blogs/",
-    "activeMatch": "/blogs/"
-  },
-  {
     "text": "projects",
     "link": "/projects/",
     "activeMatch": "/projects/"
+  },
+  {
+    "text": "blogs",
+    "link": "/blogs/",
+    "activeMatch": "/blogs/"
   },
   {
     "text": "notifications",

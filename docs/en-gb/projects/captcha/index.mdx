@@ -1,0 +1,89 @@
+---
+title: Captcha
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## Introduction
+
+Captcha is a Java library for generating CAPTCHA images. This project is a spiritual successor to Google's Kaptcha, modernised for contemporary development practices.
+
+With Captcha, you can easily generate customisable CAPTCHA images with various distortion effects, noise, and background options to integrate into your Java applications.
+
+## Features
+
+- **Easy Integration** — Simple builder-based API for quick setup and configuration.
+- **Customisable CAPTCHA Generation** — Configure text length, character sets, font styles, and colours.
+- **Multiple Distortion Effects** — Choose from Water Ripple, Fish Eye, and Shadow effects.
+- **Configurable Noise** — Add noise lines with custom colours, or disable noise entirely.
+- **Gradient Backgrounds** — Customisable gradient background colours.
+- **Clean, Modern Codebase** — Well-documented, type-safe, and easy to extend.
+
+## Installation
+
+<Tabs>
+  <Tab label="Gradle with Kotlin DSL">
+    ```kotlin title="build.gradle.kts"
+    dependencies {
+      implementation("com.onixbyte:captcha:1.0.0")
+    }
+    ```
+  </Tab>
+  <Tab label="Maven">
+    ```xml title="pom.xml"
+    <dependencies>
+      <dependency>
+        <groupId>com.onixbyte</groupId>
+        <artifactId>captcha</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+    </dependencies>
+    ```
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+```java
+import com.onixbyte.captcha.Producer;
+import com.onixbyte.captcha.background.BackgroundProducer;
+import com.onixbyte.captcha.background.impl.DefaultBackgroundProducer;
+import com.onixbyte.captcha.gimpy.GimpyEngine;
+import com.onixbyte.captcha.gimpy.impl.WaterRipple;
+import com.onixbyte.captcha.impl.DefaultCaptchaProducer;
+import com.onixbyte.captcha.noise.NoiseProducer;
+import com.onixbyte.captcha.noise.impl.DefaultNoiseProducer;
+import com.onixbyte.captcha.text.TextProducer;
+import com.onixbyte.captcha.text.WordRenderer;
+import com.onixbyte.captcha.text.impl.DefaultTextProducer;
+import com.onixbyte.captcha.text.impl.DefaultWordRenderer;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class CaptchaExample {
+
+    public static void main(String[] args) throws IOException {
+        // Create a CAPTCHA producer with default configurations
+        Producer captcha = DefaultCaptchaProducer.builder().build();
+
+        // Generate text and create the image
+        String captchaText = captcha.createText();
+        BufferedImage captchaImage = captcha.createImage(captchaText);
+
+        // Save the image to a file
+        ImageIO.write(captchaImage, "png", new File("captcha.png"));
+
+        System.out.println("CAPTCHA text: " + captchaText);
+    }
+}
+```
+
+This generates a CAPTCHA image with a 6-character random text and saves it as a PNG file.
+
+## License
+
+Captcha is open-source software released under the MIT License.

@@ -1,0 +1,98 @@
+---
+title: Regions for Java
+---
+
+## Introduction
+
+**regions4j** is a lightweight, type-safe Java library that provides comprehensive metadata for world regions based on the ISO 3166-1 standard. It is designed to simplify internationalisation (i18n), telecommunication routing, and regional data management in Java-based enterprise applications.
+
+The library models every ISO 3166-1 country and territory as an enum constant, giving you compile-time safety and IDE autocompletion when referencing regions. With built-in O(1) lookups, zero external dependencies, and Java 8 compatibility, it is suitable for projects of any size — from microservices to monolithic enterprise systems.
+
+## Features
+
+- **ISO 3166-1 Compliant** — Full support for Alpha-2 (`abbreviation`) and Alpha-3 (`code`) formats across all assigned countries and territories.
+- **Telecommunication Metadata** — Includes E.164 international dialling prefixes for every region.
+- **Locality Support** — Default locale tags (`zh_HK`, `en_US`, `en_GB`, etc.) for each region to assist with i18n workflows.
+- **High Performance** — Thread-safe, immutable internal hash maps provide constant-time lookups by abbreviation or code.
+- **Zero Dependencies** — A pure Java library with no external overhead.
+- **Calendar Versioning** — Versions follow a `YYYY.MM` scheme (e.g. `2025.12`) to transparently indicate the freshness of the underlying ISO data, rather than semantic versioning.
+
+## Core Schema
+
+Each region exposes four attributes:
+
+| Attribute      | Type   | Description                     | Example                            |
+|----------------|--------|---------------------------------|------------------------------------|
+| `abbreviation` | String | ISO 3166-1 alpha-2 abbreviation | `HK`, `US`, `GB`, `RU`             |
+| `code`         | String | ISO 3166-1 alpha-3 code         | `HKG`, `USA`, `GBR`, `RUS`         |
+| `callingCode`  | String | E.164 international dialling prefix | `852`, `1`, `44`, `7`              |
+| `locale`       | String | Default language and region tag | `zh_HK`, `en_US`, `en_GB`, `ru_RU` |
+
+## Installation
+
+**Maven:**
+
+```xml
+<dependency>
+    <groupId>com.onixbyte</groupId>
+    <artifactId>regions4j</artifactId>
+    <version>2025.12</version>
+</dependency>
+```
+
+**Gradle (Kotlin DSL):**
+
+```kotlin
+implementation("com.onixbyte:regions4j:2025.12")
+```
+
+> **Versioning note:** This library uses Calendar Versioning (`YYYY.MM`) rather than Semantic Versioning. A version string like `2025.12` tells you immediately that the regional data reflects the ISO 3166-1 state as of December 2025.
+
+## Usage
+
+### Direct Access
+
+Reference any region directly via its enum constant:
+
+```java
+Region uk = Region.UNITED_KINGDOM;
+
+uk.getAbbreviation(); // "GB"
+uk.getCode();         // "GBR"
+uk.getDialCode();     // "44"
+uk.getLocale();       // "en_GB"
+```
+
+### Efficient Lookups
+
+Look up regions from string inputs — ideal for processing web requests, API payloads, or database records:
+
+```java
+// By Alpha-2 abbreviation (case-sensitive)
+Region region = Region.fromAbbreviation("HK");
+
+// By Alpha-3 code (case-insensitive)
+Region region = Region.fromCode("HKG");
+```
+
+### Java Locale Integration
+
+Convert a region's locale string to a `java.util.Locale` for use with standard Java i18n APIs:
+
+```java
+Region region = Region.CHINA;
+Locale javaLocale = Locale.forLanguageTag(region.getLocale().replace("_", "-"));
+javaLocale.getDisplayCountry(Locale.UK); // "China"
+```
+
+## Performance
+
+On first access, the library initialises all regions into immutable `HashMap` structures. Subsequent lookups via `fromAbbreviation()` and `fromCode()` are thread-safe and run in constant time — suitable for high-throughput request paths.
+
+## Requirements
+
+- Java 8 or later
+
+## License
+
+regions4j is open-source software released under the MIT License.
