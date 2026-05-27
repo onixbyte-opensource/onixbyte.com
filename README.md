@@ -1,29 +1,49 @@
-# Rspress website
+# OnixByte Homepage
 
-## Setup
+The official OnixByte site — a central hub for technical blogs, project documentation, and development standards.
 
-Install the dependencies:
+## Tech Stack
 
-```bash
-npm install
-```
+A static documentation site built with [Rspress](https://rspress.dev/), supporting bilingual content (`en-gb` / `zh-hans`). All pages are authored in Markdown / MDX.
 
-## Get started
+## URLs
 
-Start the dev server:
+| Domain | Recommended For |
+|---|---|
+| [onixbyte.cn](https://onixbyte.cn) | Users in mainland China |
+| [onixbyte.com](https://onixbyte.com) | Users outside mainland China |
+| [onixbyte.github.io](https://onixbyte.github.io) | Global (GitHub Pages fallback) |
 
-```bash
-npm run dev
-```
-
-Build the website for production:
+## Local Development
 
 ```bash
-npm run build
+pnpm install
+pnpm dev        # Start dev server with HMR
+pnpm build      # Production build, outputs to dist/
+pnpm preview    # Preview the production build locally
+pnpm lint       # ESLint
+pnpm format     # Prettier — format all files
 ```
 
-Preview the production build locally:
+## Directory Structure
 
-```bash
-npm run preview
 ```
+docs/
+├── public/          # Static assets (logos, icons, etc.)
+├── en-gb/           # English content
+│   ├── blogs/       # Technical blog posts
+│   ├── projects/    # Project documentation
+│   └── notifications/  # Announcements
+└── zh-hans/         # Simplified Chinese content
+    ├── blogs/
+    ├── projects/
+    └── notifications/
+```
+
+## Deployment
+
+Pushing to the `main` branch triggers a GitHub Actions workflow that builds the site and deploys it to GitHub Pages.
+
+## Licence
+
+MIT
