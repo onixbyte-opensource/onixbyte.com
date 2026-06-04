@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "doc_build",
   "redirects": [
     {
       "source": "/:path(.*)",
