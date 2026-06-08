@@ -12,9 +12,14 @@ export default defineConfig({
   themeConfig: {
     socialLinks: [
       {
-        icon: "gitlab",
+        icon: "github",
         mode: "link",
-        content: "https://git.onixbyte.cn/onixbyte/homepage",
+        content: "https://git.onixbyte.com/onixbyte/homepage",
+      },
+      {
+        icon: "x",
+        mode: "link",
+        content: "https://x.com/onixbyte",
       },
     ],
   },
