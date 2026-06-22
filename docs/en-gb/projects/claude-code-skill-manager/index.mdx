@@ -1,0 +1,216 @@
+---
+title: Claude Code Skills Manager
+---
+
+import { Tabs, Tab } from "@rspress/core/theme"
+
+## Introduction
+
+Claude Code Skills Manager (`ccsm`) is a CLI tool for discovering, installing, and managing Claude Code skills from Git-based marketplace repositories. It lets you register any public Git repository that exposes a `skills.json` manifest as a skill source, then search, install, update, and remove skills through a single command-line interface.
+
+Skills are deployed directly into Claude Code's own skills directory (`~/.claude/skills/`), where Claude Code picks them up automatically at startup.
+
+## Installation
+
+<Tabs>
+  <Tab label="Pre-built binaries">
+    Download the latest binary for your platform from the [Releases page](https://onixbyte.dev/onixbyte/claude-code-skill-manager/releases).
+
+    | Platform | Binary |
+    |----------|--------|
+    | Linux (amd64) | `ccsm-linux-amd64` |
+    | macOS (amd64) | `ccsm-darwin-amd64` |
+    | Windows (amd64) | `ccsm-windows-amd64.exe` |
+
+    Place the binary somewhere on your `PATH` and rename it to `ccsm` (or `ccsm.exe` on Windows).
+  </Tab>
+  <Tab label="Cargo install">
+    ```bash
+    git clone https://onixbyte.dev/onixbyte/claude-code-skill-manager.git
+    cd claude-code-skill-manager
+    cargo install --path .
+    ```
+    Requires a Rust toolchain (install via [rustup.rs](https://rustup.rs)).
+  </Tab>
+  <Tab label="Build from source">
+    ```bash
+    git clone https://onixbyte.dev/onixbyte/claude-code-skill-manager.git
+    cd claude-code-skill-manager
+    cargo build --release
+    ```
+    The binary will be at `target/release/ccsm` (or `ccsm.exe` on Windows).
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+### Registering a marketplace
+
+A marketplace is any public Git repository with a `skills.json` manifest at its root. Register one with:
+
+```bash
+ccsm marketplace add https://github.com/example/skills
+```
+
+CCSM fetches the manifest and caches it locally. You can register as many marketplaces as you need.
+
+### Browsing and installing skills
+
+```bash
+# Search across all registered marketplaces
+ccsm search
+
+# Search with a keyword filter
+ccsm search git
+
+# Install a skill by name
+ccsm install my-awesome-skill
+
+# If the same name exists in multiple marketplaces, disambiguate
+ccsm install my-skill --marketplace my-marketplace
+```
+
+### Managing installed skills
+
+```bash
+# List installed skills
+ccsm list
+
+# Show details about an installed skill
+ccsm info my-awesome-skill
+
+# Update all installed skills to their latest versions
+ccsm update
+
+# Update a specific skill
+ccsm update my-awesome-skill
+
+# Remove a skill
+ccsm remove my-awesome-skill
+```
+
+### Marketplace management
+
+```bash
+# List all registered marketplaces
+ccsm marketplace list
+
+# Refresh cached manifests (all marketplaces)
+ccsm marketplace update
+
+# Refresh a specific marketplace
+ccsm marketplace update my-marketplace
+
+# Remove a marketplace
+ccsm marketplace remove my-marketplace
+```
+
+### Install modes
+
+CCSM supports two deploy modes:
+
+| Mode | Behaviour | Use case |
+|------|-----------|----------|
+| `copy` (default) | Files are physically copied to `~/.claude/skills/<name>/` | Normal use — safe and self-contained |
+| `link` | A symlink is created pointing to the local store | Skill development — changes to source files are picked up immediately |
+
+Set the default mode in your config, or override per install:
+
+```bash
+ccsm install my-skill --link
+```
+
+## Creating Your Own Skill Marketplace
+
+A marketplace is simply a public Git repository containing a `skills.json` manifest. There is no server component, no authentication, and no API key — CCSM reads the manifest directly from the Git forge's raw file endpoint.
+
+### Marketplace repository structure
+
+```
+your-marketplace-repo/
+  skills.json        # Required: the manifest
+  README.md          # Optional
+```
+
+### The `skills.json` manifest
+
+```json
+{
+  "name": "My Marketplace",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "my-skill",
+      "description": "A short description shown in search results",
+      "repository": "https://github.com/user/skill-repo",
+      "branch": "main"
+    },
+    {
+      "name": "another-skill",
+      "description": "A skill that lives in a monorepo subdirectory",
+      "repository": "https://github.com/user/monorepo",
+      "branch": "main",
+      "path": "skills/another-skill"
+    }
+  ]
+}
+```
+
+**Top-level fields:**
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Marketplace display name |
+| `version` | No | Arbitrary version string for your own tracking |
+| `skills` | No | Array of skill entries (defaults to `[]`) |
+
+**Skill entry fields:**
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Unique skill identifier (used with `ccsm install <name>`) |
+| `description` | Yes | One-line summary shown in `ccsm search` output |
+| `repository` | Yes | Public Git repository URL for the skill |
+| `branch` | No | Git branch to install from (tries `main` first, falls back to `master`) |
+| `path` | No | Subdirectory within the repository where the skill files live — enables monorepos hosting multiple skills |
+
+### How it works
+
+1. **Manifest fetching** — CCSM constructs a raw-file URL from the marketplace repository URL and fetches `skills.json` from either the `main` or `master` branch. This works with GitHub, Gitea, GitLab, and any Git forge that exposes raw file endpoints.
+
+2. **Skill downloading** — When a user installs a skill, CCSM downloads the skill repository archive (ZIP or tar.gz) from the Git forge, extracts it, and deploys the files to `~/.claude/skills/<name>/`.
+
+3. **Monorepo support** — If a skill entry specifies a `path`, CCSM navigates into that subdirectory after extraction before deploying, so a single repository can host multiple skills.
+
+### What goes in a skill repository
+
+Each skill repository is a standard Claude Code skill directory. At minimum it should contain a `SKILL.md` manifest file:
+
+```
+my-skill-repo/
+  SKILL.md           # Claude Code skill manifest
+  script.py          # Supporting files
+  templates/
+    template.txt
+```
+
+### Publishing steps
+
+1. Create a **public** Git repository with a `skills.json` at the root, following the format above.
+2. Push it.
+3. Anyone can register it with `ccsm marketplace add <url>`.
+
+## How CCSM Stores Data
+
+| Path | Purpose |
+|------|---------|
+| `~/.claude/skills/` | Claude Code's skills directory — where skills are deployed |
+| `~/.config/ccsm/config.json` | CCSM configuration (registered marketplaces, default mode) |
+| `~/.config/ccsm/marketplaces/` | Cached marketplace manifests |
+| `~/.config/ccsm/skills/` | Downloaded skill files (local store) |
+
+On Windows, `~/.config/` resolves to `C:\Users\<user>\AppData\Roaming\`.
+
+## Licence
+
+Claude Code Skills Manager is open-source software released under the MIT Licence.

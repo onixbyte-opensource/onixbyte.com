@@ -16,6 +16,10 @@ Explore open-source projects developed by OnixByte.
 - **[Helix](/projects/helix)** — An enterprise application template with Spring Boot backend and React frontend, featuring JWT auth, RBAC, user and organisation management, and Microsoft Entra ID integration.
 - **[Delta Force Guide](/projects/delta-force-guide)** — A web app providing a searchable library of firearm modification codes for the game _Delta Force: Havvk Ops_, with a React SPA and Spring Boot REST API.
 
+## Developer Tools
+
+- **[Claude Code Skills Manager](/projects/claude-code-skill-manager)** — A CLI tool for discovering, installing, and managing Claude Code skills from Git-based marketplace repositories.
+
 ## Vite Plugins
 
 - **[Port Checker](/projects/vite-plugins/port-checker)** — Warns when the Vite dev server listens on a browser-restricted port, preventing silent connection failures.
