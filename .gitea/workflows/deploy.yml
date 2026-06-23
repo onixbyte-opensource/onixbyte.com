@@ -57,9 +57,12 @@ jobs:
           path: doc_build/
 
       - name: Deploy to OnixByte.cn
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
         run: |
+          apt-get update -qq && apt-get install -y -qq rsync
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          printf '%s' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan onixbyte.cn >> ~/.ssh/known_hosts
           rsync -avz --delete doc_build/ root@onixbyte.cn:${{ vars.DEPLOY_PATH }}
