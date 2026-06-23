@@ -1,0 +1,83 @@
+---
+title: Backup and Restore Windows Drivers When Reinstalling the System
+tags:
+  - windows
+  - driver
+  - backup
+  - system-reinstall
+  - dism
+author:
+  name: Zihlu Wang
+  email: real@zihluwang.me
+---
+
+import { Kbd } from "@rspress/core/theme"
+
+One of the most tedious parts of reinstalling Windows is getting all the drivers back — graphics, network, audio, Bluetooth, touchpad, chipset — missing any one of them disrupts your workflow. Windows Update can fetch some automatically, but the versions are often outdated, and niche hardware drivers may not be found at all.
+
+Fortunately, Windows' built-in DISM tool provides driver export and restore functionality. Spend one minute backing up before the reinstall, and you can restore every driver in a single command afterwards.
+
+## Before Reinstalling: Back Up All Drivers
+
+Open a terminal as **Administrator** (PowerShell or Command Prompt) and run:
+
+```powershell
+dism /online /export-driver /destination:D:\DriverBackup
+```
+
+Replace `D:\DriverBackup` with your desired backup path. It is best to save the backup to an external drive, USB stick, or a non-system partition so it survives the reformat.
+
+The command enumerates every third-party driver installed on the system and exports them to the destination folder. The whole process typically completes within a minute. You should see output similar to:
+
+```
+The operation completed successfully.
+```
+
+Keep the backup directory safe, and you are ready to reinstall.
+
+### What gets backed up?
+
+The command exports **third-party drivers** — i.e. drivers that are not built into Windows. This covers graphics cards, audio, network adapters, chipsets, Bluetooth, card readers, and any other drivers you have installed over the lifetime of the system. Generic inbox drivers that ship with Windows are skipped, as they will be restored automatically after the reinstall.
+
+## After Reinstalling: Restore All Drivers
+
+### Method 1: One-command restore (recommended)
+
+This is the most convenient approach. Open a terminal as **Administrator** and run:
+
+```powershell
+dism /online /add-driver /driver:D:\DriverBackup /recurse
+```
+
+The `/recurse` flag tells DISM to search all subfolders within the backup directory and install every driver it finds. **You must restart the computer** afterwards for the changes to take effect.
+
+### Method 2: Via Device Manager (GUI)
+
+If you prefer a graphical interface or only need to restore specific drivers:
+
+1. Press <Kbd>Win</Kbd> + <Kbd>X</Kbd> and select **Device Manager**
+2. Locate devices marked with a yellow exclamation mark (missing drivers)
+3. Right-click the device and choose **Update driver**
+4. Select **Browse my computer for drivers**
+5. Point the path to your driver backup directory and tick **Include subfolders**
+6. Click Next — Windows will search and install the matching driver
+
+Repeat for each device until all are restored.
+
+## Common Issues
+
+### "The driver package could not be installed"
+
+In rare cases, certain drivers may fail to install via DISM due to signature issues or version incompatibility. As a workaround, locate the corresponding `.inf` file in the backup directory, right-click it, and select **Install**.
+
+### Some devices still lack drivers after restore
+
+DISM only backs up drivers that were currently installed. If a device was already undriven before the backup, its driver will obviously not be included. It is worth checking Device Manager beforehand to ensure all hardware is properly functional.
+
+### Can I restore across Windows versions?
+
+Restoring drivers from Windows 10 to Windows 11 on the same machine is generally viable, but migrating driver backups across different hardware is not recommended. Each machine should have its own independent backup.
+
+## Summary
+
+The key advantage of this workflow is **zero third-party dependencies** — DISM is a built-in Windows component, and no extra software is required. One minute to export before reinstalling, one command to restore afterwards. Far more efficient than manually downloading and installing each driver one by one. Make driver backup a habit before every system reinstall, and each migration will be that much smoother.
