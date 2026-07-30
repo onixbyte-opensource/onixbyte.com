@@ -201,3 +201,76 @@ Specification<User> spec = (root, query, cb) -> {
 
 Page<User> page = userRepository.findAll(spec, pageable);
 ```
+
+## 使用 Jackson 将对象或 Map 平铺到 JSON 中
+
+在序列化 JSON 时，有时需要将嵌套对象的属性"平铺"到父级 JSON 中，而不是作为一个嵌套字段出现。Jackson 提供了两个注解来分别处理对象和 `Map` 的平铺场景。
+
+### `@JsonUnwrapped` — 平铺已知结构的对象
+
+`@JsonUnwrapped` 会将一个嵌套对象的属性直接展开到父级 JSON 中：
+
+```java
+public class Address {
+    private String street;
+    private String city;
+    // getters and setters
+}
+
+public class User {
+    private String name;
+
+    @JsonUnwrapped
+    private Address address;
+    // getters and setters
+}
+```
+
+序列化结果：
+
+```json
+{
+  "name": "陳大文",
+  "street": "彌敦道",
+  "city": "香港"
+}
+```
+
+如果不使用 `@JsonUnwrapped`，`address` 会作为一个嵌套 JSON 对象出现：`"address": { "street": "...", "city": "..." }`。
+
+### `@JsonAnyGetter` — 平铺键值不固定的 Map
+
+`@JsonAnyGetter` 可以将 `Map` 中的键值对直接平铺到父级 JSON 中，适合 key 不固定或动态扩展的场景：
+
+```java
+public class Product {
+    private String name;
+
+    private Map<String, Object> attributes = new HashMap<>();
+
+    @JsonAnyGetter
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+    // other getters and setters
+}
+```
+
+当 `attributes` 包含 `{"colour": "red", "size": "XL"}` 时，序列化结果：
+
+```json
+{
+  "name": "Example Product",
+  "colour": "red",
+  "size": "XL"
+}
+```
+
+注意 `@JsonAnyGetter` 需要加在 **getter 方法**上，而不是字段上；同时需要搭配 `@JsonAnySetter` 来支持反序列化。
+
+### 如何选择
+
+| 场景                                   | 注解               |
+|----------------------------------------|--------------------|
+| 平铺字段固定的嵌套对象（如地址、配置）   | `@JsonUnwrapped`   |
+| 平铺 key 不固定的动态键值对             | `@JsonAnyGetter`   |

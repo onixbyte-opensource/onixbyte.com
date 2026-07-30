@@ -207,4 +207,75 @@ Specification<User> spec = (root, query, cb) -> {
 Page<User> page = userRepository.findAll(spec, pageable);
 ```
 
+## Flattening Objects or Maps into JSON with Jackson
 
+When serialising to JSON, you sometimes need to "flatten" a nested object's properties into the parent JSON rather than having them appear as a nested field. Jackson provides two annotations for handling objects and `Map` flattening separately.
+
+### `@JsonUnwrapped` — flattening objects with a known structure
+
+`@JsonUnwrapped` expands the properties of a nested object directly into the parent JSON:
+
+```java
+public class Address {
+    private String street;
+    private String city;
+    // getters and setters
+}
+
+public class User {
+    private String name;
+
+    @JsonUnwrapped
+    private Address address;
+    // getters and setters
+}
+```
+
+Serialised output:
+
+```json
+{
+  "name": "John Doe",
+  "street": "Oxford Street",
+  "city": "London"
+}
+```
+
+Without `@JsonUnwrapped`, `address` would appear as a nested JSON object: `"address": { "street": "...", "city": "..." }`.
+
+### `@JsonAnyGetter` — flattening a Map with dynamic keys
+
+`@JsonAnyGetter` flattens a `Map`'s key-value pairs directly into the parent JSON, ideal for dynamic or open-ended fields:
+
+```java
+public class Product {
+    private String name;
+
+    private Map<String, Object> attributes = new HashMap<>();
+
+    @JsonAnyGetter
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+    // other getters and setters
+}
+```
+
+With `attributes` containing `{"colour": "red", "size": "XL"}`, the serialised output is:
+
+```json
+{
+  "name": "Example Product",
+  "colour": "red",
+  "size": "XL"
+}
+```
+
+Note that `@JsonAnyGetter` must be placed on the **getter method**, not the field itself. You will also need `@JsonAnySetter` to support deserialisation.
+
+### How to choose
+
+| Scenario                                              | Annotation         |
+|-------------------------------------------------------|--------------------|
+| Flatten nested objects with fixed fields (e.g. address, config) | `@JsonUnwrapped`   |
+| Flatten dynamic key-value pairs with unknown keys     | `@JsonAnyGetter`   |
