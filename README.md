@@ -12,7 +12,6 @@ A static documentation site built with [Rspress](https://rspress.dev/), supporti
 |--------------------------------------------------|--------------------------------|
 | [onixbyte.cn](https://onixbyte.cn)               | Users in China mainland        |
 | [onixbyte.com](https://onixbyte.com)             | Users outside China mainland   |
-| [onixbyte.github.io](https://onixbyte.github.io) | Global (GitHub Pages fallback) |
 
 ## Local Development
 
