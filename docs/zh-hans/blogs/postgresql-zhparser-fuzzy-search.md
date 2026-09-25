@@ -73,7 +73,7 @@ SCWS 是 `zhparser` 依赖的底层核心，必须先行安装。
    make USE_PGXS=1 PG_CONFIG=/usr/local/pgsql/bin/pg_config install
    ```
 
-   *注：`install` 步骤会自动将 `zhparser.so` 放入 PG 的 `pkglibdir`，将脚本放入 `extension` 目录。*
+   _注：`install` 步骤会自动将 `zhparser.so` 放入 PG 的 `pkglibdir`，将脚本放入 `extension` 目录。_
 
 ### 解决动态链接库依赖
 
@@ -152,8 +152,13 @@ ALTER TEXT SEARCH CONFIGURATION chinese ADD MAPPING FOR n,v,a,i,e,l,t,b WITH sim
 
 ### 词库编译与部署
 
+<!-- TODO(link): 该提示原本指向 OnixByte 预编译的 Windows 版 scws，但两个链接
+都是死链 —— GitHub 那个引用的账号并不存在，Gitea 那个正在下线。暂时指向上游；
+若日后重新发布下载地址，在此恢复。 -->
+
 :::tip
-对于使用 Windows 进行编译 `xdb` 二进制词典文件的用户，可以前往 OnixByte 的 [GitHub](https://github.com/onixbyte/scws/releases/tag/1.2.3) 或 [GitLab](https://git.onixbyte.cn/onixbyte/scws/-/releases/1.2.3) 页面下载使用 MingW 预编译好的，适用于 Windows 的原生 scws 命令行工具。
+适用于 Windows 的原生 scws 命令行工具使用 MingW 编译。源码与编译说明见上游
+[SCWS 项目](https://github.com/hightman/scws)。
 :::
 
 将文本词典转换为 SCWS 高效二进制格式（XDB）：
@@ -208,5 +213,6 @@ SELECT * FROM ts_debug('chinese', '元一能源');
 ```
 
 **优化建议：**
+
 - **显式提及权重补偿**：这是解决"元一"分词失败（显示为 `x`）的关键技术点。
 - **区分重启与重载**：明确 `shared_preload_libraries` 必须通过 `restart` 激活。

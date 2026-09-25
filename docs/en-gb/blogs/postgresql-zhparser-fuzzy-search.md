@@ -73,7 +73,7 @@ This step requires `pg_config` from the self-compiled PostgreSQL installation.
    make USE_PGXS=1 PG_CONFIG=/usr/local/pgsql/bin/pg_config install
    ```
 
-   *Note: The `install` step automatically places `zhparser.so` into PG's `pkglibdir` and extension scripts into the `extension` directory.*
+   _Note: The `install` step automatically places `zhparser.so` into PG's `pkglibdir` and extension scripts into the `extension` directory._
 
 ### Resolving Dynamic Library Dependencies
 
@@ -152,8 +152,15 @@ Leverage the structural parsing capabilities of **`companynameparser`** to strip
 
 ### Lexicon Compilation and Deployment
 
+<!-- TODO(link): this tip used to offer OnixByte's pre-compiled Windows build of
+scws. Both URLs were dead — the GitHub one referenced an account that does not
+exist, and the Gitea one is being retired. Pointing at upstream in the meantime;
+restore a download link here if one is published again. -->
+
 :::tip
-Users compiling `xdb` binary dictionary files on Windows can visit OnixByte’s [GitHub](https://github.com/onixbyte/scws/releases/tag/1.2.3) or [GitLab](https://git.onixbyte.cn/onixbyte/scws/-/releases/1.2.3) pages to download the native scws command-line tool for Windows, pre-compiled using MingW.
+The native scws command-line tool for Windows is compiled with MingW. Source and
+build instructions are available from the upstream
+[SCWS project](https://github.com/hightman/scws).
 :::
 
 Convert the text dictionary to SCWS's efficient binary format (XDB):
@@ -208,5 +215,6 @@ SELECT * FROM ts_debug('chinese', '元一能源');
 ```
 
 **Optimisation Notes:**
+
 - **Explicit Weight Compensation**: This is the key technique that resolved the "元一" tokenisation failure (shown as `x`).
 - **Distinguish Restart from Reload**: `shared_preload_libraries` must be activated via `restart`, not a simple reload.
