@@ -2,7 +2,7 @@
   {
     "text": "nav.home",
     "link": "/",
-    "activeMatch": "^/$|^/zh-hans/$"
+    "activeMatch": "^/(en-gb/|zh-hans/)?$"
   },
   {
     "text": "nav.products",

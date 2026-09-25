@@ -42,13 +42,27 @@ pnpm format     # Prettier — format all files
 
 The site is published on two domains, and the two builds are not
 interchangeable. `pnpm build:cn` runs `rspress build --config
-rspress.cn.config.ts`, which differs from the default in three ways:
+rspress.cn.config.ts`, which differs from the default in four ways:
 
 |                                 | `build:com`       | `build:cn`     |
 | ------------------------------- | ----------------- | -------------- |
+| Default language (unprefixed)   | `en-gb`           | `zh-hans`      |
 | Canonical, `hreflang`, `og:url` | `onixbyte.com`    | `onixbyte.cn`  |
 | `sitemap.xml`, `robots.txt`     | `onixbyte.com`    | `onixbyte.cn`  |
 | Social links                    | GitHub, Douyin, X | GitHub, Douyin |
+
+**The default language differs per target**, so the routes do too. Rspress
+serves the default locale without a prefix:
+
+|                 | `.com`                          | `.cn`                         |
+| --------------- | ------------------------------- | ----------------------------- |
+| English home    | `/`                             | `/en-gb/`                     |
+| Chinese home    | `/zh-hans/`                     | `/`                           |
+| English article | `/blogs/git-cheatsheet`         | `/en-gb/blogs/git-cheatsheet` |
+| Chinese article | `/zh-hans/blogs/git-cheatsheet` | `/blogs/git-cheatsheet`       |
+
+Content paths under `docs/` are unaffected — only the prefixes change, and
+Rspress rewrites internal links per locale automatically.
 
 X is omitted from the `.cn` build because it is not reachable from mainland
 China. Which links count as domestic is a single list in `rspress.config.ts`
@@ -73,7 +87,7 @@ second build overwrites the first. To preview the `.cn` variant in dev, run
 docs/
 ├── public/              # Static assets served from the site root
 │   └── onixbyte-*.svg
-├── en-gb/               # English content (default locale, no URL prefix)
+├── en-gb/               # English content
 │   ├── _nav.json        # Top navigation; labels are i18n keys
 │   ├── index.md         # Marketing homepage
 │   ├── blogs/           # Technical articles ("Insights")
@@ -89,6 +103,7 @@ theme/                   # Custom Rspress theme
 ├── index.css            # Brand colours and section styling
 ├── lib/
 │   ├── site.ts          # Shared site constants
+│   ├── i18n.ts          # Types i18n.json for useI18n()
 │   └── social-icons.ts  # Inline SVG for social links with no preset icon
 └── components/
     ├── Author.tsx       # Byline, rendered from `author` frontmatter
@@ -146,6 +161,16 @@ Redirects for the retired `/projects/` paths live in `vercel.json`. The `.cn`
 host needs the equivalent rule in its own web server config, which is not
 tracked in this repository.
 
+## Contributing
+
+This repository is **not open for external contributions** — pull requests are
+not accepted. Issues reporting broken links, factual errors, typos or
+reproducible bugs are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## Licence
 
-MIT
+All rights reserved. Nothing here is licensed for reuse: no permission is
+granted to copy, modify or distribute any part of this repository. Reading it
+and linking to it are fine. See [LICENCE](./LICENCE) for the full notice, and
+[THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) for the dependencies, which
+keep their own licences.

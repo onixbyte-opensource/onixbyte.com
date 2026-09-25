@@ -22,12 +22,43 @@ const ORIGINS: Record<SiteTarget, string> = {
   cn: "https://onixbyte.cn",
 }
 
-/** Locale used for the unprefixed routes. */
-const DEFAULT_LANG = "en-gb"
+/** Every locale the site is published in, default first for each target. */
+const LANGS = ["en-gb", "zh-hans"] as const
+
+/**
+ * Locale served from the unprefixed routes.
+ *
+ * `.com` leads with English; `.cn` leads with Chinese, so a visitor landing on
+ * the bare domain gets the language that site exists for. The other locale then
+ * moves to a prefix — on `.cn`, English lives at `/en-gb/`.
+ */
+const DEFAULT_LANG: Record<SiteTarget, string> = {
+  com: "en-gb",
+  cn: "zh-hans",
+}
 
 /** hreflang and Open Graph locale codes, keyed by Rspress lang. */
 const HREFLANG: Record<string, string> = { "en-gb": "en-GB", "zh-hans": "zh-Hans" }
 const OG_LOCALE: Record<string, string> = { "en-gb": "en_GB", "zh-hans": "zh_CN" }
+
+/** Language-switcher labels, keyed by Rspress lang. */
+const LOCALE_LABELS: Record<string, string> = {
+  "en-gb": "English (Great Britain)",
+  "zh-hans": "简体中文",
+}
+
+/** Site title and description, keyed by Rspress lang. */
+const LOCALE_META: Record<string, { title: string; description: string }> = {
+  "en-gb": {
+    title: "OnixByte",
+    description:
+      "OnixByte builds self-developed SaaS products and delivers custom software engineering services.",
+  },
+  "zh-hans": {
+    title: "OnixByte",
+    description: "曜珀科技自主研发 SaaS 产品，并提供定制化软件开发服务。",
+  },
+}
 
 /**
  * Social links, split by whether they are reliably reachable from mainland
@@ -73,19 +104,31 @@ const SOCIAL_LINKS: Record<"domestic" | "international", SocialLink[]> = {
 type CustomMapsOption = NonNullable<Parameters<typeof pluginSitemap>[0]["customMaps"]>
 type SitemapOverrides = Record<string, Omit<CustomMapsOption[string], "loc">>
 
-const SITEMAP_PRIORITIES = {
-  "/products/": { priority: "1.0" },
-  "/zh-hans/products/": { priority: "1.0" },
-  "/services/": { priority: "1.0" },
-  "/zh-hans/services/": { priority: "1.0" },
-  "/opensource-projects/": { priority: "0.8" },
-  "/zh-hans/opensource-projects/": { priority: "0.8" },
-} satisfies SitemapOverrides
+const PRIORITISED_ROUTES = [
+  ["/products/", "1.0"],
+  ["/services/", "1.0"],
+  ["/opensource-projects/", "0.8"],
+] as const
 
-const localePrefix = (lang: string) => (lang === DEFAULT_LANG ? "" : `/${lang}`)
+/**
+ * Builds the override map for a target.
+ *
+ * The keys are full route paths, so they depend on which locale is unprefixed —
+ * `/products/` means English on `.com` and Chinese on `.cn`.
+ */
+function sitemapPriorities(localePrefix: (lang: string) => string): SitemapOverrides {
+  return Object.fromEntries(
+    LANGS.flatMap((lang) =>
+      PRIORITISED_ROUTES.map(([routePath, priority]) => [
+        `${localePrefix(lang)}${routePath}`,
+        { priority },
+      ])
+    )
+  ) satisfies SitemapOverrides
+}
 
 /** Strips the language prefix, always returning a leading slash. */
-function bareRoutePath(routePath: string, lang: string): string {
+function bareRoutePath(localePrefix: (lang: string) => string, routePath: string, lang: string) {
   const prefix = localePrefix(lang)
   const rest = prefix && routePath.startsWith(prefix) ? routePath.slice(prefix.length) : routePath
   return rest.startsWith("/") ? rest : `/${rest}`
@@ -112,16 +155,19 @@ function pluginRobots(origin: string): RspressPlugin {
 
 export function createConfig(target: SiteTarget): UserConfig {
   const origin = ORIGINS[target]
+  const defaultLang = DEFAULT_LANG[target]
   const socialLinks = [
     ...SOCIAL_LINKS.domestic,
     ...(target === "cn" ? [] : SOCIAL_LINKS.international),
   ]
 
+  /** Rspress drops the prefix from the default locale's routes. */
+  const localePrefix = (lang: string) => (lang === defaultLang ? "" : `/${lang}`)
+
   return defineConfig({
     root: path.join(__dirname, "docs"),
-    title: "OnixByte",
-    description:
-      "OnixByte builds self-developed SaaS products and delivers custom software engineering services.",
+    title: LOCALE_META[defaultLang].title,
+    description: LOCALE_META[defaultLang].description,
     icon: "/onixbyte-icon.svg",
     logo: {
       light: "/onixbyte-light-logo.svg",
@@ -139,8 +185,8 @@ export function createConfig(target: SiteTarget): UserConfig {
     head: [
       (route) => {
         const canonical = `${origin}${route.routePath}`
-        const bare = bareRoutePath(route.routePath, route.lang)
-        const otherLang = route.lang === DEFAULT_LANG ? "zh-hans" : DEFAULT_LANG
+        const bare = bareRoutePath(localePrefix, route.routePath, route.lang)
+        const otherLang = LANGS.find((lang) => lang !== route.lang) ?? route.lang
         const alternate = `${origin}${localePrefix(otherLang)}${bare === "/" ? "/" : bare}`
         const defaultUrl = `${origin}${bare === "/" ? "/" : bare}`
 
@@ -172,22 +218,13 @@ export function createConfig(target: SiteTarget): UserConfig {
     markdown: {
       showLineNumbers: true,
     },
-    lang: DEFAULT_LANG,
-    locales: [
-      {
-        lang: "en-gb",
-        label: "English (Great Britain)",
-        title: "OnixByte",
-        description:
-          "OnixByte builds self-developed SaaS products and delivers custom software engineering services.",
-      },
-      {
-        lang: "zh-hans",
-        label: "简体中文",
-        title: "OnixByte",
-        description: "曜珀科技自主研发 SaaS 产品，并提供定制化软件开发服务。",
-      },
-    ],
+    lang: defaultLang,
+    // The default locale is listed first so the language switcher leads with it.
+    locales: [defaultLang, ...LANGS.filter((lang) => lang !== defaultLang)].map((lang) => ({
+      lang,
+      label: LOCALE_LABELS[lang],
+      ...LOCALE_META[lang],
+    })),
     // Local full-text search. This is already the Rspress v2 default; stated
     // explicitly so the intent is visible. The index is emitted per locale to
     // `static/search_index.<lang>.<hash>.json` at build time.
@@ -200,12 +237,10 @@ export function createConfig(target: SiteTarget): UserConfig {
         siteUrl: origin,
         defaultChangeFreq: "weekly",
         defaultPriority: "0.5",
-        // Keys are full route paths, so the non-default locale needs its own
-        // entries — `/products/` does not match `/zh-hans/products/`.
         // Double assertion rather than a plain cast: the plugin's `Sitemap` type
         // requires `loc`, so the two types do not overlap enough for a single
-        // assertion. See `SITEMAP_PRIORITIES` above for why omitting it is right.
-        customMaps: SITEMAP_PRIORITIES as unknown as CustomMapsOption,
+        // assertion. See `sitemapPriorities` above for why omitting it is right.
+        customMaps: sitemapPriorities(localePrefix) as unknown as CustomMapsOption,
       }),
       pluginRobots(origin),
     ],

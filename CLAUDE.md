@@ -19,9 +19,14 @@ pnpm format     # Prettier — format all files
 
 `rspress.config.ts` exports a `createConfig(target)` factory; `rspress.cn.config.ts`
 is a three-line wrapper calling it with `"cn"`, passed via `--config`. The two
-targets differ in the canonical origin used for `head`, the sitemap and
-`robots.txt`, and in which social links are rendered. Both write to `doc_build/`,
-so build and deploy one target at a time.
+targets differ in the default (unprefixed) language, the canonical origin used
+for `head`, the sitemap and `robots.txt`, and in which social links are rendered.
+Both write to `doc_build/`, so build and deploy one target at a time.
+
+`.com` defaults to `en-gb` and `.cn` to `zh-hans`, so the same content is served
+at different paths per target — Rspress omits the prefix for the default locale.
+Anything referencing a locale prefix must go through the `localePrefix` helper
+inside `createConfig`, never a hardcoded `/zh-hans`.
 
 ## Architecture
 
