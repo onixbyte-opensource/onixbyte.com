@@ -4,4 +4,26 @@
   --rp-c-brand: #0f766e;
   --rp-c-brand-dark: #115e59;
   --rp-c-brand-tint: rgba(15, 118, 110, 0.16);
+
+  /* Vertical rhythm for the marketing bands on the home, products and
+     services pages. */
+  --rp-site-section-gap: 4rem;
+}
+
+/* `HomeFeature` always renders its wrapper, even when the page declares no
+   `features`. Hide the empty shell so a hero-only page does not show a
+   stray empty band. */
+.rp-home-feature:empty {
+  display: none;
+  border: 0;
+  padding: 0;
+}
+
+/* Full-bleed marketing sections, driven by `frontmatter.sections`. */
+.rp-site-section {
+  padding-block: var(--rp-site-section-gap);
+}
+
+.rp-site-section:nth-child(even) {
+  background: var(--rp-c-bg-soft);
 }
