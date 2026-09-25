@@ -2,6 +2,26 @@
   "outputDirectory": "doc_build",
   "redirects": [
     {
+      "source": "/zh-hans/projects",
+      "destination": "/zh-hans/opensource-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-hans/projects/:path*",
+      "destination": "/zh-hans/opensource-projects/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/opensource-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/:path*",
+      "destination": "/opensource-projects/:path*",
+      "permanent": true
+    },
+    {
       "source": "/:path(.*)",
       "has": [
         {
