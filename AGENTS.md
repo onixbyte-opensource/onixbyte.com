@@ -7,3 +7,7 @@
 ### ESLint
 
 - Run `pnpm run lint` to lint your code
+
+### TypeScript
+
+- Run `pnpm run typecheck` to type-check your code
