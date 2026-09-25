@@ -41,26 +41,28 @@ Helix 旨在作为项目的起点使用。Fork 或克隆它，然后在现成的
 
 ## 架构
 
-| 层 | 技术栈 |
-|---|---|
-| **前端** | React 19、TypeScript、Tailwind CSS 4、Ant Design 6、React Router 7、Redux Toolkit、Axios、MSAL |
-| **后端** | Spring Boot 3.5、Java 17、Spring Security、MyBatis、Spring Data JPA |
-| **数据库** | PostgreSQL（使用 Flyway 迁移） |
-| **缓存** | Redis（会话和 token 存储） |
-| **存储** | AWS S3（资源上传） |
+| 层         | 技术栈                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| **前端**   | React 19、TypeScript、Tailwind CSS 4、Ant Design 6、React Router 7、Redux Toolkit、Axios、MSAL |
+| **后端**   | Spring Boot 3.5、Java 21、Spring Security、MyBatis、Spring Data JPA                            |
+| **数据库** | PostgreSQL（使用 Flyway 迁移）                                                                 |
+| **缓存**   | Redis（会话和 token 存储）                                                                     |
+| **存储**   | AWS S3（资源上传）                                                                             |
 
 前端通过 RESTful JSON API 与后端通信。认证流程使用短有效期的 JWT access token，refresh token 存储在 Redis 中。Microsoft Entra ID 集成在前端通过 MSAL 处理，并在后端进行校验。
 
 ## 代码仓库
 
-- [helix-server](https://git.onixbyte.cn/helix/helix-server) — Spring Boot 后端
-- [helix-web](https://git.onixbyte.cn/helix/helix-web) — React 前端
+Helix 采用单仓库（monorepo）结构，前后端都在同一个仓库中。
+
+- [server/](https://github.com/onixbyte-opensource/helix/tree/main/server) — Spring Boot 后端
+- [web/](https://github.com/onixbyte-opensource/helix/tree/main/web) — React 前端
 
 ## 快速开始
 
 Helix 是一个模板项目。启动新项目的步骤：
 
-1. Fork 或克隆 `helix-server` 和 `helix-web` 两个仓库。
+1. Fork 或克隆 [Helix 仓库](https://github.com/onixbyte-opensource/helix)。
 2. 在后端配置您的数据库、Redis 和 S3 设置。
 3. 在前端配置您的认证提供商和 API 基础地址。
 4. 启动后端：`./gradlew bootRun`

@@ -41,26 +41,28 @@ Helix is intended to be used as a starting point. Fork or clone it and begin bui
 
 ## Architecture
 
-| Layer        | Technology                                                    |
-|--------------|---------------------------------------------------------------|
+| Layer        | Technology                                                                                     |
+| ------------ | ---------------------------------------------------------------------------------------------- |
 | **Frontend** | React 19, TypeScript, Tailwind CSS 4, Ant Design 6, React Router 7, Redux Toolkit, Axios, MSAL |
-| **Backend**  | Spring Boot 3.5, Java 17, Spring Security, MyBatis, Spring Data JPA |
-| **Database** | PostgreSQL (with Flyway migrations)                           |
-| **Cache**    | Redis (session/token storage)                                 |
-| **Storage**  | AWS S3 (asset uploads)                                       |
+| **Backend**  | Spring Boot 3.5, Java 21, Spring Security, MyBatis, Spring Data JPA                            |
+| **Database** | PostgreSQL (with Flyway migrations)                                                            |
+| **Cache**    | Redis (session/token storage)                                                                  |
+| **Storage**  | AWS S3 (asset uploads)                                                                         |
 
 The frontend communicates with the backend via a RESTful JSON API. Authentication flow uses JWT access tokens (short-lived) with refresh tokens stored in Redis. Microsoft Entra ID integration is handled client-side via MSAL and validated server-side.
 
 ## Repositories
 
-- [helix-server](https://git.onixbyte.cn/helix/helix-server) — Spring Boot backend
-- [helix-web](https://git.onixbyte.cn/helix/helix-web) — React frontend
+Helix is a monorepo — both halves live in the same repository.
+
+- [server/](https://github.com/onixbyte-opensource/helix/tree/main/server) — Spring Boot backend
+- [web/](https://github.com/onixbyte-opensource/helix/tree/main/web) — React frontend
 
 ## Getting Started
 
 Helix is designed as a template project. To start a new project:
 
-1. Fork or clone both `helix-server` and `helix-web` repositories.
+1. Fork or clone the [Helix repository](https://github.com/onixbyte-opensource/helix).
 2. Configure your database, Redis, and S3 settings in the backend.
 3. Configure your authentication providers and API base URL in the frontend.
 4. Run the backend: `./gradlew bootRun`
