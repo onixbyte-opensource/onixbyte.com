@@ -11,7 +11,7 @@ author:
 ## When to Add Seasonings
 
 | Seasoning Type                         | Timing                                 | Suitable Dishes                                      | Effect                                                                        |
-|----------------------------------------|----------------------------------------|------------------------------------------------------|-------------------------------------------------------------------------------|
+| -------------------------------------- | -------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------- |
 | **Salt**                               | Last                                   | Leafy greens                                         | Prevents leaves from wilting and releasing water, keeps them crisp and tender |
 |                                        | Mid-way                                | Shredded potatoes, green beans, garlic shoots        | Better flavour absorption                                                     |
 | **MSG, Light Soy Sauce, Oyster Sauce** | Towards the end                        | Dishes needing umami and aroma enhancement           | Adds umami and aroma; high heat destroys freshness and fragrance              |
@@ -24,7 +24,7 @@ author:
 ## Quick Reference
 
 | Seasoning                                     | Timing                       | Effect                                                                      | Example                                                                   |
-|-----------------------------------------------|------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| --------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | **Salt**                                      | 10–15 seconds before serving | Prevents premature water loss and wilting of leafy greens; keeps them crisp | Sprinkle salt and toss before turning off the heat for lettuce or spinach |
 | **Minced Garlic / Ginger**                    | First, after oil is hot      | Releases fragrance and enhances flavour                                     | Sauté minced garlic in hot oil, then add greens                           |
 | **Light Soy Sauce / Oyster Sauce** (optional) | After salt                   | Adds umami; use sparingly to avoid overpowering the vegetables              | Add 1–2 drops of light soy sauce after salting Shanghai greens            |

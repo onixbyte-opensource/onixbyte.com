@@ -26,11 +26,11 @@ https://gravatar.com/avatar/<hash>
 ### Node.js
 
 ```js
-import { createHash } from "node:crypto";
+import { createHash } from "node:crypto"
 
-const email = "user@example.com".trim().toLowerCase();
-const hash = createHash("sha256").update(email).digest("hex");
-const url = `https://gravatar.com/avatar/${hash}`;
+const email = "user@example.com".trim().toLowerCase()
+const hash = createHash("sha256").update(email).digest("hex")
+const url = `https://gravatar.com/avatar/${hash}`
 ```
 
 ### Python
@@ -54,7 +54,7 @@ echo -n "user@example.com" | tr '[:upper:]' '[:lower:]' | sha256sum | cut -d ' '
 The `/avatar/` endpoint accepts several query parameters to customise the result:
 
 | Parameter | Description                             | Example        |
-|-----------|-----------------------------------------|----------------|
+| --------- | --------------------------------------- | -------------- |
 | `s`       | Size in pixels (default: 80)            | `?s=200`       |
 | `d`       | Default image when no Gravatar is found | `?d=identicon` |
 | `r`       | Content rating (`g`, `pg`, `r`, `x`)    | `?r=g`         |
@@ -77,8 +77,7 @@ The `/avatar/` endpoint accepts several query parameters to customise the result
   src="https://gravatar.com/avatar/a3b4c5d6e7f8?s=160&d=robohash&r=g"
   alt="User avatar"
   width="160"
-  height="160"
-/>
+  height="160" />
 ```
 
 Always pass the `d` parameter to avoid broken images for users who have not set up a Gravatar. `identicon` and

@@ -98,7 +98,6 @@ author:
 ## Spring Boot Best Practices & Layered Architecture
 
 - **Layered Architecture (MVC with Manager Layer)**: Our backend applications follow a strict multi-layered architecture, ensuring clear separation of responsibilities and improving maintainability and testability. The layers and their responsibilities are:
-
   - **Controller Layer**: Located in the `controller` package. Responsible for exposing RESTful APIs, handling HTTP requests, and mapping request parameters/bodies to service layer calls. Controllers should remain lightweight, focusing primarily on input validation (using DTOs) and coordinating calls to the `Service` layer.
   - **Service Layer**: Located in the `service` package. This layer encapsulates core business logic. Services expose a directly consumable API to the `Controller` layer, abstracting business processes and transaction management. Services coordinate calls to the `Manager` layer to execute business operations.
   - **Manager Layer**: Located in the `manager` package. This layer provides atomic business operations that can be composed by the `Service` layer. Managers typically handle more complex business logic and may involve interacting with multiple repositories or other external systems at a finer granularity.
@@ -120,7 +119,7 @@ author:
   - Data operation conventions:
     - Use JPA for simple database operations.
     - Use MyBatis for complex database operations.
-    - When performing paginated queries, page numbers should start from 0 (*compatible with Spring Data JPA*).
+    - When performing paginated queries, page numbers should start from 0 (_compatible with Spring Data JPA_).
   - **Data Access Method Naming Conventions**:
     - For **querying data lists**: methods **must** start with `selectListBy`, followed by the filter criteria (e.g., `selectListByUserId`, `selectListByDepartmentIdAndStatus`). These methods must also include a `PageRequest` parameter for pagination.
     - For querying **single data records**: methods **must** start with `selectOne` (e.g., `selectOneById`, `selectOneByUsername`).

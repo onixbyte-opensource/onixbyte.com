@@ -105,7 +105,7 @@ The N+1 problem occurs when JPA executes one query for the parent entity, then N
 **Fixes:**
 
 | Approach                 | When to use                                       |
-|--------------------------|---------------------------------------------------|
+| ------------------------ | ------------------------------------------------- |
 | `@EntityGraph`           | Declarative, good for entity-specific fetch plans |
 | `JOIN FETCH` in `@Query` | Fine-grained control per query                    |
 | `@BatchSize`             | Reduces N+1 to N/k+1 by batching                  |
@@ -144,6 +144,7 @@ This happens when you access a lazily-loaded association outside the persistence
    @Query("SELECT new com.example.UserDto(u.id, u.name) FROM User u WHERE u.id = :id")
    UserDto findUserDtoById(@Param("id") long id);
    ```
+
 3. **`@Transactional(readOnly = true)`** on the service method — keep the session open for the entire method scope.
 
 ### When should I use `@Transactional(readOnly = true)`?
@@ -275,7 +276,7 @@ Note that `@JsonAnyGetter` must be placed on the **getter method**, not the fiel
 
 ### How to choose
 
-| Scenario                                              | Annotation         |
-|-------------------------------------------------------|--------------------|
-| Flatten nested objects with fixed fields (e.g. address, config) | `@JsonUnwrapped`   |
-| Flatten dynamic key-value pairs with unknown keys     | `@JsonAnyGetter`   |
+| Scenario                                                        | Annotation       |
+| --------------------------------------------------------------- | ---------------- |
+| Flatten nested objects with fixed fields (e.g. address, config) | `@JsonUnwrapped` |
+| Flatten dynamic key-value pairs with unknown keys               | `@JsonAnyGetter` |

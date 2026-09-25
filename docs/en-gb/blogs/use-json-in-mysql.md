@@ -5,8 +5,8 @@ tags:
   - json
   - database
 author:
-   name: Zihlu Wang
-   email: real@zihluwang.me
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 MySQL (since version 5.7) **does not directly support a data type called `jsonb`**. `jsonb` is a data type specific to PostgreSQL, which stores JSON data in a binary format with pre-parsing for faster access and manipulation during queries.

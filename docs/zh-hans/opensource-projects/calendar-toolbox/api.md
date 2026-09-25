@@ -6,16 +6,16 @@ title: Calendar Toolbox API
 
 库的代码组织在基础包 `com.onixbyte.calendar` 下，结构如下：
 
-| 包 | 描述 |
-|---|---|
-| `com.onixbyte.calendar` | 根日历对象 |
-| `com.onixbyte.calendar.component` | iCalendar 组件（VEVENT、VTODO 等） |
-| `com.onixbyte.calendar.component.property` | 组件级属性 |
-| `com.onixbyte.calendar.property` | 日历级属性 |
-| `com.onixbyte.calendar.parameter` | iCalendar 属性参数 |
-| `com.onixbyte.calendar.recurrence` | 重复规则类型 |
-| `com.onixbyte.calendar.value` | 值类型 |
-| `com.onixbyte.calendar.util` | 格式化工具类 |
+| 包                                         | 描述                               |
+| ------------------------------------------ | ---------------------------------- |
+| `com.onixbyte.calendar`                    | 根日历对象                         |
+| `com.onixbyte.calendar.component`          | iCalendar 组件（VEVENT、VTODO 等） |
+| `com.onixbyte.calendar.component.property` | 组件级属性                         |
+| `com.onixbyte.calendar.property`           | 日历级属性                         |
+| `com.onixbyte.calendar.parameter`          | iCalendar 属性参数                 |
+| `com.onixbyte.calendar.recurrence`         | 重复规则类型                       |
+| `com.onixbyte.calendar.value`              | 值类型                             |
+| `com.onixbyte.calendar.util`               | 格式化工具类                       |
 
 ---
 
@@ -46,19 +46,19 @@ String icsContent = calendar.formatted();
 
 所有日历级属性位于 `com.onixbyte.calendar.property`，实现 `CalendarProperty` 接口。
 
-| 类 | iCalendar 属性 | 描述 |
-|---|---|---|
-| `CalendarScale` | `CALSCALE` | 日历系统（例如 GREGORIAN） |
-| `Method` | `METHOD` | iCalendar 方法（例如 PUBLISH、REQUEST） |
-| `ProductIdentifier` | `PRODID` | 日历的产品标识符 |
-| `Version` | `VERSION` | iCalendar 版本（例如 2.0） |
-| `Owner` | `X-OWNER` | 日历所有者 |
-| `PrimaryCalendar` | `X-PRIMARY-CALENDAR` | 是否为主日历 |
-| `PublishedTTL` | `X-PUBLISHED-TTL` | 已发布日历的生存时间 |
-| `CalendarDescription` | `X-CALENDAR-DESC` | 日历描述 |
-| `CalendarName` | `X-CALENDAR-NAME` | 日历名称 |
-| `CalendarId` | `X-CALENDAR-ID` | 日历标识符 |
-| `CustomCalendarProperty` | `X-*` | 自定义日历属性 |
+| 类                       | iCalendar 属性       | 描述                                    |
+| ------------------------ | -------------------- | --------------------------------------- |
+| `CalendarScale`          | `CALSCALE`           | 日历系统（例如 GREGORIAN）              |
+| `Method`                 | `METHOD`             | iCalendar 方法（例如 PUBLISH、REQUEST） |
+| `ProductIdentifier`      | `PRODID`             | 日历的产品标识符                        |
+| `Version`                | `VERSION`            | iCalendar 版本（例如 2.0）              |
+| `Owner`                  | `X-OWNER`            | 日历所有者                              |
+| `PrimaryCalendar`        | `X-PRIMARY-CALENDAR` | 是否为主日历                            |
+| `PublishedTTL`           | `X-PUBLISHED-TTL`    | 已发布日历的生存时间                    |
+| `CalendarDescription`    | `X-CALENDAR-DESC`    | 日历描述                                |
+| `CalendarName`           | `X-CALENDAR-NAME`    | 日历名称                                |
+| `CalendarId`             | `X-CALENDAR-ID`      | 日历标识符                              |
+| `CustomCalendarProperty` | `X-*`                | 自定义日历属性                          |
 
 自定义属性使用 Builder 创建：
 
@@ -276,50 +276,50 @@ Alarm emailAlarm = Alarm.builder()
 
 组件属性位于 `com.onixbyte.calendar.component.property`，实现 `ComponentProperty` 接口。
 
-| 类 | iCalendar 属性 | 描述 |
-|---|---|---|
-| `Action` | `ACTION` | 闹钟操作类型（AUDIO、DISPLAY、EMAIL） |
-| `Attachment` | `ATTACH` | 文档附件 |
-| `Attendee` | `ATTENDEE` | 事件/任务参与者 |
-| `Categories` | `CATEGORIES` | 类别或标签 |
-| `Classification` | `CLASS` | 访问分类（PUBLIC、PRIVATE、CONFIDENTIAL） |
-| `Comment` | `COMMENT` | 评论 |
-| `Contact` | `CONTACT` | 联系信息 |
-| `DateTimeCompleted` | `COMPLETED` | 完成日期时间 |
-| `DateTimeCreated` | `CREATED` | 创建日期时间 |
-| `DateTimeDue` | `DUE` | 截止日期时间 |
-| `DateTimeEnd` | `DTEND` | 结束日期时间 |
-| `DateTimeStamp` | `DTSTAMP` | 日期时间戳 |
-| `DateTimeStart` | `DTSTART` | 开始日期时间 |
-| `Description` | `DESCRIPTION` | 描述 |
-| `ExceptionDateTimes` | `EXDATE` | 例外日期时间 |
-| `FreeBusyTime` | `FREEBUSY` | 空闲/忙碌时间段 |
-| `GeographicPosition` | `GEO` | 地理位置（纬度/经度） |
-| `LastModified` | `LAST-MODIFIED` | 最后修改日期时间 |
-| `Location` | `LOCATION` | 地点 |
-| `Organiser` | `ORGANIZER` | 组织者 |
-| `PercentComplete` | `PERCENT-COMPLETE` | 完成百分比 |
-| `Priority` | `PRIORITY` | 优先级 |
-| `RecurrenceDateTimes` | `RDATE` | 重复日期时间 |
-| `RecurrenceId` | `RECURRENCE-ID` | 重复实例标识符 |
-| `RecurrenceRule` | `RRULE` | 重复规则 |
-| `RelatedTo` | `RELATED-TO` | 相关组件引用 |
-| `RepeatCount` | `REPEAT` | 闹钟重复次数 |
-| `RequestStatus` | `REQUEST-STATUS` | 请求状态 |
-| `Resources` | `RESOURCES` | 资源 |
-| `SequenceNumber` | `SEQUENCE` | 序列号（修订版本） |
-| `Status` | `STATUS` | 组件状态（TENTATIVE、CONFIRMED、CANCELLED 等） |
-| `Summary` | `SUMMARY` | 标题或摘要 |
-| `TimeTransparency` | `TRANSP` | 时间透明度（OPAQUE、TRANSPARENT） |
-| `TimeZoneIdentifier` | `TZID` | 时区标识符 |
-| `TimeZoneName` | `TZNAME` | 时区名称 |
-| `TimeZoneOffsetFrom` | `TZOFFSETFROM` | 相对于 UTC 的时区偏移（原） |
-| `TimeZoneOffsetTo` | `TZOFFSETTO` | 相对于 UTC 的时区偏移（目标） |
-| `TimeZoneUrl` | `TZURL` | 时区 URL |
-| `Trigger` | `TRIGGER` | 闹钟触发器 |
-| `UniformResourceLocator` | `URL` | 关联 URL |
-| `UniqueIdentifier` | `UID` | 唯一标识符 |
-| `CustomComponentProperty` | `X-*` | 自定义组件属性 |
+| 类                        | iCalendar 属性     | 描述                                           |
+| ------------------------- | ------------------ | ---------------------------------------------- |
+| `Action`                  | `ACTION`           | 闹钟操作类型（AUDIO、DISPLAY、EMAIL）          |
+| `Attachment`              | `ATTACH`           | 文档附件                                       |
+| `Attendee`                | `ATTENDEE`         | 事件/任务参与者                                |
+| `Categories`              | `CATEGORIES`       | 类别或标签                                     |
+| `Classification`          | `CLASS`            | 访问分类（PUBLIC、PRIVATE、CONFIDENTIAL）      |
+| `Comment`                 | `COMMENT`          | 评论                                           |
+| `Contact`                 | `CONTACT`          | 联系信息                                       |
+| `DateTimeCompleted`       | `COMPLETED`        | 完成日期时间                                   |
+| `DateTimeCreated`         | `CREATED`          | 创建日期时间                                   |
+| `DateTimeDue`             | `DUE`              | 截止日期时间                                   |
+| `DateTimeEnd`             | `DTEND`            | 结束日期时间                                   |
+| `DateTimeStamp`           | `DTSTAMP`          | 日期时间戳                                     |
+| `DateTimeStart`           | `DTSTART`          | 开始日期时间                                   |
+| `Description`             | `DESCRIPTION`      | 描述                                           |
+| `ExceptionDateTimes`      | `EXDATE`           | 例外日期时间                                   |
+| `FreeBusyTime`            | `FREEBUSY`         | 空闲/忙碌时间段                                |
+| `GeographicPosition`      | `GEO`              | 地理位置（纬度/经度）                          |
+| `LastModified`            | `LAST-MODIFIED`    | 最后修改日期时间                               |
+| `Location`                | `LOCATION`         | 地点                                           |
+| `Organiser`               | `ORGANIZER`        | 组织者                                         |
+| `PercentComplete`         | `PERCENT-COMPLETE` | 完成百分比                                     |
+| `Priority`                | `PRIORITY`         | 优先级                                         |
+| `RecurrenceDateTimes`     | `RDATE`            | 重复日期时间                                   |
+| `RecurrenceId`            | `RECURRENCE-ID`    | 重复实例标识符                                 |
+| `RecurrenceRule`          | `RRULE`            | 重复规则                                       |
+| `RelatedTo`               | `RELATED-TO`       | 相关组件引用                                   |
+| `RepeatCount`             | `REPEAT`           | 闹钟重复次数                                   |
+| `RequestStatus`           | `REQUEST-STATUS`   | 请求状态                                       |
+| `Resources`               | `RESOURCES`        | 资源                                           |
+| `SequenceNumber`          | `SEQUENCE`         | 序列号（修订版本）                             |
+| `Status`                  | `STATUS`           | 组件状态（TENTATIVE、CONFIRMED、CANCELLED 等） |
+| `Summary`                 | `SUMMARY`          | 标题或摘要                                     |
+| `TimeTransparency`        | `TRANSP`           | 时间透明度（OPAQUE、TRANSPARENT）              |
+| `TimeZoneIdentifier`      | `TZID`             | 时区标识符                                     |
+| `TimeZoneName`            | `TZNAME`           | 时区名称                                       |
+| `TimeZoneOffsetFrom`      | `TZOFFSETFROM`     | 相对于 UTC 的时区偏移（原）                    |
+| `TimeZoneOffsetTo`        | `TZOFFSETTO`       | 相对于 UTC 的时区偏移（目标）                  |
+| `TimeZoneUrl`             | `TZURL`            | 时区 URL                                       |
+| `Trigger`                 | `TRIGGER`          | 闹钟触发器                                     |
+| `UniformResourceLocator`  | `URL`              | 关联 URL                                       |
+| `UniqueIdentifier`        | `UID`              | 唯一标识符                                     |
+| `CustomComponentProperty` | `X-*`              | 自定义组件属性                                 |
 
 ---
 
@@ -327,28 +327,28 @@ Alarm emailAlarm = Alarm.builder()
 
 参数位于 `com.onixbyte.calendar.parameter`，为组件属性提供额外限定。
 
-| 类 | iCalendar 参数 | 描述 |
-|---|---|---|
-| `AlarmTriggerRelationship` | `RELATED` | 触发器关联（START、END） |
-| `AlternateTextRepresentation` | `ALTREP` | 替代文本 URI |
-| `CalendarUserType` | `CUTYPE` | 日历用户类型（INDIVIDUAL、GROUP、RESOURCE 等） |
-| `CommonName` | `CN` | 通用名称 |
-| `Delegatees` | `DELEGATED-TO` | 受托人 |
-| `Delegators` | `DELEGATED-FROM` | 委托人 |
-| `DirectoryEntryReference` | `DIR` | 目录条目 URI |
-| `FormatType` | `FMTTYPE` | 格式类型（MIME 类型） |
-| `FreeBusyTimeType` | `FBTYPE` | 空闲/忙碌时间类型 |
-| `InlineEncoding` | `ENCODING` | 内联编码（BASE64） |
-| `Language` | `LANGUAGE` | 语言 |
-| `Membership` | `MEMBER` | 组成员 |
-| `ParticipationRole` | `ROLE` | 参与角色（CHAIR、REQ-PARTICIPANT 等） |
-| `ParticipationStatus` | `PARTSTAT` | 参与状态（ACCEPTED、DECLINED 等） |
-| `RecurrenceIdentifierRange` | `RANGE` | 重复范围（THISANDPRIOR、THISANDFUTURE） |
-| `RelationshipType` | `RELTYPE` | 关系类型（PARENT、CHILD、SIBLING） |
-| `RsvpExpectation` | `RSVP` | RSVP 期望（TRUE、FALSE） |
-| `SentBy` | `SENT-BY` | 发送者 |
-| `TimeZoneIdentifier` | `TZID` | 时区标识符 |
-| `ValueDataType` | `VALUE` | 值数据类型（DATE、DATE-TIME 等） |
+| 类                            | iCalendar 参数   | 描述                                           |
+| ----------------------------- | ---------------- | ---------------------------------------------- |
+| `AlarmTriggerRelationship`    | `RELATED`        | 触发器关联（START、END）                       |
+| `AlternateTextRepresentation` | `ALTREP`         | 替代文本 URI                                   |
+| `CalendarUserType`            | `CUTYPE`         | 日历用户类型（INDIVIDUAL、GROUP、RESOURCE 等） |
+| `CommonName`                  | `CN`             | 通用名称                                       |
+| `Delegatees`                  | `DELEGATED-TO`   | 受托人                                         |
+| `Delegators`                  | `DELEGATED-FROM` | 委托人                                         |
+| `DirectoryEntryReference`     | `DIR`            | 目录条目 URI                                   |
+| `FormatType`                  | `FMTTYPE`        | 格式类型（MIME 类型）                          |
+| `FreeBusyTimeType`            | `FBTYPE`         | 空闲/忙碌时间类型                              |
+| `InlineEncoding`              | `ENCODING`       | 内联编码（BASE64）                             |
+| `Language`                    | `LANGUAGE`       | 语言                                           |
+| `Membership`                  | `MEMBER`         | 组成员                                         |
+| `ParticipationRole`           | `ROLE`           | 参与角色（CHAIR、REQ-PARTICIPANT 等）          |
+| `ParticipationStatus`         | `PARTSTAT`       | 参与状态（ACCEPTED、DECLINED 等）              |
+| `RecurrenceIdentifierRange`   | `RANGE`          | 重复范围（THISANDPRIOR、THISANDFUTURE）        |
+| `RelationshipType`            | `RELTYPE`        | 关系类型（PARENT、CHILD、SIBLING）             |
+| `RsvpExpectation`             | `RSVP`           | RSVP 期望（TRUE、FALSE）                       |
+| `SentBy`                      | `SENT-BY`        | 发送者                                         |
+| `TimeZoneIdentifier`          | `TZID`           | 时区标识符                                     |
+| `ValueDataType`               | `VALUE`          | 值数据类型（DATE、DATE-TIME 等）               |
 
 ---
 
@@ -356,10 +356,10 @@ Alarm emailAlarm = Alarm.builder()
 
 位于 `com.onixbyte.calendar.recurrence`。
 
-| 类 | 描述 |
-|---|---|
-| `Frequency` | 重复频率常量（DAILY、WEEKLY、MONTHLY、YEARLY），用于重复规则 |
-| `WeekdayNum` | 重复规则的星期序号（例如第 2 个星期一） |
+| 类           | 描述                                                         |
+| ------------ | ------------------------------------------------------------ |
+| `Frequency`  | 重复频率常量（DAILY、WEEKLY、MONTHLY、YEARLY），用于重复规则 |
+| `WeekdayNum` | 重复规则的星期序号（例如第 2 个星期一）                      |
 
 ---
 
@@ -367,12 +367,12 @@ Alarm emailAlarm = Alarm.builder()
 
 位于 `com.onixbyte.calendar.value`。
 
-| 类 | 描述 |
-|---|---|
-| `FreeBusyTimeValue` | 表示空闲/忙碌时间值 |
-| `PeriodOfTime` | 表示一个时间段，包含开始和结束 |
-| `PropertyValue` | 属性的基础值类型 |
-| `UtcOffset` | UTC 偏移值（例如 `-05:00`、`+01:00`） |
+| 类                  | 描述                                  |
+| ------------------- | ------------------------------------- |
+| `FreeBusyTimeValue` | 表示空闲/忙碌时间值                   |
+| `PeriodOfTime`      | 表示一个时间段，包含开始和结束        |
+| `PropertyValue`     | 属性的基础值类型                      |
+| `UtcOffset`         | UTC 偏移值（例如 `-05:00`、`+01:00`） |
 
 ---
 

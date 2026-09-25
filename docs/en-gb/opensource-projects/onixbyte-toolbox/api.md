@@ -6,13 +6,13 @@ title: OnixByte Toolbox API
 
 All modules are published under the `com.onixbyte` group ID. Each module has its own base package:
 
-| Module               | Maven Artifact         | Base Package                          |
-|----------------------|------------------------|---------------------------------------|
-| Common Toolbox       | `common-toolbox`       | `com.onixbyte.common`                 |
-| Crypto Toolbox       | `crypto-toolbox`       | `com.onixbyte.crypto`                 |
-| Math Toolbox         | `math-toolbox`         | `com.onixbyte.math`                   |
-| Tuple                | `tuple`                | `com.onixbyte.tuple`                  |
-| Identity Generator   | `identity-generator`   | `com.onixbyte.identitygenerator`      |
+| Module             | Maven Artifact       | Base Package                     |
+| ------------------ | -------------------- | -------------------------------- |
+| Common Toolbox     | `common-toolbox`     | `com.onixbyte.common`            |
+| Crypto Toolbox     | `crypto-toolbox`     | `com.onixbyte.crypto`            |
+| Math Toolbox       | `math-toolbox`       | `com.onixbyte.math`              |
+| Tuple              | `tuple`              | `com.onixbyte.tuple`             |
+| Identity Generator | `identity-generator` | `com.onixbyte.identitygenerator` |
 
 ---
 
@@ -28,16 +28,16 @@ import com.onixbyte.common.adapter.ObjectMapAdapter;
 
 ### Utility Classes
 
-| Class              | Description                                              |
-|--------------------|----------------------------------------------------------|
-| `AesUtil`          | AES symmetric encryption/decryption with key generation   |
-| `Base64Util`       | Base64 encoding and decoding with multiple charset support|
-| `BoolUtil`         | Boolean parsing and conversion utilities                  |
-| `BranchUtil`       | Conditional branching helpers with functional-style chains|
-| `CollectionUtil`   | Collection manipulation — grouping, partitioning, merging |
-| `HashUtil`         | Hashing utilities supporting MD5, SHA-1, SHA-256, SHA-512 |
-| `MapUtil`          | Map builder, merge, and transformation helpers            |
-| `RangeUtil`        | Numeric range operations with boundary handling           |
+| Class            | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| `AesUtil`        | AES symmetric encryption/decryption with key generation    |
+| `Base64Util`     | Base64 encoding and decoding with multiple charset support |
+| `BoolUtil`       | Boolean parsing and conversion utilities                   |
+| `BranchUtil`     | Conditional branching helpers with functional-style chains |
+| `CollectionUtil` | Collection manipulation — grouping, partitioning, merging  |
+| `HashUtil`       | Hashing utilities supporting MD5, SHA-1, SHA-256, SHA-512  |
+| `MapUtil`        | Map builder, merge, and transformation helpers             |
+| `RangeUtil`      | Numeric range operations with boundary handling            |
 
 **AesUtil Example:**
 
@@ -70,12 +70,12 @@ Provides a clean abstraction for loading cryptographic keys in PEM format. Suppo
 
 ### Key Loaders
 
-| Class                     | Description                                |
-|---------------------------|--------------------------------------------|
-| `RSAPrivateKeyLoader`     | Load RSA private keys from PEM strings     |
-| `RSAPublicKeyLoader`      | Load RSA public keys from PEM strings      |
-| `ECPrivateKeyLoader`      | Load ECDSA private keys from PEM strings   |
-| `ECPublicKeyLoader`       | Load ECDSA public keys from PEM strings    |
+| Class                 | Description                              |
+| --------------------- | ---------------------------------------- |
+| `RSAPrivateKeyLoader` | Load RSA private keys from PEM strings   |
+| `RSAPublicKeyLoader`  | Load RSA public keys from PEM strings    |
+| `ECPrivateKeyLoader`  | Load ECDSA private keys from PEM strings |
+| `ECPublicKeyLoader`   | Load ECDSA public keys from PEM strings  |
 
 All key loaders implement either `PrivateKeyLoader` or `PublicKeyLoader` interfaces.
 
@@ -99,9 +99,9 @@ var ecPublicKey = new ECPublicKeyLoader().load(pemString);
 
 ### Exceptions
 
-| Class                  | Description                                       |
-|------------------------|---------------------------------------------------|
-| `KeyLoadingException`  | Thrown when a PEM-formatted key fails to parse     |
+| Class                 | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| `KeyLoadingException` | Thrown when a PEM-formatted key fails to parse |
 
 ---
 
@@ -111,10 +111,10 @@ Statistical computation utilities for working with numeric datasets.
 
 ### Core Classes
 
-| Class                   | Description                                              |
-|-------------------------|----------------------------------------------------------|
-| `Calculator`            | Statistical calculator for mean, median, variance, standard deviation, sum, min, max |
-| `PercentileCalculator`  | Percentile computation with configurable interpolation strategies |
+| Class                  | Description                                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `Calculator`           | Statistical calculator for mean, median, variance, standard deviation, sum, min, max |
+| `PercentileCalculator` | Percentile computation with configurable interpolation strategies                    |
 
 **Calculator Example:**
 
@@ -135,9 +135,9 @@ double p99 = calculator.calculate(99);
 
 ### Model
 
-| Class             | Description                                                    |
-|-------------------|----------------------------------------------------------------|
-| `QuartileBounds`  | Holds Q1, median (Q2), Q3 values along with IQR and whisker bounds |
+| Class            | Description                                                        |
+| ---------------- | ------------------------------------------------------------------ |
+| `QuartileBounds` | Holds Q1, median (Q2), Q3 values along with IQR and whisker bounds |
 
 ---
 
@@ -147,12 +147,12 @@ Lightweight generic tuple types for when you need to return multiple values with
 
 ### Classes
 
-| Class              | Type Parameters | Mutability |
-|--------------------|-----------------|------------|
-| `Tuple<A, B>`      | Two elements    | Mutable    |
-| `ImmutableTuple<A, B>` | Two elements | Immutable  |
-| `Triple<A, B, C>`  | Three elements  | Mutable    |
-| `ImmutableTriple<A, B, C>` | Three elements | Immutable |
+| Class                      | Type Parameters | Mutability |
+| -------------------------- | --------------- | ---------- |
+| `Tuple<A, B>`              | Two elements    | Mutable    |
+| `ImmutableTuple<A, B>`     | Two elements    | Immutable  |
+| `Triple<A, B, C>`          | Three elements  | Mutable    |
+| `ImmutableTriple<A, B, C>` | Three elements  | Immutable  |
 
 **Example:**
 
@@ -183,10 +183,10 @@ Generates unique identifiers suitable for use as database primary keys or distri
 
 ### Implementations
 
-| Class                        | Description                                                     |
-|------------------------------|-----------------------------------------------------------------|
+| Class                        | Description                                                         |
+| ---------------------------- | ------------------------------------------------------------------- |
 | `SequentialUuidGenerator`    | Generates time-ordered, sequential UUIDs (optimised for DB indexes) |
-| `SnowflakeIdentityGenerator` | Snowflake-style distributed unique ID generation                 |
+| `SnowflakeIdentityGenerator` | Snowflake-style distributed unique ID generation                    |
 
 **Sequential UUID:**
 
@@ -204,6 +204,6 @@ long id = generator.nextId(); // 64-bit snowflake ID
 
 ### Exceptions
 
-| Class             | Description                                                    |
-|-------------------|----------------------------------------------------------------|
+| Class             | Description                                                              |
+| ----------------- | ------------------------------------------------------------------------ |
 | `TimingException` | Thrown when the system clock moves backwards, compromising ID uniqueness |

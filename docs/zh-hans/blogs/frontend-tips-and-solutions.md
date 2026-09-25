@@ -68,7 +68,7 @@ createRoot(document.getElementById("root")!).render(
 <StyleProvider>
   <ConfigProvider>
     <App>
-      <RouterProvider/>
+      <RouterProvider />
     </App>
   </ConfigProvider>
 </StyleProvider>

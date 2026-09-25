@@ -5,8 +5,8 @@ tags:
   - json
   - database
 author:
-   name: Zihlu Wang
-   email: real@zihluwang.me
+  name: Zihlu Wang
+  email: real@zihluwang.me
 ---
 
 MySQL (自 5.7 版本开始) **不直接支持名为 `jsonb` 的数据类型**。`jsonb` 是 PostgreSQL 数据库特有的数据类型，它以二进制格式存储 JSON 数据，并对其进行预解析，以便在查询时更快地访问和操作。

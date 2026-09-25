@@ -119,7 +119,7 @@ author:
   - 数据操作约定:
     - 对于简单数据库操作，使用 JPA。
     - 对于复杂数据库操作，使用 MyBatis。
-    - 当进行分页查询时，页码应从 0 开始（*兼容 Spring Data JPA*）。
+    - 当进行分页查询时，页码应从 0 开始（_兼容 Spring Data JPA_）。
   - **数据操作方法命名约定**:
     - 对于**查询数据列表**：方法**必须**以 `selectListBy` 开头，紧随其后是筛选条件（例如，`selectListByUserId`、`selectListByDepartmentIdAndStatus`）。这些方法也必须包含一个 `PageRequest` 参数用于分页。
     - 对于查询**单个数据记录**：方法**必须**以 `selectOne` 开头（例如，`selectOneById`、`selectOneByUsername`）。

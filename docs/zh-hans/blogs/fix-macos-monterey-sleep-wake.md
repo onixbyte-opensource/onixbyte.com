@@ -21,6 +21,6 @@ tags:
 
 于是对于 PowerNap 这个功能来说，我们只能从命令行下手，首先使用 **`pmset -g`** 命令查看当前状态，找到 **`powernap`** 的值，如果不是 0 ，说明是启用的状态，使用命令 **`sudo pmset -a powernap 0`** 关掉它。
 
-同时，还有另外一个 **`tcpkeepalive`** ，这个默认应该也不是 0 ，也要关掉，它决定了你的 rmbp 在休眠时是否要保持 tcp 连接。 **`sudo pmset -a tcpkeepalive 0`** ，执行这条命令会导致终端提示：***Warning: This option disables TCP Keep Alive mechanism when system is sleeping. This will result in some critical features like 'Find My Mac' not to function properly.***
+同时，还有另外一个 **`tcpkeepalive`** ，这个默认应该也不是 0 ，也要关掉，它决定了你的 rmbp 在休眠时是否要保持 tcp 连接。 **`sudo pmset -a tcpkeepalive 0`** ，执行这条命令会导致终端提示：**_Warning: This option disables TCP Keep Alive mechanism when system is sleeping. This will result in some critical features like 'Find My Mac' not to function properly._**
 
 大概是说关了的话某些功能会受到限制，其实就是系统功能不能休眠时联网了，我相信真有人偷了你 Mac，它也连不上网的。

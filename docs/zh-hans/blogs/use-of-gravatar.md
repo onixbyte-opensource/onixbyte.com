@@ -25,11 +25,11 @@ https://gravatar.com/avatar/<hash>
 ### Node.js
 
 ```js
-import { createHash } from "node:crypto";
+import { createHash } from "node:crypto"
 
-const email = "user@example.com".trim().toLowerCase();
-const hash = createHash("sha256").update(email).digest("hex");
-const url = `https://gravatar.com/avatar/${hash}`;
+const email = "user@example.com".trim().toLowerCase()
+const hash = createHash("sha256").update(email).digest("hex")
+const url = `https://gravatar.com/avatar/${hash}`
 ```
 
 ### Python
@@ -52,11 +52,11 @@ echo -n "user@example.com" | tr '[:upper:]' '[:lower:]' | sha256sum | cut -d ' '
 
 `/avatar/` 端点接受以下查询参数来定制结果：
 
-| 参数  | 描述                     | 示例             |
-|-----|------------------------|----------------|
-| `s` | 图片尺寸（像素，默认 80）         | `?s=200`       |
-| `d` | 未找到 Gravatar 时的默认图片    | `?d=identicon` |
-| `r` | 内容分级（`g`、`pg`、`r`、`x`） | `?r=g`         |
+| 参数 | 描述                            | 示例           |
+| ---- | ------------------------------- | -------------- |
+| `s`  | 图片尺寸（像素，默认 80）       | `?s=200`       |
+| `d`  | 未找到 Gravatar 时的默认图片    | `?d=identicon` |
+| `r`  | 内容分级（`g`、`pg`、`r`、`x`） | `?r=g`         |
 
 ### 默认图片选项（`d`）
 
@@ -76,8 +76,7 @@ echo -n "user@example.com" | tr '[:upper:]' '[:lower:]' | sha256sum | cut -d ' '
   src="https://gravatar.com/avatar/a3b4c5d6e7f8?s=160&d=robohash&r=g"
   alt="用户头像"
   width="160"
-  height="160"
-/>
+  height="160" />
 ```
 
 始终传入 `d` 参数以避免未设置 Gravatar 的用户出现裂图。`identicon` 和 `robohash` 是常用的选择，因为它们能为每个哈希值生成唯一且易于辨识的图片。

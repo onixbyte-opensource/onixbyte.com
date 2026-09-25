@@ -8,7 +8,7 @@ tags:
 ---
 
 > This article was originally written by **落格博客
-**: [落格博客](https://www.logcg.com/) » [Frequent Wake-from-Sleep Issues After Upgrading to macOS Monterey](https://www.logcg.com/archives/3528.html)
+> **: [落格博客](https://www.logcg.com/) » [Frequent Wake-from-Sleep Issues After Upgrading to macOS Monterey](https://www.logcg.com/archives/3528.html)
 
 After upgrading to macOS Monterey, my screen kept lighting up in the middle of the night for no apparent reason. It had
 happened before, but only when notifications came in. Now the screen lights up on its own with no trigger — same
@@ -33,8 +33,8 @@ So for Power Nap, we have to go through the command line. First, check the curre
 
 Also check **`tcpkeepalive`** — it likely isn't 0 either and should also be turned off. It controls whether your Mac
 maintains TCP connections while sleeping. Run **`sudo pmset -a tcpkeepalive 0`** — you'll see a terminal warning:
-***Warning: This option disables TCP Keep Alive mechanism when system is sleeping. This will result in some critical
-features like 'Find My Mac' not to function properly.***
+**_Warning: This option disables TCP Keep Alive mechanism when system is sleeping. This will result in some critical
+features like 'Find My Mac' not to function properly._**
 
 Essentially, turning it off limits some features — the system simply won't connect to the network while asleep. I'm
 fairly confident that if someone actually steals your Mac, they won't be getting it online anyway.

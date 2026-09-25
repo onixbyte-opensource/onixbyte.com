@@ -99,11 +99,11 @@ N+1 问题是指 JPA 先执行 1 条查询获取父实体，再为每条父实�
 
 **修复方案：**
 
-| 方式                        | 适用场景                 |
-|---------------------------|----------------------|
-| `@EntityGraph`            | 声明式，适合为特定实体定制抓取计划    |
-| `@Query` 中使用 `JOIN FETCH` | 按查询精细控制              |
-| `@BatchSize`              | 将 N+1 降低为 N/k+1，批量加载 |
+| 方式                         | 适用场景                           |
+| ---------------------------- | ---------------------------------- |
+| `@EntityGraph`               | 声明式，适合为特定实体定制抓取计划 |
+| `@Query` 中使用 `JOIN FETCH` | 按查询精细控制                     |
+| `@BatchSize`                 | 将 N+1 降低为 N/k+1，批量加载      |
 
 ```java
 // 方式一：EntityGraph
@@ -139,6 +139,7 @@ post.setAuthor(userRepository.getReferenceById(userId));
    @Query("SELECT new com.example.UserDto(u.id, u.name) FROM User u WHERE u.id = :id")
    UserDto findUserDtoById(@Param("id") long id);
    ```
+
 3. **在 Service 方法上使用 `@Transactional(readOnly = true)`** — 使 Session 在整个方法作用域内保持打开。
 
 ### 什么时候该用 `@Transactional(readOnly = true)`？
@@ -270,7 +271,7 @@ public class Product {
 
 ### 如何选择
 
-| 场景                                   | 注解               |
-|----------------------------------------|--------------------|
-| 平铺字段固定的嵌套对象（如地址、配置）   | `@JsonUnwrapped`   |
-| 平铺 key 不固定的动态键值对             | `@JsonAnyGetter`   |
+| 场景                                   | 注解             |
+| -------------------------------------- | ---------------- |
+| 平铺字段固定的嵌套对象（如地址、配置） | `@JsonUnwrapped` |
+| 平铺 key 不固定的动态键值对            | `@JsonAnyGetter` |

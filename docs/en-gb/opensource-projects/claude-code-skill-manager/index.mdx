@@ -23,6 +23,7 @@ Skills are deployed directly into Claude Code's own skills directory (`~/.claude
     | Windows (amd64) | `ccsm-windows-amd64.exe` |
 
     Place the binary somewhere on your `PATH` and rename it to `ccsm` (or `ccsm.exe` on Windows).
+
   </Tab>
   <Tab label="Cargo install">
     ```bash
@@ -109,10 +110,10 @@ ccsm marketplace remove my-marketplace
 
 CCSM supports two deploy modes:
 
-| Mode | Behaviour | Use case |
-|------|-----------|----------|
-| `copy` (default) | Files are physically copied to `~/.claude/skills/<name>/` | Normal use — safe and self-contained |
-| `link` | A symlink is created pointing to the local store | Skill development — changes to source files are picked up immediately |
+| Mode             | Behaviour                                                 | Use case                                                              |
+| ---------------- | --------------------------------------------------------- | --------------------------------------------------------------------- |
+| `copy` (default) | Files are physically copied to `~/.claude/skills/<name>/` | Normal use — safe and self-contained                                  |
+| `link`           | A symlink is created pointing to the local store          | Skill development — changes to source files are picked up immediately |
 
 Set the default mode in your config, or override per install:
 
@@ -158,21 +159,21 @@ your-marketplace-repo/
 
 **Top-level fields:**
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Marketplace display name |
-| `version` | No | Arbitrary version string for your own tracking |
-| `skills` | No | Array of skill entries (defaults to `[]`) |
+| Field     | Required | Description                                    |
+| --------- | -------- | ---------------------------------------------- |
+| `name`    | Yes      | Marketplace display name                       |
+| `version` | No       | Arbitrary version string for your own tracking |
+| `skills`  | No       | Array of skill entries (defaults to `[]`)      |
 
 **Skill entry fields:**
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Unique skill identifier (used with `ccsm install <name>`) |
-| `description` | Yes | One-line summary shown in `ccsm search` output |
-| `repository` | Yes | Public Git repository URL for the skill |
-| `branch` | No | Git branch to install from (tries `main` first, falls back to `master`) |
-| `path` | No | Subdirectory within the repository where the skill files live — enables monorepos hosting multiple skills |
+| Field         | Required | Description                                                                                               |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------- |
+| `name`        | Yes      | Unique skill identifier (used with `ccsm install <name>`)                                                 |
+| `description` | Yes      | One-line summary shown in `ccsm search` output                                                            |
+| `repository`  | Yes      | Public Git repository URL for the skill                                                                   |
+| `branch`      | No       | Git branch to install from (tries `main` first, falls back to `master`)                                   |
+| `path`        | No       | Subdirectory within the repository where the skill files live — enables monorepos hosting multiple skills |
 
 ### How it works
 
@@ -202,12 +203,12 @@ my-skill-repo/
 
 ## How CCSM Stores Data
 
-| Path | Purpose |
-|------|---------|
-| `~/.claude/skills/` | Claude Code's skills directory — where skills are deployed |
-| `~/.config/ccsm/config.json` | CCSM configuration (registered marketplaces, default mode) |
-| `~/.config/ccsm/marketplaces/` | Cached marketplace manifests |
-| `~/.config/ccsm/skills/` | Downloaded skill files (local store) |
+| Path                           | Purpose                                                    |
+| ------------------------------ | ---------------------------------------------------------- |
+| `~/.claude/skills/`            | Claude Code's skills directory — where skills are deployed |
+| `~/.config/ccsm/config.json`   | CCSM configuration (registered marketplaces, default mode) |
+| `~/.config/ccsm/marketplaces/` | Cached marketplace manifests                               |
+| `~/.config/ccsm/skills/`       | Downloaded skill files (local store)                       |
 
 On Windows, `~/.config/` resolves to `C:\Users\<user>\AppData\Roaming\`.
 

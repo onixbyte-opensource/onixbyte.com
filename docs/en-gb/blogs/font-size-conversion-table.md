@@ -10,8 +10,8 @@ author:
   email: real@zihluwang.me
 ---
 
-| Chinese Size Name  | English Point Size (pt) | mm    | px   |
-|--------------------|-------------------------|-------|------|
+| Chinese Size Name    | English Point Size (pt) | mm    | px   |
+| -------------------- | ----------------------- | ----- | ---- |
 | 初号 (Primary)       | 42                      | 14.82 | 56   |
 | 小初 (Small Primary) | 36                      | 12.7  | 48   |
 | 一号 (No. 1)         | 26                      | 9.17  | 34.7 |

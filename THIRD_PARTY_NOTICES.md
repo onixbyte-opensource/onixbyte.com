@@ -5,7 +5,7 @@ This project incorporates the following third-party open source software.
 ## Direct Dependencies
 
 | Package           | License |
-|-------------------|---------|
+| ----------------- | ------- |
 | @rspress/core     | MIT     |
 | react             | MIT     |
 | react-dom         | MIT     |

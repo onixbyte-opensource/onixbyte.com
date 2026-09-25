@@ -6,12 +6,12 @@ title: OnixByte Toolbox API
 
 所有模块均在 `com.onixbyte` group ID 下发布。每个模块有自己独立的基础包：
 
-| 模块 | Maven Artifact | 基础包 |
-|---|---|---|
-| Common Toolbox | `common-toolbox` | `com.onixbyte.common` |
-| Crypto Toolbox | `crypto-toolbox` | `com.onixbyte.crypto` |
-| Math Toolbox | `math-toolbox` | `com.onixbyte.math` |
-| Tuple | `tuple` | `com.onixbyte.tuple` |
+| 模块               | Maven Artifact       | 基础包                           |
+| ------------------ | -------------------- | -------------------------------- |
+| Common Toolbox     | `common-toolbox`     | `com.onixbyte.common`            |
+| Crypto Toolbox     | `crypto-toolbox`     | `com.onixbyte.crypto`            |
+| Math Toolbox       | `math-toolbox`       | `com.onixbyte.math`              |
+| Tuple              | `tuple`              | `com.onixbyte.tuple`             |
 | Identity Generator | `identity-generator` | `com.onixbyte.identitygenerator` |
 
 ---
@@ -28,16 +28,16 @@ import com.onixbyte.common.adapter.ObjectMapAdapter;
 
 ### 工具类
 
-| 类 | 描述 |
-|---|---|
-| `AesUtil` | AES 对称加密/解密，支持密钥生成 |
-| `Base64Util` | Base64 编解码，支持多种字符集 |
-| `BoolUtil` | 布尔值解析与转换工具 |
-| `BranchUtil` | 条件分支辅助，支持函数式链式调用 |
-| `CollectionUtil` | 集合操作 — 分组、分区、合并 |
-| `HashUtil` | 哈希工具，支持 MD5、SHA-1、SHA-256、SHA-512 |
-| `MapUtil` | Map 构建、合并和转换辅助 |
-| `RangeUtil` | 数值范围操作，支持边界处理 |
+| 类               | 描述                                        |
+| ---------------- | ------------------------------------------- |
+| `AesUtil`        | AES 对称加密/解密，支持密钥生成             |
+| `Base64Util`     | Base64 编解码，支持多种字符集               |
+| `BoolUtil`       | 布尔值解析与转换工具                        |
+| `BranchUtil`     | 条件分支辅助，支持函数式链式调用            |
+| `CollectionUtil` | 集合操作 — 分组、分区、合并                 |
+| `HashUtil`       | 哈希工具，支持 MD5、SHA-1、SHA-256、SHA-512 |
+| `MapUtil`        | Map 构建、合并和转换辅助                    |
+| `RangeUtil`      | 数值范围操作，支持边界处理                  |
 
 **AesUtil 示例：**
 
@@ -70,12 +70,12 @@ var grouped = CollectionUtil.groupBy(users, User::getDepartment);
 
 ### 密钥加载器
 
-| 类 | 描述 |
-|---|---|
-| `RSAPrivateKeyLoader` | 从 PEM 字符串加载 RSA 私钥 |
-| `RSAPublicKeyLoader` | 从 PEM 字符串加载 RSA 公钥 |
-| `ECPrivateKeyLoader` | 从 PEM 字符串加载 ECDSA 私钥 |
-| `ECPublicKeyLoader` | 从 PEM 字符串加载 ECDSA 公钥 |
+| 类                    | 描述                         |
+| --------------------- | ---------------------------- |
+| `RSAPrivateKeyLoader` | 从 PEM 字符串加载 RSA 私钥   |
+| `RSAPublicKeyLoader`  | 从 PEM 字符串加载 RSA 公钥   |
+| `ECPrivateKeyLoader`  | 从 PEM 字符串加载 ECDSA 私钥 |
+| `ECPublicKeyLoader`   | 从 PEM 字符串加载 ECDSA 公钥 |
 
 所有密钥加载器实现 `PrivateKeyLoader` 或 `PublicKeyLoader` 接口。
 
@@ -99,8 +99,8 @@ var ecPublicKey = new ECPublicKeyLoader().load(pemString);
 
 ### 异常
 
-| 类 | 描述 |
-|---|---|
+| 类                    | 描述                       |
+| --------------------- | -------------------------- |
 | `KeyLoadingException` | PEM 格式密钥解析失败时抛出 |
 
 ---
@@ -111,10 +111,10 @@ var ecPublicKey = new ECPublicKeyLoader().load(pemString);
 
 ### 核心类
 
-| 类 | 描述 |
-|---|---|
-| `Calculator` | 统计计算器 — 均值、中位数、方差、标准差、总和、最小值、最大值 |
-| `PercentileCalculator` | 百分位数计算器，支持可配置的插值策略 |
+| 类                     | 描述                                                          |
+| ---------------------- | ------------------------------------------------------------- |
+| `Calculator`           | 统计计算器 — 均值、中位数、方差、标准差、总和、最小值、最大值 |
+| `PercentileCalculator` | 百分位数计算器，支持可配置的插值策略                          |
 
 **Calculator 示例：**
 
@@ -135,8 +135,8 @@ double p99 = calculator.calculate(99);
 
 ### 数据模型
 
-| 类 | 描述 |
-|---|---|
+| 类               | 描述                                          |
+| ---------------- | --------------------------------------------- |
 | `QuartileBounds` | 包含 Q1、中位数（Q2）、Q3 值及 IQR 和须线边界 |
 
 ---
@@ -147,11 +147,11 @@ double p99 = calculator.calculate(99);
 
 ### 类
 
-| 类 | 类型参数 | 可变性 |
-|---|---|---|
-| `Tuple<A, B>` | 两个元素 | 可变 |
-| `ImmutableTuple<A, B>` | 两个元素 | 不可变 |
-| `Triple<A, B, C>` | 三个元素 | 可变 |
+| 类                         | 类型参数 | 可变性 |
+| -------------------------- | -------- | ------ |
+| `Tuple<A, B>`              | 两个元素 | 可变   |
+| `ImmutableTuple<A, B>`     | 两个元素 | 不可变 |
+| `Triple<A, B, C>`          | 三个元素 | 可变   |
 | `ImmutableTriple<A, B, C>` | 三个元素 | 不可变 |
 
 **示例：**
@@ -183,10 +183,10 @@ Integer c = triple.getThird();
 
 ### 实现
 
-| 类 | 描述 |
-|---|---|
-| `SequentialUuidGenerator` | 生成时间排序的顺序 UUID（优化数据库索引性能） |
-| `SnowflakeIdentityGenerator` | 雪花算法分布式唯一 ID 生成 |
+| 类                           | 描述                                          |
+| ---------------------------- | --------------------------------------------- |
+| `SequentialUuidGenerator`    | 生成时间排序的顺序 UUID（优化数据库索引性能） |
+| `SnowflakeIdentityGenerator` | 雪花算法分布式唯一 ID 生成                    |
 
 **顺序 UUID：**
 
@@ -204,6 +204,6 @@ long id = generator.nextId(); // 64 位雪花 ID
 
 ### 异常
 
-| 类 | 描述 |
-|---|---|
+| 类                | 描述                                       |
+| ----------------- | ------------------------------------------ |
 | `TimingException` | 系统时钟回拨时抛出，保证 ID 唯一性不受影响 |

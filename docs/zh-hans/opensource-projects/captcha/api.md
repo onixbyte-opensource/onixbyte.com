@@ -6,19 +6,19 @@ title: Captcha API
 
 库的代码组织在基础包 `com.onixbyte.captcha` 下，结构如下：
 
-| 包 | 描述 |
-|---|---|
-| `com.onixbyte.captcha` | 核心接口 |
-| `com.onixbyte.captcha.impl` | 默认实现 |
-| `com.onixbyte.captcha.text` | 文本生成器和渲染器接口 |
-| `com.onixbyte.captcha.text.impl` | 文本生成器和渲染器实现 |
-| `com.onixbyte.captcha.text.enums` | 文本相关枚举 |
-| `com.onixbyte.captcha.background` | 背景生成器接口 |
-| `com.onixbyte.captcha.background.impl` | 背景生成器实现 |
-| `com.onixbyte.captcha.noise` | 噪点生成器接口 |
-| `com.onixbyte.captcha.noise.impl` | 噪点生成器实现 |
-| `com.onixbyte.captcha.gimpy` | 扭曲引擎接口 |
-| `com.onixbyte.captcha.gimpy.impl` | 扭曲引擎实现 |
+| 包                                     | 描述                   |
+| -------------------------------------- | ---------------------- |
+| `com.onixbyte.captcha`                 | 核心接口               |
+| `com.onixbyte.captcha.impl`            | 默认实现               |
+| `com.onixbyte.captcha.text`            | 文本生成器和渲染器接口 |
+| `com.onixbyte.captcha.text.impl`       | 文本生成器和渲染器实现 |
+| `com.onixbyte.captcha.text.enums`      | 文本相关枚举           |
+| `com.onixbyte.captcha.background`      | 背景生成器接口         |
+| `com.onixbyte.captcha.background.impl` | 背景生成器实现         |
+| `com.onixbyte.captcha.noise`           | 噪点生成器接口         |
+| `com.onixbyte.captcha.noise.impl`      | 噪点生成器实现         |
+| `com.onixbyte.captcha.gimpy`           | 扭曲引擎接口           |
+| `com.onixbyte.captcha.gimpy.impl`      | 扭曲引擎实现           |
 
 ---
 
@@ -45,17 +45,17 @@ BufferedImage image = captcha.createImage(text);
 
 ### DefaultCaptchaProducer Builder
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
-| `textProducer` | `DefaultTextProducer.builder().build()` | 文本生成器 |
-| `wordRenderer` | `DefaultWordRenderer.builder().build()` | 文字渲染器 |
-| `gimpyEngine` | `WaterRipple.builder().build()` | 扭曲引擎 |
-| `backgroundProducer` | `DefaultBackgroundProducer.builder().build()` | 背景生成器 |
-| `width` | `200` | 验证码图片宽度 |
-| `height` | `50` | 验证码图片高度 |
-| `borderDrawn` | `true` | 是否绘制边框 |
-| `borderColour` | `Color.BLACK` | 边框颜色 |
-| `borderThickness` | `1` | 边框厚度 |
+| 方法                 | 默认值                                        | 描述           |
+| -------------------- | --------------------------------------------- | -------------- |
+| `textProducer`       | `DefaultTextProducer.builder().build()`       | 文本生成器     |
+| `wordRenderer`       | `DefaultWordRenderer.builder().build()`       | 文字渲染器     |
+| `gimpyEngine`        | `WaterRipple.builder().build()`               | 扭曲引擎       |
+| `backgroundProducer` | `DefaultBackgroundProducer.builder().build()` | 背景生成器     |
+| `width`              | `200`                                         | 验证码图片宽度 |
+| `height`             | `50`                                          | 验证码图片高度 |
+| `borderDrawn`        | `true`                                        | 是否绘制边框   |
+| `borderColour`       | `Color.BLACK`                                 | 边框颜色       |
+| `borderThickness`    | `1`                                           | 边框厚度       |
 
 ---
 
@@ -82,10 +82,10 @@ DefaultTextProducer textProducer = DefaultTextProducer.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
-| `length` | `6` | 生成文本的长度 |
-| `chars` | `a-z`、`A-Z`、`0-9`（共 62 个字符） | 生成文本使用的字符集 |
+| 方法     | 默认值                              | 描述                 |
+| -------- | ----------------------------------- | -------------------- |
+| `length` | `6`                                 | 生成文本的长度       |
+| `chars`  | `a-z`、`A-Z`、`0-9`（共 62 个字符） | 生成文本使用的字符集 |
 
 ### WordRenderer
 
@@ -111,24 +111,24 @@ DefaultWordRenderer wordRenderer = DefaultWordRenderer.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
-| `fontSize` | `40` | 字号（像素） |
-| `fonts` | `["Arial", "Courier"]` | 字体族（随机选择） |
-| `fontColour` | `Color.BLACK` | 字体颜色 |
-| `charSpace` | `2` | 字符间距（像素） |
-| `fontStyle` | `FontStyle.BOLD` | 字体样式 |
+| 方法         | 默认值                 | 描述               |
+| ------------ | ---------------------- | ------------------ |
+| `fontSize`   | `40`                   | 字号（像素）       |
+| `fonts`      | `["Arial", "Courier"]` | 字体族（随机选择） |
+| `fontColour` | `Color.BLACK`          | 字体颜色           |
+| `charSpace`  | `2`                    | 字符间距（像素）   |
+| `fontStyle`  | `FontStyle.BOLD`       | 字体样式           |
 
 ### FontStyle
 
 定义 CAPTCHA 文字渲染支持的字体样式。
 
-| 值 | 对应的 AWT 常量 | 描述 |
-|---|---|---|
-| `PLAIN` | `java.awt.Font.PLAIN` | 普通样式 |
-| `BOLD` | `java.awt.Font.BOLD` | 粗体 |
-| `ITALIC` | `java.awt.Font.ITALIC` | 斜体 |
-| `BOLD_ITALIC` | `java.awt.Font.BOLD | Font.ITALIC` | 粗斜体 |
+| 值            | 对应的 AWT 常量        | 描述         |
+| ------------- | ---------------------- | ------------ | ------ |
+| `PLAIN`       | `java.awt.Font.PLAIN`  | 普通样式     |
+| `BOLD`        | `java.awt.Font.BOLD`   | 粗体         |
+| `ITALIC`      | `java.awt.Font.ITALIC` | 斜体         |
+| `BOLD_ITALIC` | `java.awt.Font.BOLD    | Font.ITALIC` | 粗斜体 |
 
 ---
 
@@ -152,8 +152,8 @@ WaterRipple gimpy = WaterRipple.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
+| 方法            | 默认值                                   | 描述       |
+| --------------- | ---------------------------------------- | ---------- |
 | `noiseProducer` | `DefaultNoiseProducer.builder().build()` | 噪点生成器 |
 
 ### FishEyeGimpy
@@ -175,8 +175,8 @@ ShadowGimpy gimpy = ShadowGimpy.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
+| 方法            | 默认值                                   | 描述       |
+| --------------- | ---------------------------------------- | ---------- |
 | `noiseProducer` | `DefaultNoiseProducer.builder().build()` | 噪点生成器 |
 
 ---
@@ -204,8 +204,8 @@ DefaultNoiseProducer noise = DefaultNoiseProducer.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
+| 方法          | 默认值        | 描述     |
+| ------------- | ------------- | -------- |
 | `noiseColour` | `Color.BLACK` | 噪点颜色 |
 
 #### NoNoiseProducer
@@ -242,7 +242,7 @@ DefaultBackgroundProducer background = DefaultBackgroundProducer.builder()
     .build();
 ```
 
-| 方法 | 默认值 | 描述 |
-|---|---|---|
+| 方法         | 默认值             | 描述         |
+| ------------ | ------------------ | ------------ |
 | `colourFrom` | `Color.LIGHT_GRAY` | 渐变起始颜色 |
-| `colourTo` | `Color.WHITE` | 渐变结束颜色 |
+| `colourTo`   | `Color.WHITE`      | 渐变结束颜色 |

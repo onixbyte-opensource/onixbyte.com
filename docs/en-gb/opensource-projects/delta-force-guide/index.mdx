@@ -23,12 +23,12 @@ The live site is available at **[dfguide.onixbyte.cn](https://dfguide.onixbyte.c
 
 ## Architecture
 
-| Component     | Tech Stack                                                    |
-|---------------|---------------------------------------------------------------|
-| **Frontend**  | React 19, TypeScript, Tailwind CSS 4, Ant Design 6, React Router 7, Redux Toolkit, TanStack Virtual |
-| **Backend**   | Spring Boot 3, Java 21, PostgreSQL, MyBatis, Flyway, Redis |
-| **Auth**      | JWT (access + refresh tokens), CAPTCHA integration           |
-| **Storage**   | AWS S3 for image uploads                                     |
+| Component    | Tech Stack                                                                                          |
+| ------------ | --------------------------------------------------------------------------------------------------- |
+| **Frontend** | React 19, TypeScript, Tailwind CSS 4, Ant Design 6, React Router 7, Redux Toolkit, TanStack Virtual |
+| **Backend**  | Spring Boot 3, Java 21, PostgreSQL, MyBatis, Flyway, Redis                                          |
+| **Auth**     | JWT (access + refresh tokens), CAPTCHA integration                                                  |
+| **Storage**  | AWS S3 for image uploads                                                                            |
 
 The frontend is a static site served by Vite, communicating with the Spring Boot REST API backend. Authentication uses JWT access and refresh tokens with Redis-backed refresh token management.
 

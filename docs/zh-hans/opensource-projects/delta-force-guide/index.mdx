@@ -25,12 +25,12 @@ Delta Force Guide 是一个全栈 Web 应用，为游戏 Delta Force（三角洲
 
 ## 架构
 
-| 组件 | 技术栈 |
-|---|---|
+| 组件     | 技术栈                                                                                              |
+| -------- | --------------------------------------------------------------------------------------------------- |
 | **前端** | React 19、TypeScript、Tailwind CSS 4、Ant Design 6、React Router 7、Redux Toolkit、TanStack Virtual |
-| **后端** | Spring Boot 3、Java 21、PostgreSQL、MyBatis、Flyway、Redis |
-| **认证** | JWT（access 和 refresh token）、验证码集成 |
-| **存储** | AWS S3（图片上传） |
+| **后端** | Spring Boot 3、Java 21、PostgreSQL、MyBatis、Flyway、Redis                                          |
+| **认证** | JWT（access 和 refresh token）、验证码集成                                                          |
+| **存储** | AWS S3（图片上传）                                                                                  |
 
 前端是由 Vite 构建的静态站点，通过 API 与 Spring Boot 后端通信。认证采用 JWT access 和 refresh token 机制，refresh token 通过 Redis 管理。
 

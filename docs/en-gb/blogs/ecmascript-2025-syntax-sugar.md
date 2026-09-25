@@ -17,13 +17,13 @@ author:
 ```javascript
 function processResponse(response) {
   if (response.status === 200 && response.data) {
-    return { success: true, data: response.data };
+    return { success: true, data: response.data }
   } else if (response.status === 404) {
-    return { success: false, error: 'Not found' };
+    return { success: false, error: "Not found" }
   } else if (response.status >= 500) {
-    return { success: false, error: 'Server error' };
+    return { success: false, error: "Server error" }
   } else {
-    return { success: false, error: 'Unknown error' };
+    return { success: false, error: "Unknown error" }
   }
 }
 ```

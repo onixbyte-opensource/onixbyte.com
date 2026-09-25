@@ -14,7 +14,7 @@ GitLab 在代码中通过 `SWITCHER_MINIMUM_TRANSLATION_LEVEL` 变量将翻译�
 
 可以前往 `/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb` 中将代码修改如下：
 
-```diff title="/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb" 
+```diff title="/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb"
 - SWITCHER_MINIMUM_TRANSLATION_LEVEL = 90
 + SWITCHER_MINIMUM_TRANSLATION_LEVEL = 80
 ```

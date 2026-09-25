@@ -6,19 +6,19 @@ title: Captcha API
 
 The library is organised under the base package `com.onixbyte.captcha` with the following structure:
 
-| Package                                     | Description                           |
-|---------------------------------------------|---------------------------------------|
-| `com.onixbyte.captcha`                      | Core interfaces                       |
-| `com.onixbyte.captcha.impl`                 | Default implementations               |
-| `com.onixbyte.captcha.text`                 | Text producer and renderer interfaces |
-| `com.onixbyte.captcha.text.impl`            | Text producer and renderer impls      |
-| `com.onixbyte.captcha.text.enums`           | Text-related enums                    |
-| `com.onixbyte.captcha.background`           | Background producer interface         |
-| `com.onixbyte.captcha.background.impl`      | Background producer implementations   |
-| `com.onixbyte.captcha.noise`                | Noise producer interface              |
-| `com.onixbyte.captcha.noise.impl`           | Noise producer implementations        |
-| `com.onixbyte.captcha.gimpy`                | Distortion engine interface           |
-| `com.onixbyte.captcha.gimpy.impl`           | Distortion engine implementations     |
+| Package                                | Description                           |
+| -------------------------------------- | ------------------------------------- |
+| `com.onixbyte.captcha`                 | Core interfaces                       |
+| `com.onixbyte.captcha.impl`            | Default implementations               |
+| `com.onixbyte.captcha.text`            | Text producer and renderer interfaces |
+| `com.onixbyte.captcha.text.impl`       | Text producer and renderer impls      |
+| `com.onixbyte.captcha.text.enums`      | Text-related enums                    |
+| `com.onixbyte.captcha.background`      | Background producer interface         |
+| `com.onixbyte.captcha.background.impl` | Background producer implementations   |
+| `com.onixbyte.captcha.noise`           | Noise producer interface              |
+| `com.onixbyte.captcha.noise.impl`      | Noise producer implementations        |
+| `com.onixbyte.captcha.gimpy`           | Distortion engine interface           |
+| `com.onixbyte.captcha.gimpy.impl`      | Distortion engine implementations     |
 
 ---
 
@@ -45,17 +45,17 @@ BufferedImage image = captcha.createImage(text);
 
 ### DefaultCaptchaProducer Builder
 
-| Method              | Default Value                               | Description                           |
-|---------------------|---------------------------------------------|---------------------------------------|
-| `textProducer`      | `DefaultTextProducer.builder().build()`     | The text producer to use              |
-| `wordRenderer`      | `DefaultWordRenderer.builder().build()`     | The word renderer to use              |
-| `gimpyEngine`       | `WaterRipple.builder().build()`             | The distortion engine to use          |
-| `backgroundProducer`| `DefaultBackgroundProducer.builder().build()`| The background producer to use       |
-| `width`             | `200`                                       | Width of the CAPTCHA image            |
-| `height`            | `50`                                        | Height of the CAPTCHA image           |
-| `borderDrawn`       | `true`                                      | Whether a border is drawn             |
-| `borderColour`      | `Color.BLACK`                               | The colour of the border              |
-| `borderThickness`   | `1`                                         | The thickness of the border           |
+| Method               | Default Value                                 | Description                    |
+| -------------------- | --------------------------------------------- | ------------------------------ |
+| `textProducer`       | `DefaultTextProducer.builder().build()`       | The text producer to use       |
+| `wordRenderer`       | `DefaultWordRenderer.builder().build()`       | The word renderer to use       |
+| `gimpyEngine`        | `WaterRipple.builder().build()`               | The distortion engine to use   |
+| `backgroundProducer` | `DefaultBackgroundProducer.builder().build()` | The background producer to use |
+| `width`              | `200`                                         | Width of the CAPTCHA image     |
+| `height`             | `50`                                          | Height of the CAPTCHA image    |
+| `borderDrawn`        | `true`                                        | Whether a border is drawn      |
+| `borderColour`       | `Color.BLACK`                                 | The colour of the border       |
+| `borderThickness`    | `1`                                           | The thickness of the border    |
 
 ---
 
@@ -82,10 +82,10 @@ DefaultTextProducer textProducer = DefaultTextProducer.builder()
     .build();
 ```
 
-| Method   | Default Value                                             | Description                    |
-|----------|-----------------------------------------------------------|--------------------------------|
-| `length` | `6`                                                       | Length of generated text       |
-| `chars`  | `a-z`, `A-Z`, `0-9` (62 characters)                       | Characters used for generation |
+| Method   | Default Value                       | Description                    |
+| -------- | ----------------------------------- | ------------------------------ |
+| `length` | `6`                                 | Length of generated text       |
+| `chars`  | `a-z`, `A-Z`, `0-9` (62 characters) | Characters used for generation |
 
 ### WordRenderer
 
@@ -111,24 +111,24 @@ DefaultWordRenderer wordRenderer = DefaultWordRenderer.builder()
     .build();
 ```
 
-| Method      | Default Value                     | Description                             |
-|-------------|-----------------------------------|-----------------------------------------|
-| `fontSize`  | `40`                              | Font size in pixels                     |
-| `fonts`     | `["Arial", "Courier"]`            | Font families to use (randomly chosen)  |
-| `fontColour`| `Color.BLACK`                     | Font colour                             |
-| `charSpace` | `2`                               | Space between characters in pixels      |
-| `fontStyle` | `FontStyle.BOLD`                  | Font style to apply                     |
+| Method       | Default Value          | Description                            |
+| ------------ | ---------------------- | -------------------------------------- |
+| `fontSize`   | `40`                   | Font size in pixels                    |
+| `fonts`      | `["Arial", "Courier"]` | Font families to use (randomly chosen) |
+| `fontColour` | `Color.BLACK`          | Font colour                            |
+| `charSpace`  | `2`                    | Space between characters in pixels     |
+| `fontStyle`  | `FontStyle.BOLD`       | Font style to apply                    |
 
 ### FontStyle
 
 Defines the supported font styles for rendering CAPTCHA text.
 
-| Value         | Corresponding AWT Constant          | Description                  |
-|---------------|-------------------------------------|------------------------------|
-| `PLAIN`       | `java.awt.Font.PLAIN`              | Plain style                  |
-| `BOLD`        | `java.awt.Font.BOLD`               | Bold style                   |
-| `ITALIC`      | `java.awt.Font.ITALIC`             | Italic style                 |
-| `BOLD_ITALIC` | `java.awt.Font.BOLD | Font.ITALIC` | Bold and italic combined     |
+| Value         | Corresponding AWT Constant | Description  |
+| ------------- | -------------------------- | ------------ | ------------------------ |
+| `PLAIN`       | `java.awt.Font.PLAIN`      | Plain style  |
+| `BOLD`        | `java.awt.Font.BOLD`       | Bold style   |
+| `ITALIC`      | `java.awt.Font.ITALIC`     | Italic style |
+| `BOLD_ITALIC` | `java.awt.Font.BOLD        | Font.ITALIC` | Bold and italic combined |
 
 ---
 
@@ -152,9 +152,9 @@ WaterRipple gimpy = WaterRipple.builder()
     .build();
 ```
 
-| Method          | Default Value                               | Description                  |
-|-----------------|---------------------------------------------|------------------------------|
-| `noiseProducer` | `DefaultNoiseProducer.builder().build()`    | The noise producer to use    |
+| Method          | Default Value                            | Description               |
+| --------------- | ---------------------------------------- | ------------------------- |
+| `noiseProducer` | `DefaultNoiseProducer.builder().build()` | The noise producer to use |
 
 ### FishEyeGimpy
 
@@ -175,9 +175,9 @@ ShadowGimpy gimpy = ShadowGimpy.builder()
     .build();
 ```
 
-| Method          | Default Value                               | Description                  |
-|-----------------|---------------------------------------------|------------------------------|
-| `noiseProducer` | `DefaultNoiseProducer.builder().build()`    | The noise producer to use    |
+| Method          | Default Value                            | Description               |
+| --------------- | ---------------------------------------- | ------------------------- |
+| `noiseProducer` | `DefaultNoiseProducer.builder().build()` | The noise producer to use |
 
 ---
 
@@ -204,9 +204,9 @@ DefaultNoiseProducer noise = DefaultNoiseProducer.builder()
     .build();
 ```
 
-| Method        | Default Value | Description         |
-|---------------|---------------|---------------------|
-| `noiseColour` | `Color.BLACK` | The noise colour    |
+| Method        | Default Value | Description      |
+| ------------- | ------------- | ---------------- |
+| `noiseColour` | `Color.BLACK` | The noise colour |
 
 #### NoNoiseProducer
 
@@ -243,6 +243,6 @@ DefaultBackgroundProducer background = DefaultBackgroundProducer.builder()
 ```
 
 | Method       | Default Value      | Description                     |
-|--------------|--------------------|---------------------------------|
+| ------------ | ------------------ | ------------------------------- |
 | `colourFrom` | `Color.LIGHT_GRAY` | The starting colour of gradient |
 | `colourTo`   | `Color.WHITE`      | The ending colour of gradient   |

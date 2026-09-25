@@ -7,7 +7,7 @@ title: Calendar Toolbox API
 The library is organised under the base package `com.onixbyte.calendar` with the following structure:
 
 | Package                                    | Description                                |
-|--------------------------------------------|--------------------------------------------|
+| ------------------------------------------ | ------------------------------------------ |
 | `com.onixbyte.calendar`                    | Root calendar object                       |
 | `com.onixbyte.calendar.component`          | iCalendar components (VEVENT, VTODO, etc.) |
 | `com.onixbyte.calendar.component.property` | Component-level properties                 |
@@ -47,7 +47,7 @@ String icsContent = calendar.formatted();
 All calendar-level properties live in `com.onixbyte.calendar.property` and implement `CalendarProperty`.
 
 | Class                    | iCalendar Property   | Description                               |
-|--------------------------|----------------------|-------------------------------------------|
+| ------------------------ | -------------------- | ----------------------------------------- |
 | `CalendarScale`          | `CALSCALE`           | Calendar system (e.g., GREGORIAN)         |
 | `Method`                 | `METHOD`             | iCalendar method (e.g., PUBLISH, REQUEST) |
 | `ProductIdentifier`      | `PRODID`             | Product identifier of the calendar        |
@@ -277,7 +277,7 @@ Alarm emailAlarm = Alarm.builder()
 Component properties live in `com.onixbyte.calendar.component.property` and implement `ComponentProperty`.
 
 | Class                     | iCalendar Property | Description                                              |
-|---------------------------|--------------------|----------------------------------------------------------|
+| ------------------------- | ------------------ | -------------------------------------------------------- |
 | `Action`                  | `ACTION`           | Alarm action type (AUDIO, DISPLAY, EMAIL)                |
 | `Attachment`              | `ATTACH`           | Document attachment                                      |
 | `Attendee`                | `ATTENDEE`         | Event/task attendee                                      |
@@ -328,7 +328,7 @@ Component properties live in `com.onixbyte.calendar.component.property` and impl
 Parameters in `com.onixbyte.calendar.parameter` provide additional qualifiers on component properties.
 
 | Class                         | iCalendar Parameter | Description                                            |
-|-------------------------------|---------------------|--------------------------------------------------------|
+| ----------------------------- | ------------------- | ------------------------------------------------------ |
 | `AlarmTriggerRelationship`    | `RELATED`           | Trigger relationship (START, END)                      |
 | `AlternateTextRepresentation` | `ALTREP`            | Alternate text URI                                     |
 | `CalendarUserType`            | `CUTYPE`            | Calendar user type (INDIVIDUAL, GROUP, RESOURCE, etc.) |
@@ -357,7 +357,7 @@ Parameters in `com.onixbyte.calendar.parameter` provide additional qualifiers on
 Located in `com.onixbyte.calendar.recurrence`.
 
 | Class        | Description                                                               |
-|--------------|---------------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------------- |
 | `Frequency`  | Frequency constants (DAILY, WEEKLY, MONTHLY, YEARLY) for recurrence rules |
 | `WeekdayNum` | Weekday number for recurrence rules (e.g., 2nd Monday)                    |
 
@@ -368,7 +368,7 @@ Located in `com.onixbyte.calendar.recurrence`.
 Located in `com.onixbyte.calendar.value`.
 
 | Class               | Description                                    |
-|---------------------|------------------------------------------------|
+| ------------------- | ---------------------------------------------- |
 | `FreeBusyTimeValue` | Represents free/busy time value                |
 | `PeriodOfTime`      | Represents a period of time with start and end |
 | `PropertyValue`     | Base value type for properties                 |

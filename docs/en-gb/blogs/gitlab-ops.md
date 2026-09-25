@@ -16,7 +16,7 @@ variable in the code. Simplified Chinese sits at 84% and Traditional Chinese at 
 Navigate to `/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb` and modify
 the code as follows:
 
-```diff title="/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb" 
+```diff title="/path/to/gitlab/embedded/service/gitlab-rails/app/helpers/preferred_language_switcher_helper.rb"
 - SWITCHER_MINIMUM_TRANSLATION_LEVEL = 90
 + SWITCHER_MINIMUM_TRANSLATION_LEVEL = 80
 ```
