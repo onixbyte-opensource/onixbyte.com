@@ -1,0 +1,14 @@
+[
+  "index",
+  { "type": "section-header", "label": "opensource.group.libraries" },
+  { "type": "dir", "name": "onixbyte-toolbox" },
+  { "type": "dir", "name": "regions4j" },
+  { "type": "dir", "name": "captcha" },
+  { "type": "dir", "name": "calendar-toolbox" },
+  { "type": "section-header", "label": "opensource.group.applications" },
+  { "type": "dir", "name": "helix" },
+  { "type": "dir", "name": "delta-force-guide" },
+  { "type": "section-header", "label": "opensource.group.tools" },
+  { "type": "dir", "name": "claude-code-skill-manager" },
+  { "type": "dir", "name": "vite-plugins" }
+]

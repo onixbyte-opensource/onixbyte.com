@@ -111,16 +111,72 @@
     "en-gb": "Collapse",
     "zh-hans": "折叠"
   },
-  "blogs": {
-    "en-gb": "Blog",
-    "zh-hans": "博客"
+  "nav.home": {
+    "en-gb": "Home",
+    "zh-hans": "首页"
   },
-  "notifications": {
-    "en-gb": "Notifications",
-    "zh-hans": "通知"
+  "nav.products": {
+    "en-gb": "Products",
+    "zh-hans": "产品矩阵"
   },
-  "projects": {
-    "en-gb": "Projects",
-    "zh-hans": "项目"
+  "nav.services": {
+    "en-gb": "Services",
+    "zh-hans": "定制服务"
+  },
+  "nav.insights": {
+    "en-gb": "Insights",
+    "zh-hans": "技术洞察"
+  },
+  "nav.news": {
+    "en-gb": "News",
+    "zh-hans": "企业动态"
+  },
+  "nav.opensource": {
+    "en-gb": "Open Source",
+    "zh-hans": "开源生态"
+  },
+  "opensource.group.libraries": {
+    "en-gb": "Libraries & Toolkits",
+    "zh-hans": "库与工具包"
+  },
+  "opensource.group.applications": {
+    "en-gb": "Full-Stack Applications",
+    "zh-hans": "全栈应用"
+  },
+  "opensource.group.tools": {
+    "en-gb": "Developer Tools",
+    "zh-hans": "开发者工具"
+  },
+  "insights.group.frontend": {
+    "en-gb": "Frontend",
+    "zh-hans": "前端"
+  },
+  "insights.group.backend": {
+    "en-gb": "Backend & Data",
+    "zh-hans": "后端与数据"
+  },
+  "insights.group.devops": {
+    "en-gb": "DevOps & Infrastructure",
+    "zh-hans": "运维与基础设施"
+  },
+  "insights.group.practice": {
+    "en-gb": "Engineering Practice",
+    "zh-hans": "工程实践"
+  },
+  "insights.group.tooling": {
+    "en-gb": "Tooling & Troubleshooting",
+    "zh-hans": "工具与疑难排查"
+  },
+  "footer.copyright": {
+    "en-gb": "© 2026 Changsha OnixByte Technology Co., Ltd. All rights reserved.",
+    "zh-hans": "© 2026 长沙曜珀科技有限公司 版权所有"
+  },
+  "footer.privacy": {
+    "en-gb": "Privacy Policy",
+    "zh-hans": "隐私政策"
+  },
+  "footer.terms": {
+    "en-gb": "Terms of Service",
+    "zh-hans": "服务条款"
   }
 }

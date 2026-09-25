@@ -1,17 +1,32 @@
 [
   {
-    "text": "projects",
-    "link": "/projects/",
-    "activeMatch": "/projects/"
+    "text": "nav.home",
+    "link": "/",
+    "activeMatch": "^/$|^/zh-hans/$"
   },
   {
-    "text": "blogs",
+    "text": "nav.products",
+    "link": "/products/",
+    "activeMatch": "/products/"
+  },
+  {
+    "text": "nav.services",
+    "link": "/services/",
+    "activeMatch": "/services/"
+  },
+  {
+    "text": "nav.insights",
     "link": "/blogs/",
     "activeMatch": "/blogs/"
   },
   {
-    "text": "notifications",
+    "text": "nav.news",
     "link": "/notifications/",
     "activeMatch": "/notifications/"
+  },
+  {
+    "text": "nav.opensource",
+    "link": "/opensource-projects/",
+    "activeMatch": "/opensource-projects/"
   }
 ]

@@ -1,11 +1,11 @@
 ---
-title: Blog
+title: Insights
 ---
 
-# Blog
+# Insights
 
-Welcome to the OnixByte blog — a collection of practical guides, cheatsheets, and standards
-distilled from daily engineering work.
+Practical guides, cheatsheets, and standards distilled from daily engineering
+work.
 
 ## Topics
 
