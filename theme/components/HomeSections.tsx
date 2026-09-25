@@ -4,7 +4,7 @@ import { FeatureGrid } from "./sections/FeatureGrid"
 import { TechStack } from "./sections/TechStack"
 import { Cases } from "./sections/Cases"
 import { CallToAction } from "./sections/CallToAction"
-import { hasContent, type Section } from "./sections/types"
+import { hasContent, isHoisted, type Section } from "./sections/types"
 
 /** Type guard for a single entry of `frontmatter.sections`. */
 function isSection(value: unknown): value is Section {
@@ -33,27 +33,48 @@ function renderBody(section: Section) {
   }
 }
 
+interface HomeSectionsProps {
+  /**
+   * Which bands this instance renders. Omit it to render all of them in
+   * declaration order, which is what the home page wants — it has no article
+   * for a band to sit on either side of.
+   */
+  placement?: "top" | "bottom"
+}
+
 /**
  * Renders `frontmatter.sections` in declaration order.
  *
- * Attached to the `Layout` `afterHero` (home) and `afterDoc` (products,
- * services) slots. Returns `null` for any page without a `sections` array, so
- * it is inert on blog posts, project pages and every other doc page.
+ * Attached to the `Layout` `afterFeatures` (home) and `afterDoc` (products,
+ * services) slots, and to the `DocContent` override for hoisted bands. Returns
+ * `null` for any page without a `sections` array, so it is inert on blog posts,
+ * project pages and every other doc page.
  */
-export function HomeSections() {
+export function HomeSections({ placement }: HomeSectionsProps = {}) {
   const { frontmatter } = useFrontmatter()
   const raw = frontmatter?.sections
   if (!Array.isArray(raw)) return null
 
   const sections = raw.filter(isSection)
-  if (sections.length === 0) return null
+  // The stripe alternates over the page's whole `sections` list rather than
+  // over whatever this instance happens to render: hoisting a band must not
+  // flip the background of every band below it.
+  const visible = sections
+    .map((section, index) => ({ section, index }))
+    .filter(({ section }) => {
+      if (placement === undefined) return true
+      return placement === "top" ? isHoisted(section) : !isHoisted(section)
+    })
+
+  if (visible.length === 0) return null
 
   return (
     <div className="rp-site-sections">
-      {sections.map((section, index) => (
+      {visible.map(({ section, index }) => (
         <SectionBand
           key={section.id ?? `${section.type}-${index}`}
           section={section}
+          tinted={index % 2 === 1}
           hasContent={hasContent(section)}>
           {renderBody(section)}
         </SectionBand>

@@ -6,6 +6,8 @@ interface SectionBandProps {
   section: Section
   /** Whether the section body produced any content. */
   hasContent: boolean
+  /** Whether this band takes the soft background in the page's zebra stripe. */
+  tinted: boolean
   children: ReactNode
 }
 
@@ -13,15 +15,21 @@ interface SectionBandProps {
  * Shell for a marketing band: the `<section>` wrapper, its heading and its
  * subtitle. Renders nothing at all when the section has neither content nor a
  * heading, so an unfilled page degrades to just its hero.
+ *
+ * `rp-not-doc` opts the band out of the doc typography, which applies to
+ * everything inside `.rp-doc` and would otherwise restyle our headings and
+ * paragraphs. It is inert for bands rendered outside the article, as on the
+ * home page.
  */
-export function SectionBand({ section, hasContent, children }: SectionBandProps) {
+export function SectionBand({ section, hasContent, tinted, children }: SectionBandProps) {
   const title = str(section.title)
   const subtitle = str(section.subtitle)
+  const className = `rp-site-section rp-not-doc${tinted ? " rp-site-section--tinted" : ""}`
 
   if (!hasContent && !title && !subtitle) {
     if (!SHOW_COPY_PLACEHOLDERS) return null
     return (
-      <section id={section.id} className="rp-site-section">
+      <section id={section.id} className={className}>
         <div className="mx-auto max-w-5xl px-6">
           <div className="rounded-lg border border-dashed border-(--rp-c-divider) p-8 text-center text-sm text-(--rp-c-text-3)">
             TODO: {section.type}
@@ -32,7 +40,7 @@ export function SectionBand({ section, hasContent, children }: SectionBandProps)
   }
 
   return (
-    <section id={section.id} className="rp-site-section">
+    <section id={section.id} className={className}>
       <div className="mx-auto max-w-5xl px-6">
         {(title || subtitle) && (
           <header className="mb-10 text-center">

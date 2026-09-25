@@ -3,9 +3,6 @@ import { arr, str, type TechStackGroup, type TechStackItem } from "./types"
 /**
  * Technology matrix: named groups of technologies, each with an optional
  * emoji/icon and link.
- *
- * TODO(copy): populate `frontmatter.sections` with real entries. Groups with no
- * items are skipped, so a half-filled list still renders sensibly.
  */
 export function TechStack({ groups }: { groups?: TechStackGroup[] }) {
   const visible = (arr<TechStackGroup>(groups) ?? [])

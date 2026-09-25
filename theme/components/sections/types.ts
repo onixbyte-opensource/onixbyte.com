@@ -50,6 +50,16 @@ interface SectionBase {
   id?: string
   title?: string
   subtitle?: string
+  /**
+   * Where the band sits relative to the article body. `"top"` hoists it above
+   * the body, directly under the page title; `"bottom"` — the default — leaves
+   * it below the article.
+   *
+   * Only doc pages can honour this, because only they have an article to sit
+   * between. The home page renders every band below the features grid, in
+   * declaration order, whatever this says.
+   */
+  placement?: "top" | "bottom"
 }
 
 export type Section =
@@ -99,4 +109,9 @@ export function hasContent(section: Section): boolean {
         arr<CallToActionLink>(section.actions) !== undefined || str(section.code?.src) !== undefined
       )
   }
+}
+
+/** Whether a section asked to be hoisted above the article body. */
+export function isHoisted(section: Section): boolean {
+  return section.placement === "top"
 }

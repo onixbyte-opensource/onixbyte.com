@@ -57,7 +57,7 @@ OnixByte 名称、标识及本网站的设计归我们所有。我们发布的�
 
 ## 联系方式
 
-**business@onixbyte.com**
+**legal@onixbyte.com**
 
 长沙曜珀科技有限公司
 中国湖南省

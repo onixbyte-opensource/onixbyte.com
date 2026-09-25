@@ -75,7 +75,7 @@ those rights are not affected by anything in this policy.
 
 Questions about this policy, or about how we handle data:
 
-**business@onixbyte.com**
+**legal@onixbyte.com**
 
 Changsha Onix Byte Technology Co., Ltd
 Hunan Province, China

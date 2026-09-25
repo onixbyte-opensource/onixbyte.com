@@ -56,7 +56,7 @@ localStorage 键），但未经律师审阅。正式依赖前请交由法务检�
 
 关于本政策，或关于我们如何处理数据：
 
-**business@onixbyte.com**
+**legal@onixbyte.com**
 
 长沙曜珀科技有限公司
 中国湖南省

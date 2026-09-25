@@ -8,6 +8,7 @@ import { Tags } from "./components/Tags"
 import { Author } from "./components/Author"
 import { SiteFooter } from "./components/SiteFooter"
 import { HomeSections } from "./components/HomeSections"
+import { DocContent } from "./components/DocContent"
 
 function DocLayout(props: DocLayoutProps) {
   return (
@@ -44,6 +45,10 @@ function DocLayout(props: DocLayoutProps) {
  * than part of the prose column, so sections placed there stay full-bleed.
  * `HomeSections` renders nothing without the frontmatter, and the two slots are
  * never both live on the same page.
+ *
+ * A band marked `placement: top` is not rendered here at all — `DocContent`
+ * picks it up and slots it between the page title and the article body, and
+ * `afterDoc` renders the remaining bands. See `components/DocContent.tsx`.
  */
 function Layout(props: LayoutProps) {
   return (
@@ -64,7 +69,7 @@ function Layout(props: LayoutProps) {
       afterDoc={
         <>
           {props.afterDoc}
-          <HomeSections />
+          <HomeSections placement="bottom" />
         </>
       }
     />
@@ -72,5 +77,5 @@ function Layout(props: LayoutProps) {
 }
 
 export * from "@rspress/core/theme-original"
-export { DocLayout, Layout }
+export { DocLayout, Layout, DocContent }
 export { Kbd } from "./components/Kbd"

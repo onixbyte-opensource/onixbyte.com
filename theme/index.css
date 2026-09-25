@@ -19,11 +19,16 @@
   padding: 0;
 }
 
-/* Full-bleed marketing sections, driven by `frontmatter.sections`. */
+/* Marketing sections, driven by `frontmatter.sections`. A band is full-bleed
+   when it renders below the article and article-width when `placement: top`
+   puts it inside the doc column. */
 .rp-site-section {
   padding-block: var(--rp-site-section-gap);
 }
 
-.rp-site-section:nth-child(even) {
+/* Zebra striping. Chosen by `HomeSections` from the band's position in the
+   page's whole `sections` list rather than by `:nth-child`, so that bands
+   split across the top and bottom slots keep one continuous stripe. */
+.rp-site-section--tinted {
   background: var(--rp-c-bg-soft);
 }

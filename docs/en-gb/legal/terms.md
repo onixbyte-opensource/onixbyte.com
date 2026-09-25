@@ -81,7 +81,7 @@ that means you accept the revised terms.
 
 ## Contact
 
-**business@onixbyte.com**
+**legal@onixbyte.com**
 
 Changsha Onix Byte Technology Co., Ltd
 Hunan Province, China
