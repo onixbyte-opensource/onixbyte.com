@@ -107,7 +107,6 @@ type SitemapOverrides = Record<string, Omit<CustomMapsOption[string], "loc">>
 const PRIORITISED_ROUTES = [
   ["/products/", "1.0"],
   ["/services/", "1.0"],
-  ["/opensource-projects/", "0.8"],
 ] as const
 
 /**

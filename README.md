@@ -1,7 +1,8 @@
 # OnixByte Homepage
 
-The official OnixByte site — the company front door, alongside the technical
-blog, product documentation and development standards.
+The official OnixByte site — the company front door. The technical blog and the
+open-source project documentation live in a separate repository, published at
+`opensource.onixbyte.com` and `opensource.onixbyte.cn`.
 
 ## Tech Stack
 
@@ -54,12 +55,12 @@ rspress.cn.config.ts`, which differs from the default in four ways:
 **The default language differs per target**, so the routes do too. Rspress
 serves the default locale without a prefix:
 
-|                 | `.com`                          | `.cn`                         |
-| --------------- | ------------------------------- | ----------------------------- |
-| English home    | `/`                             | `/en-gb/`                     |
-| Chinese home    | `/zh-hans/`                     | `/`                           |
-| English article | `/blogs/git-cheatsheet`         | `/en-gb/blogs/git-cheatsheet` |
-| Chinese article | `/zh-hans/blogs/git-cheatsheet` | `/blogs/git-cheatsheet`       |
+|                 | `.com`                   | `.cn`                         |
+| --------------- | ------------------------ | ----------------------------- |
+| English home    | `/`                      | `/en-gb/`                     |
+| Chinese home    | `/zh-hans/`              | `/`                           |
+| English privacy | `/legal/privacy`         | `/en-gb/legal/privacy`        |
+| Chinese privacy | `/zh-hans/legal/privacy` | `/legal/privacy`              |
 
 Content paths under `docs/` are unaffected — only the prefixes change, and
 Rspress rewrites internal links per locale automatically.
@@ -90,11 +91,8 @@ docs/
 ├── en-gb/               # English content
 │   ├── _nav.json        # Top navigation; labels are i18n keys
 │   ├── index.md         # Marketing homepage
-│   ├── blogs/           # Technical articles ("Insights")
 │   ├── products/        # Products we run ourselves
 │   ├── services/        # Custom engineering services
-│   ├── opensource-projects/  # Open-source project documentation
-│   ├── notifications/   # Company announcements ("News")
 │   └── legal/           # Privacy policy and terms
 └── zh-hans/             # Simplified Chinese content (mirrors en-gb exactly)
 
@@ -157,9 +155,13 @@ The server behind `onixbyte.cn` needs a `try_files` rule resolving extensionless
 paths (`{path} {path}.html {path}/index.html`) — the sitemap and canonical URLs
 are extensionless, and without it every one of them 404s on that host.
 
-Redirects for the retired `/projects/` paths live in `vercel.json`. The `.cn`
-host needs the equivalent rule in its own web server config, which is not
-tracked in this repository.
+`vercel.json` still carries redirects for the retired `/projects/` paths, and
+they now point at `/opensource-projects/`, which this site no longer serves —
+they need repointing or removing. The removed `/blogs/`, `/opensource-projects/`
+and `/notifications/` URLs are likewise unredirected and will 404; the new site
+is reachable from the top navigation instead. The `.cn` host needs the
+equivalent rules in its own web server config, which is not tracked in this
+repository.
 
 ## Contributing
 

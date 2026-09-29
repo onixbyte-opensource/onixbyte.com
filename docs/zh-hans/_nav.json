@@ -15,18 +15,7 @@
     "activeMatch": "/services/"
   },
   {
-    "text": "nav.insights",
-    "link": "/blogs/",
-    "activeMatch": "/blogs/"
-  },
-  {
-    "text": "nav.news",
-    "link": "/notifications/",
-    "activeMatch": "/notifications/"
-  },
-  {
     "text": "nav.opensource",
-    "link": "/opensource-projects/",
-    "activeMatch": "/opensource-projects/"
+    "link": "https://opensource.onixbyte.com"
   }
 ]

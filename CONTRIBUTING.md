@@ -61,8 +61,8 @@ theme/          # Custom theme overrides
 - Write content in both English (British) and Simplified Chinese. British
   spelling is required throughout — interface text, documentation, code
   comments and commit messages (`customised`, `centre`, `colour`, and so on).
-- Marketing pages address the reader as 您; the technical blog keeps the
-  peer-to-peer 你.
+- Address the reader as 您. This site speaks to buyers and decision-makers, not
+  to engineers.
 
 ## Navigation and Sidebars
 
