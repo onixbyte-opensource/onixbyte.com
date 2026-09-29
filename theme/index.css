@@ -10,6 +10,14 @@
   --rp-site-section-gap: 4rem;
 }
 
+/* Rspress ships the `--big` button variant with no horizontal padding, relying
+   on its `min-width` alone to leave room around the label. A label wider than
+   that `min-width` — "Explore Custom Services", or a longer translation — fills
+   the pill edge to edge. Give it the padding `--medium` already has. */
+.rp-button--big {
+  padding-inline: 1.5rem;
+}
+
 /* `HomeFeature` always renders its wrapper, even when the page declares no
    `features`. Hide the empty shell so a hero-only page does not show a
    stray empty band. */
@@ -31,4 +39,33 @@
    split across the top and bottom slots keep one continuous stripe. */
 .rp-site-section--tinted {
   background: var(--rp-c-bg-soft);
+}
+
+/* Status pill on a grid card, driven by the section item's `badge` field.
+   Matches the tag pills in `components/Tags.tsx`. Lives here rather than as
+   utilities on the element because the element is built in `FeatureGrid` as an
+   HTML string for `HomeFeature` to render. */
+.rp-card-badge {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--rp-c-brand);
+  background: var(--rp-c-brand-tint);
+}
+
+/* Card surface for the `capabilities` band. A band is either the page
+   background (`--rp-c-bg`) or `--rp-c-bg-soft`, so a card filled with either
+   one alone would disappear on the other. Invert against the band instead, so
+   the cards read whichever stripe the band happens to land on. */
+.rp-capability-card {
+  background: var(--rp-c-bg-soft);
+}
+
+.rp-site-section--tinted .rp-capability-card {
+  background: var(--rp-c-bg);
 }

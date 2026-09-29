@@ -8,15 +8,37 @@ import type { Feature } from "@rspress/core"
  * checking — every field must therefore be defended at the point of use.
  */
 
-export interface TechStackItem {
-  name: string
-  icon?: string
-  url?: string
+/**
+ * A `Feature` card, plus an optional status pill shown above its description —
+ * used to mark something as not yet released.
+ *
+ * The stock `Feature` shape has no field for this, and the `HomeFeature`
+ * component that renders the card (with its hover animation) is not exported in
+ * a form that can be extended without reimplementing it. `FeatureGrid` therefore
+ * folds the badge into `details`, which `HomeFeature` already renders as HTML.
+ */
+export interface FeatureCard extends Feature {
+  /** Short status label, e.g. "敬请期待". Rendered as a pill above `details`. */
+  badge?: string
 }
 
-export interface TechStackGroup {
-  name: string
-  items?: TechStackItem[]
+/**
+ * One card in the `capabilities` band: a kind of project we take on.
+ *
+ * This band exists because buyers shop for "can you build me a corporate site",
+ * not for "do you know Docker" — so it names project categories and the
+ * deliverables under them, never technologies.
+ */
+export interface Capability {
+  title: string
+  /** One line on what the card covers. */
+  details?: string
+  icon?: string
+  /**
+   * The concrete things delivered in this direction. Named `subItems` rather
+   * than `items` because the card list itself is `items`.
+   */
+  subItems?: string[]
 }
 
 export interface CaseStudy {
@@ -63,9 +85,9 @@ interface SectionBase {
 }
 
 export type Section =
-  | (SectionBase & { type: "advantages"; items?: Feature[] })
-  | (SectionBase & { type: "contentGrid"; items?: Feature[] })
-  | (SectionBase & { type: "techStack"; groups?: TechStackGroup[] })
+  | (SectionBase & { type: "advantages"; items?: FeatureCard[] })
+  | (SectionBase & { type: "contentGrid"; items?: FeatureCard[] })
+  | (SectionBase & { type: "capabilities"; items?: Capability[] })
   | (SectionBase & { type: "cases"; items?: CaseStudy[] })
   | (SectionBase & {
       type: "cta"
@@ -95,13 +117,11 @@ export function hasContent(section: Section): boolean {
   switch (section.type) {
     case "advantages":
     case "contentGrid":
-      return arr<Feature>(section.items) !== undefined
-    case "techStack":
-      return (
-        arr<TechStackGroup>(section.groups)?.some(
-          (group) => arr<TechStackItem>(group?.items) !== undefined
-        ) ?? false
-      )
+      return arr<FeatureCard>(section.items) !== undefined
+    case "capabilities":
+      // `.some` rather than a bare existence check: a card with no title renders
+      // nothing, so a list of blank cards must not count as content.
+      return arr<Capability>(section.items)?.some((item) => str(item?.title)) ?? false
     case "cases":
       return arr<CaseStudy>(section.items) !== undefined
     case "cta":

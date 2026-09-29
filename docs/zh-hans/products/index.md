@@ -1,6 +1,6 @@
 ---
 title: 产品矩阵
-description: Dev Lab —— 曜珀科技自研的开发者工具集，全部功能都在您的浏览器本地运行。
+description: 探索曜珀科技（OnixByte）的自研产品与 SaaS 服务矩阵，以扎实工程提供高可用数字化服务。
 pageType: doc-wide
 sidebar: false
 outline: false
@@ -8,25 +8,30 @@ footer: false
 head:
   - - meta
     - name: keywords
-      content: Dev Lab, JSON 查看器, JSONPath, 开发者工具, 浏览器本地运行, 数据隐私, 曜珀科技
+      content: 曜珀科技, OnixByte, Dev Lab, 阿萨拉向导, 三角洲行动社区, SaaS产品, 开发者工具, JSONPath, 数据隐私
 sections:
   - type: contentGrid
     id: products
-    title: 我们在运营的产品
-    subtitle: 数量不多，但我们每天都在用。
+    title: 自研产品与工具
+    subtitle: 除了为客户提供定制研发，我们也持续孵化自研 SaaS 与垂直产品。每一款都始于真实刚需，并坚持长期的工程投入与精细打磨。
     items:
       - icon: "🧰"
         title: Dev Lab
-        details: 一组开发者实用工具，核心是一个支持 JSONPath 查询的 JSON 查看器。全部功能在您的浏览器本地运行，粘贴进去的内容不会被上传到任何地方。
+        details: 专为开发者打造的实用工具箱。核心提供深度支持 JSONPath 查询的结构化数据查看器；所有计算均在浏览器本地沙箱完成，绝不上传任何数据，保障敏感代码与业务凭据绝对安全。
         link: https://dev-lab.onixbyte.com
+        span: 6
+      - icon: "🧭"
+        title: 阿萨拉向导
+        badge: 敬请期待
+        details: 专注于《三角洲行动》的非官方玩家资讯与数据社区。提供即时游戏资讯、武器装备数据库与实用战术指南，依托稳定的架构为玩家提供流畅纯净的查阅体验。
         span: 6
   - type: cta
     id: contact
-    title: 需要为您做一套类似的东西？
-    subtitle: 聊聊您的项目或想法，我们随时在线。
+    title: 需要构建专属的业务系统或 SaaS 产品？
+    subtitle: 从内部提效工具到面向公众的商业化平台，聊聊您的构想，我们随时在线。
     actions:
       - theme: brand
-        text: 看看我们做什么
+        text: 了解我们的研发服务
         link: /services/
       - theme: alt
         text: business@onixbyte.com
@@ -35,5 +40,3 @@ sections:
       src: /wechat-qr.png
       caption: 或者扫码加企业微信
 ---
-
-除了客户项目，我们也做自己的工具。数量刻意保持得很少：每一件都是因为我们自己需要，并且认为别人可能也需要。

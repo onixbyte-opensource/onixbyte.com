@@ -1,7 +1,7 @@
 import { useFrontmatter } from "@rspress/core/runtime"
 import { SectionBand } from "./sections/SectionBand"
 import { FeatureGrid } from "./sections/FeatureGrid"
-import { TechStack } from "./sections/TechStack"
+import { Capabilities } from "./sections/Capabilities"
 import { Cases } from "./sections/Cases"
 import { CallToAction } from "./sections/CallToAction"
 import { hasContent, isHoisted, type Section } from "./sections/types"
@@ -13,7 +13,7 @@ function isSection(value: unknown): value is Section {
   return (
     type === "advantages" ||
     type === "contentGrid" ||
-    type === "techStack" ||
+    type === "capabilities" ||
     type === "cases" ||
     type === "cta"
   )
@@ -24,8 +24,8 @@ function renderBody(section: Section) {
     case "advantages":
     case "contentGrid":
       return <FeatureGrid items={section.items} />
-    case "techStack":
-      return <TechStack groups={section.groups} />
+    case "capabilities":
+      return <Capabilities items={section.items} />
     case "cases":
       return <Cases items={section.items} />
     case "cta":
@@ -47,8 +47,8 @@ interface HomeSectionsProps {
  *
  * Attached to the `Layout` `afterFeatures` (home) and `afterDoc` (products,
  * services) slots, and to the `DocContent` override for hoisted bands. Returns
- * `null` for any page without a `sections` array, so it is inert on blog posts,
- * project pages and every other doc page.
+ * `null` for any page without a `sections` array, so it is inert on every doc
+ * page that does not opt in — the legal pages included.
  */
 export function HomeSections({ placement }: HomeSectionsProps = {}) {
   const { frontmatter } = useFrontmatter()

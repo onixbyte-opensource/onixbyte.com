@@ -11,87 +11,59 @@ hero:
     - theme: alt
       text: 查看产品
       link: /products/
-features:
-  - title: OnixByte Toolbox
-    details: 一个多功能 Java 类库，为现代 Java 开发提供通用工具，无缝集成 Spring 生态。已上架 Maven Central。
-    icon: ☕
-    link: https://github.com/orgs/onixbyte-opensource/repositories?q=toolbox
-  - title: Dev Lab
-    details: 基于 Vite 和 React 构建的实用在线工具集。包含 JSON Path 查看器、BMI 计算器以及 JSON 转表格工具。
-    icon: 🛠️
-    link: https://dev-lab.onixbyte.com
-  - title: Helix
-    details: 一个不断演进的前后端模版项目，结合 Spring Boot 与 React，助你快速构建应用。
-    icon: 🌀
-    link: https://github.com/onixbyte-opensource/helix
-  - title: Delta Force Guide
-    details: 社区向的《三角洲行动》游戏指南，提供最新游戏资讯、实用技巧和战术策略。
-    icon: 🎯
-    link: https://github.com/onixbyte-opensource/ahsarah-guide
-
-# 营销区块，渲染在项目网格下方。每个区块仅在有内容时渲染，
-# 注释掉即整块消失，不会留下空位。
-# 区块顺序可自由调整；无法识别的 `type` 会被忽略。
 sections:
+  - type: capabilities
+    id: capabilities
+    title: 我们能为您做什么
+    subtitle: 从业务诉求到稳定投产，提供全周期、定制化的软件研发交付。
+    items:
+      - icon: "🏢"
+        title: 定制化业务系统
+        details: 围绕实际运作流程构建，让系统成为推动效率提升的数字基座。
+        subItems:
+          - 定制业务系统
+          - 自动化运营工具
+          - 现有系统升级改造
+      - icon: "🌐"
+        title: 官方门户与营销站点
+        details: 打造现代、专业且兼顾转化率的数字门面，全面提升品牌认知。
+        subItems:
+          - 企业门户
+          - 产品落地页 (Landing Page)
+          - 国际化多语言站点
+      - icon: "📱"
+        title: 移动端应用全案
+        details: 从轻量化的小程序到全平台原生 App，打造顺畅无阻的移动体验。
+        subItems:
+          - 微信小程序
+          - Android / HarmonyOS 原生开发
+          - 多端跨平台解决方案
   - type: advantages
     id: advantages
-    title: 为什么选择曜珀科技
-    subtitle: 塑造我们交付与维护方式的原则。
+    title: 核心优势
+    subtitle: 摒弃外包拼凑与短期交付，用工程化思维构建可靠软件。
     items:
       - icon: "🧩"
-        title: 一支团队负责到底
-        details: 从用户界面、服务端、数据库到上线部署，全部由同一个团队承接，您不必在多个供应商之间来回协调。
+        title: 端到端自主研发
+        details: 涵盖前端、服务端、数据库与基础设施运维，单一责任主体贯穿全生命周期，沟通无缝隙，交付高效率。
         span: 6
       - icon: "🔧"
-        title: 上线之后我们还在
-        details: 交付不是合作的终点。我们对上线的系统持续改进与支持 —— 没人维护的软件，很快就不能再算作资产。
+        title: 全生命周期守护
+        details: 交付上线只是起点。我们提供长期可靠的系统运维与敏捷迭代支持，保障系统平稳演进与持续创造价值。
         span: 6
-  - type: techStack
-    id: tech-stack
-    title: 技术栈
-    subtitle: 我们用来构建、以及在生产环境长期运行的技术。
-    groups:
-      - name: 后端与数据
-        items:
-          - { name: "Java" }
-          - { name: "Kotlin" }
-          - { name: "Go" }
-          - { name: "Rust" }
-          - { name: "Spring Boot" }
-          - { name: "Spring Security" }
-          - { name: "MyBatis" }
-          - { name: "PostgreSQL" }
-          - { name: "Redis" }
-      - name: 前端
-        items:
-          - { name: "React" }
-          - { name: "TypeScript" }
-          - { name: "Vue" }
-          - { name: "Tailwind CSS" }
-          - { name: "Ant Design" }
-          - { name: "Vite" }
-      - name: 基础设施与交付
-        items:
-          - { name: "Docker" }
-          - { name: "Docker Compose" }
-          - { name: "GitHub Actions" }
-          - { name: "GitLab CI" }
-          - { name: "MinIO" }
-          - { name: "LDAP" }
-      - name: 云服务与身份
-        items:
-          - { name: "AWS S3" }
-          - { name: "Microsoft Entra ID" }
-          - { name: "JWT" }
   - type: cases
     id: work
-    title: 项目实践
-    subtitle: 我们交付过的一些项目。
+    title: 典型案例
+    subtitle: 深入真实业务场景，看我们如何用工程标准完成稳定交付。
     items:
-      # TODO(copy): 目前没有客户授权引语，因此改为描述项目本身。等客户同意具名
-      # 评价后，把 quote / author / role 换成引语。再加条目就会变成轮播。
-      - company: 广东省一家服饰制造企业
-        details: 基于 Vue 的企业宣传站点，以静态站点形式交付。
+      # 待客户授权后，可在此补充 quote, author, role 等评价字段
+      - company: 广东某服饰制造企业
+        industry: 传统制造 / 外贸出海
+        details: 为其重塑多端适配的品牌门户与产品数字展厅，采用现代前端架构与自动化静态构建，大幅缩短首屏加载时间并提升海外访问稳定性。
+        tags:
+          - 品牌官网
+          - 静态化构建 (SSG)
+          - 响应式设计
   - type: cta
     id: contact
     title: 聊聊您要做的事

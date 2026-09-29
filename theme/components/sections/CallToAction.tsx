@@ -32,11 +32,7 @@ export function CallToAction({
               key={`${str(action.text)}-${index}`}
               type="a"
               theme={action.theme === "alt" ? "alt" : "brand"}
-              href={str(action.link) as string}
-              // `.rp-button--big` sets a min-width but no horizontal padding, so
-              // a long label such as an email address runs into the rounded
-              // edges. Supply the padding ourselves.
-              className="px-10">
+              href={str(action.link) as string}>
               {str(action.text)}
             </Button>
           ))}

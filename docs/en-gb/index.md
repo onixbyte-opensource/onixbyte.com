@@ -3,105 +3,75 @@ pageType: home
 
 hero:
   name: OnixByte
-  tagline: We design, build and run the systems your business depends on.
+  tagline: Designing, building, and sustaining your core business systems for the long term.
   actions:
     - theme: brand
-      text: Explore Services
+      text: Explore Custom Services
       link: /services/
     - theme: alt
       text: View Products
       link: /products/
-features:
-  - title: OnixByte Toolbox
-    details: A versatile Java library providing common utilities for modern development with seamless Spring integration. Published on Maven Central.
-    icon: ☕
-    link: https://github.com/orgs/onixbyte-opensource/repositories?q=toolbox
-  - title: Dev Lab
-    details: A collection of practical web tools built with Vite and React. Features a JSON Path viewer, BMI calculator, and JSON-to-table converter.
-    icon: 🛠️
-    link: https://dev-lab.onixbyte.com
-  - title: Helix
-    details: An evolving full-stack template combining Spring Boot with React, designed to help you ship applications faster.
-    icon: 🌀
-    link: https://github.com/onixbyte-opensource/helix
-  - title: Delta Force Guide
-    details: A community-oriented guide for Delta Force, delivering game news, tips, and strategic insights for fellow operators.
-    icon: 🎯
-    link: https://github.com/onixbyte-opensource/ahsarah-guide
-
-# Marketing sections, rendered below the features grid. Each block renders only
-# when it has content, so commenting one out removes it cleanly.
-# Reorder freely; unknown `type` values are ignored.
 sections:
+  - type: capabilities
+    id: capabilities
+    title: What We Do
+    subtitle: From initial business requirements to dependable deployment, we deliver end-to-end bespoke software engineering.
+    items:
+      - icon: "🏢"
+        title: Bespoke Business Systems
+        details: Tailored precisely to your operational workflow, establishing a resilient digital foundation that drives efficiency.
+        subItems:
+          - Custom Management Systems
+          - Operational Automation Tools
+          - Legacy System Modernisation
+      - icon: "🌐"
+        title: Official Portals & Marketing Sites
+        details: Crafting modern, high-converting web experiences that elevate your brand and clearly communicate value.
+        subItems:
+          - Corporate Web Portals
+          - Product Landing Pages
+          - Multilingual Global Sites
+      - icon: "📱"
+        title: Mobile & Cross-Platform Solutions
+        details: From lightweight mini-programmes to high-performance native applications, delivering fluid cross-device experiences.
+        subItems:
+          - WeChat Mini-Programmes
+          - Native Android & HarmonyOS Engineering
+          - Cross-Platform Applications
   - type: advantages
     id: advantages
     title: Why OnixByte
-    subtitle: What shapes how we build, ship and keep software running.
+    subtitle: Rejecting piecemeal subcontracting and quick fixes — engineering reliable software with rigour.
     items:
       - icon: "🧩"
-        title: One Team, Start to Finish
-        details: Everything from the user interface and the server to the database and going live is handled by the same team, so you are not left coordinating several suppliers.
+        title: Single-Team Accountability
+        details: Handling interface design, backend architecture, databases, and infrastructure deployment in-house. A single point of ownership eliminates hand-off friction and ensures seamless delivery.
         span: 6
       - icon: "🔧"
-        title: We Stay After Launch
-        details: Handover is not the end of the engagement. We keep improving and supporting what we deliver, because software nobody maintains soon stops being an asset.
+        title: Lifecycle Stewardship
+        details: Deployment is merely day one. We provide ongoing maintenance, performance optimisation, and agile iterations so your software remains an appreciating digital asset.
         span: 6
-  - type: techStack
-    id: tech-stack
-    title: Technology We Use
-    subtitle: What we build with, and what we keep running in production.
-    groups:
-      - name: Backend & Data
-        items:
-          - { name: "Java" }
-          - { name: "Kotlin" }
-          - { name: "Go" }
-          - { name: "Rust" }
-          - { name: "Spring Boot" }
-          - { name: "Spring Security" }
-          - { name: "MyBatis" }
-          - { name: "PostgreSQL" }
-          - { name: "Redis" }
-      - name: Frontend
-        items:
-          - { name: "React" }
-          - { name: "TypeScript" }
-          - { name: "Vue" }
-          - { name: "Tailwind CSS" }
-          - { name: "Ant Design" }
-          - { name: "Vite" }
-      - name: Infrastructure & Delivery
-        items:
-          - { name: "Docker" }
-          - { name: "Docker Compose" }
-          - { name: "GitHub Actions" }
-          - { name: "GitLab CI" }
-          - { name: "MinIO" }
-          - { name: "LDAP" }
-      - name: Cloud & Identity
-        items:
-          - { name: "AWS S3" }
-          - { name: "Microsoft Entra ID" }
-          - { name: "JWT" }
   - type: cases
     id: work
     title: Selected Work
-    subtitle: A look at some of the work we have delivered.
+    subtitle: Rooted in real-world scenarios, demonstrating how engineering standards deliver consistent results.
     items:
-      # TODO(copy): no approved client testimonial yet, so this describes the
-      # engagement instead. Swap in a `quote`/`author`/`role` once a client
-      # agrees to be quoted. Add more entries and the card becomes a carousel.
-      - company: A garment manufacturer in Guangdong
-        details: A corporate marketing site built with Vue and delivered as a static site.
+      - company: Apparel Manufacturer in Guangdong
+        industry: Traditional Manufacturing / Global Export
+        details: Overhauled their responsive brand portal and digital product showcase with modern front-end architecture and automated static site generation, substantially reducing initial load times and boosting global availability.
+        tags:
+          - Corporate Portal
+          - Static Site Generation (SSG)
+          - Responsive Design
   - type: cta
     id: contact
-    title: Let's Talk About What You Need Built
-    subtitle: Tell us about your project or your idea — we are around whenever you are ready.
+    title: Let's Discuss Your Next Initiative
+    subtitle: Tell us about your project or concept — we are always ready to collaborate.
     actions:
       - theme: brand
         text: business@onixbyte.com
         link: mailto:business@onixbyte.com
     code:
       src: /wechat-qr.png
-      caption: Or scan to reach us on WeCom
+      caption: Or scan to connect via WeCom
 ---

@@ -133,7 +133,7 @@ sidebar and discards all the per-section ones.
 The homepage, `/products/` and `/services/` render optional bands declared in
 frontmatter under a `sections` key. Each band renders only when it has content,
 so an unfilled page degrades to its heading and intro rather than looking
-broken. Supported types are `advantages`, `contentGrid`, `techStack`, `cases`
+broken. Supported types are `capabilities`, `advantages`, `contentGrid`, `cases`
 and `cta`; see `theme/components/sections/types.ts` for their shapes.
 
 `theme/components/sections/placeholder.ts` exposes a `SHOW_COPY_PLACEHOLDERS`
